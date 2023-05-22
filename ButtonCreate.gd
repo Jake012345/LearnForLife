@@ -9,6 +9,14 @@ onready var popup_label = get_node("ConfirmationDialog/Label")
 onready var popup_subject = get_node("PopupCreateSubject")
 onready var popup_topic = get_node("PopupCreateTopic")
 
+func _ready():
+   var tmp_font = Theme.new()
+   tmp_font.default_font = DynamicFont.new()
+   tmp_font.default_font.font_data = load(GlobalDatabase.font)
+   tmp_font.default_font.size = 50
+   edit_subject.theme = tmp_font
+   edit_topic.theme = tmp_font
+   pass
 
 func on_press():
    var term_filled
@@ -50,6 +58,7 @@ func confirmation_accepted():
 
 func refresh_subjects_and_topics():
    edit_subject.clear()
+   edit_topic.clear()
    for i in GlobalDatabase.subjects:
       edit_subject.add_item(i)
    for i in GlobalDatabase.topics:
