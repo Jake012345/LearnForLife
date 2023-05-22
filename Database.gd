@@ -3,6 +3,7 @@ extends Node
 var terms = []
 var subjects = []
 var topics = []
+var font = "res://lib/Courier_Prime/CourierPrime-Regular.ttf"
 
 
 func add_term(term: Term):
