@@ -1,13 +1,13 @@
 extends Node
 
-var terms = []
+var terms = {}
 var subjects = []
 var topics = []
 var font = "res://lib/Courier_Prime/CourierPrime-Regular.ttf"
 
 
 func add_term(term: Term):
-   terms.append(term)
+   terms[terms.size()] = term
    pass
 
 func add_subject(subject: String):
@@ -18,8 +18,8 @@ func add_topic(topic: String):
    topics.append(topic)
    pass
 
-func remove(term: Term):     ###not sure if it works cuz it's not string
-   terms.remove(terms.find(term))
+func remove(term_id: int):     ###not sure if it works cuz it's not string
+   terms[term_id] = null
    pass
 
 func remove_subject(subject: String):
@@ -28,18 +28,6 @@ func remove_subject(subject: String):
 
 func remove_topic(topic: String):
    topics.remove(topics.find(topic))
-   pass
-
-func get_terms():
-   return terms
-   pass
-
-func get_subjects():
-   return subjects
-   pass
-
-func get_topics():
-   return topics
    pass
 
 func get_terms_by_subject(subject: String):
