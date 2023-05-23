@@ -107,5 +107,4 @@ func create_term():
    tmp.topic = edit_topic.text
    tmp.creation_day = OS.get_datetime()
    GlobalDatabase.add_term(tmp)
-   print(tmp.as_list())
    pass
