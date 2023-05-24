@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/check_mark_icon_green.png-814e97b122ad98ad44c9b6e62d4deebb.stex"
+path="res://.import/icon.png-a8cc346aa4ef1d8f3332e81ec55c4eee.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://check_mark_icon_green.png"
-dest_files=[ "res://.import/check_mark_icon_green.png-814e97b122ad98ad44c9b6e62d4deebb.stex" ]
+source_file="res://lib/textures/icon.png"
+dest_files=[ "res://.import/icon.png-a8cc346aa4ef1d8f3332e81ec55c4eee.stex" ]
 
 [params]
 

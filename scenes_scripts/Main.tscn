@@ -1,13 +1,13 @@
-[gd_scene load_steps=36 format=2]
+[gd_scene load_steps=34 format=2]
 
-[ext_resource path="res://lib/Courier_Prime/CourierPrime-Regular.ttf" type="DynamicFontData" id=1]
-[ext_resource path="res://Main.gd" type="Script" id=2]
-[ext_resource path="res://check_mark_icon_green.png" type="Texture" id=3]
-[ext_resource path="res://ButtonCreate.gd" type="Script" id=4]
-[ext_resource path="res://EditScreenContainer.gd" type="Script" id=5]
-[ext_resource path="res://EditTerms.gd" type="Script" id=6]
-[ext_resource path="res://EditSubjects.gd" type="Script" id=7]
-[ext_resource path="res://EditTopics.gd" type="Script" id=8]
+[ext_resource path="res://lib/font/CourierPrime-Regular.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://scenes_scripts/Main.gd" type="Script" id=2]
+[ext_resource path="res://lib/textures/check_mark_icon_green.png" type="Texture" id=3]
+[ext_resource path="res://scenes_scripts/ButtonCreate.gd" type="Script" id=4]
+[ext_resource path="res://scenes_scripts/EditScreenContainer.gd" type="Script" id=5]
+[ext_resource path="res://scenes_scripts/EditTerms.gd" type="Script" id=6]
+[ext_resource path="res://scenes_scripts/EditSubjects.gd" type="Script" id=7]
+[ext_resource path="res://scenes_scripts/EditTopics.gd" type="Script" id=8]
 
 [sub_resource type="DynamicFont" id=2]
 size = 72
@@ -51,14 +51,6 @@ font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=6]
 size = 50
-font_data = ExtResource( 1 )
-
-[sub_resource type="DynamicFont" id=21]
-size = 32
-font_data = ExtResource( 1 )
-
-[sub_resource type="DynamicFont" id=8]
-size = 32
 font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=9]
@@ -127,7 +119,6 @@ __meta__ = {
 }
 
 [node name="SelectorScreen" type="Control" parent="."]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
@@ -286,7 +277,6 @@ margin_left = 40.0
 margin_top = 2040.0
 margin_right = 390.0
 margin_bottom = 2090.0
-custom_fonts/font = SubResource( 21 )
 clip_text = true
 __meta__ = {
 "_edit_lock_": true
@@ -308,7 +298,6 @@ margin_left = 450.0
 margin_top = 2040.0
 margin_right = 800.0
 margin_bottom = 2090.0
-custom_fonts/font = SubResource( 8 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -435,6 +424,7 @@ __meta__ = {
 }
 
 [node name="ReviewScreen" type="Control" parent="."]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
@@ -502,7 +492,6 @@ tabs_visible = false
 script = ExtResource( 5 )
 
 [node name="EditTerms" type="Control" parent="ReviewScreen/EditScreenContainer"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
@@ -512,6 +501,7 @@ margin_bottom = -4.0
 script = ExtResource( 6 )
 
 [node name="EditSubjects" type="Control" parent="ReviewScreen/EditScreenContainer"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
@@ -562,6 +552,7 @@ __meta__ = {
 [connection signal="pressed" from="SelectorScreen/ButtonTest" to="." method="change_screen" binds= [ 2 ]]
 [connection signal="pressed" from="SelectorScreen/ButtonReview" to="." method="change_screen" binds= [ 3 ]]
 [connection signal="pressed" from="AddScreen/ButtonNewSubject" to="AddScreen/ButtonCreate" method="create_subject"]
+[connection signal="item_selected" from="AddScreen/OptionButtonSubject" to="AddScreen/ButtonCreate" method="refresh_topics"]
 [connection signal="pressed" from="AddScreen/ButtonNewTopic" to="AddScreen/ButtonCreate" method="create_topic"]
 [connection signal="pressed" from="AddScreen/ButtonCreate" to="AddScreen/ButtonCreate" method="on_press"]
 [connection signal="pressed" from="AddScreen/ButtonCreate/ConfirmationDialog/ButtonAccept" to="AddScreen/ButtonCreate" method="confirmation_accepted"]

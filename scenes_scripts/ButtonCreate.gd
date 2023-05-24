@@ -10,12 +10,8 @@ onready var popup_subject = get_node("PopupCreateSubject")
 onready var popup_topic = get_node("PopupCreateTopic")
 
 func _ready():
-   var tmp_font = Theme.new()
-   tmp_font.default_font = DynamicFont.new()
-   tmp_font.default_font.font_data = load(GlobalDatabase.font)
-   tmp_font.default_font.size = 50
-   edit_subject.theme = tmp_font
-   edit_topic.theme = tmp_font
+   GlobalFunctions.set_font(edit_subject, 32)
+   GlobalFunctions.set_font(edit_topic, 32)
    pass
 
 func on_press():
@@ -56,13 +52,18 @@ func confirmation_accepted():
    pass
 
 
-func refresh_subjects_and_topics():
+func refresh_subjects():
    edit_subject.clear()
-   edit_topic.clear()
    for i in GlobalDatabase.subjects:
-      edit_subject.add_item(i)
-   for i in GlobalDatabase.topics:
-      edit_topic.add_item(i)
+      edit_subject.add_item(i.text)
+   pass
+
+func refresh_topics(selected_subject_index: int = edit_subject.selected):
+   edit_topic.clear()
+   var tmp = GlobalDatabase.get_subject(selected_subject_index).get_topics()
+   if tmp.size() > 0:
+      for i in tmp:
+         edit_topic.add_item(String(i))
    pass
 
 func create_subject():
@@ -74,7 +75,8 @@ func subject_created():
       GlobalDatabase.add_subject(popup_subject.get_node("Text").text.strip_edges())
       popup_subject.get_node("Text").text = ""
       popup_subject.hide()
-      refresh_subjects_and_topics()
+      refresh_subjects()
+      refresh_topics()
    pass
    
 func subject_creation_cancelled():
@@ -83,15 +85,20 @@ func subject_creation_cancelled():
    pass
 
 func create_topic():
-   popup_topic.popup_centered()
+   if edit_subject.selected > -1:
+      popup_topic.popup_centered()
+   else:
+      popup_label.text = "You need to set a Subject first."
+      popup.popup_centered()
    pass
 
 func topic_created():
    if popup_topic.get_node("Text").text.strip_edges() != "":
-      GlobalDatabase.add_topic(popup_topic.get_node("Text").text.strip_edges())
+      GlobalDatabase.add_topic(popup_topic.get_node("Text").text.strip_edges(), \
+      GlobalDatabase.get_subject_by_name(edit_subject.text))
       popup_topic.hide()
       popup_topic.get_node("Text").text = ""
-      refresh_subjects_and_topics()
+      refresh_topics()
    pass
 
 func topic_creation_cacelled():
@@ -103,7 +110,7 @@ func create_term():
    var tmp = Term.new()
    tmp.text = edit_term.text
    tmp.definition = edit_definition.text
-   tmp.subject = edit_subject.text
+   tmp.subject = GlobalDatabase.get_subject_by_name(edit_subject.text)
    tmp.topic = edit_topic.text
    tmp.creation_day = OS.get_datetime()
    GlobalDatabase.add_term(tmp)
