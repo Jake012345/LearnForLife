@@ -10,24 +10,31 @@ config_version=4
 
 _global_script_classes=[ {
 "base": "Reference",
+"class": @"Subject",
+"language": @"GDScript",
+"path": "res://classes/Subject.gd"
+}, {
+"base": "Reference",
 "class": @"Term",
 "language": @"GDScript",
-"path": "res://term.gd"
+"path": "res://classes/term.gd"
 } ]
 _global_script_class_icons={
-@"Term": ""
+@"Term": "",
+@"Subject": ""
 }
 
 [application]
 
 config/name="StudyForLife"
-run/main_scene="res://Main.tscn"
-config/icon="res://icon.png"
+run/main_scene="res://scenes_scripts/Main.tscn"
+config/icon="res://lib/textures/icon.png"
 config/quit_on_go_back=false
 
 [autoload]
 
-GlobalDatabase="*res://Database.gd"
+GlobalDatabase="*res://scenes_scripts/Database.gd"
+GlobalFunctions="*res://scenes_scripts/global_functions.gd"
 
 [display]
 
