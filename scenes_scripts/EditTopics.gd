@@ -1,4 +1,4 @@
-extends Control
+xtends Control
 
 
 # Declare member variables here. Examples:

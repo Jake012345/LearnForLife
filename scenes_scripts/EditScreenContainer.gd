@@ -5,6 +5,10 @@ onready var selector_button_subjects = get_parent().get_node("HBoxContainer/Butt
 onready var selector_button_topics = get_parent().get_node("HBoxContainer/ButtonEditTopic")
 signal refresh_data
 
+func _ready():
+   current_tab = 0
+   pass
+
 func change_edit_mode(to: int):
    current_tab = to
    emit_signal("refresh_data")

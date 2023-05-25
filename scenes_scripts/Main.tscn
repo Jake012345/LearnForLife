@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=2]
+[gd_scene load_steps=36 format=2]
 
 [ext_resource path="res://lib/font/CourierPrime-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://scenes_scripts/Main.gd" type="Script" id=2]
@@ -7,7 +7,7 @@
 [ext_resource path="res://scenes_scripts/EditScreenContainer.gd" type="Script" id=5]
 [ext_resource path="res://scenes_scripts/EditTerms.gd" type="Script" id=6]
 [ext_resource path="res://scenes_scripts/EditSubjects.gd" type="Script" id=7]
-[ext_resource path="res://scenes_scripts/EditTopics.gd" type="Script" id=8]
+[ext_resource path="res://lib/textures/arrow.png" type="Texture" id=9]
 
 [sub_resource type="DynamicFont" id=2]
 size = 72
@@ -70,7 +70,7 @@ size = 32
 font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=15]
-size = 64
+size = 50
 font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=16]
@@ -82,7 +82,7 @@ size = 32
 font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=18]
-size = 64
+size = 50
 font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=19]
@@ -105,7 +105,15 @@ font_data = ExtResource( 1 )
 size = 50
 font_data = ExtResource( 1 )
 
-[sub_resource type="DynamicFont" id=32]
+[sub_resource type="DynamicFont" id=34]
+size = 64
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=33]
+size = 50
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=35]
 size = 50
 font_data = ExtResource( 1 )
 
@@ -119,6 +127,7 @@ __meta__ = {
 }
 
 [node name="SelectorScreen" type="Control" parent="."]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
@@ -424,7 +433,6 @@ __meta__ = {
 }
 
 [node name="ReviewScreen" type="Control" parent="."]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
@@ -456,7 +464,7 @@ margin_top = -849.0
 margin_bottom = -749.0
 
 [node name="ButtonEditTerms" type="Button" parent="ReviewScreen/HBoxContainer"]
-margin_right = 354.0
+margin_right = 534.0
 margin_bottom = 100.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -465,24 +473,14 @@ toggle_mode = true
 text = "Terms"
 
 [node name="ButtonEditSubjects" type="Button" parent="ReviewScreen/HBoxContainer"]
-margin_left = 358.0
-margin_right = 713.0
+margin_left = 538.0
+margin_right = 1072.0
 margin_bottom = 100.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/font = SubResource( 31 )
 toggle_mode = true
 text = "Subjects"
-
-[node name="ButtonEditTopic" type="Button" parent="ReviewScreen/HBoxContainer"]
-margin_left = 717.0
-margin_right = 1072.0
-margin_bottom = 100.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-custom_fonts/font = SubResource( 32 )
-toggle_mode = true
-text = "Topics"
 
 [node name="EditScreenContainer" type="TabContainer" parent="ReviewScreen"]
 anchor_right = 1.0
@@ -492,6 +490,7 @@ tabs_visible = false
 script = ExtResource( 5 )
 
 [node name="EditTerms" type="Control" parent="ReviewScreen/EditScreenContainer"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
@@ -501,7 +500,6 @@ margin_bottom = -4.0
 script = ExtResource( 6 )
 
 [node name="EditSubjects" type="Control" parent="ReviewScreen/EditScreenContainer"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
@@ -510,22 +508,72 @@ margin_right = -4.0
 margin_bottom = -4.0
 script = ExtResource( 7 )
 
-[node name="ItemList" type="ItemList" parent="ReviewScreen/EditScreenContainer/EditSubjects"]
-margin_left = 50.0
+[node name="LabelSubject" type="Label" parent="ReviewScreen/EditScreenContainer/EditSubjects"]
+margin_left = 40.0
 margin_top = 50.0
-margin_right = 450.0
-margin_bottom = 650.0
-items = [ "Item 0", null, false, "Item 1", null, false, "Item 2", null, false, "Item 3", null, false ]
+margin_right = 344.0
+margin_bottom = 122.0
+custom_fonts/font = SubResource( 34 )
+text = "Subject:"
 
-[node name="EditTopics" type="Control" parent="ReviewScreen/EditScreenContainer"]
-visible = false
+[node name="SubjectSelector" type="ItemList" parent="ReviewScreen/EditScreenContainer/EditSubjects"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 4.0
-margin_top = 8.0
-margin_right = -4.0
-margin_bottom = -4.0
-script = ExtResource( 8 )
+margin_top = 150.0
+margin_bottom = -1200.0
+custom_fonts/font = SubResource( 33 )
+
+[node name="ButtonSubjectDelete" type="Button" parent="ReviewScreen/EditScreenContainer/EditSubjects"]
+margin_left = 80.0
+margin_top = 700.0
+margin_right = 380.0
+margin_bottom = 800.0
+custom_fonts/font = SubResource( 35 )
+text = "Delete"
+
+[node name="ButtonSubjectEdit" type="Button" parent="ReviewScreen/EditScreenContainer/EditSubjects"]
+margin_left = 650.0
+margin_top = 700.0
+margin_right = 950.0
+margin_bottom = 800.0
+custom_fonts/font = SubResource( 35 )
+text = "Edit"
+
+[node name="Sprite" type="Sprite" parent="ReviewScreen/EditScreenContainer/EditSubjects"]
+position = Vector2( 450, 830 )
+texture = ExtResource( 9 )
+centered = false
+
+[node name="LabelTopic" type="Label" parent="ReviewScreen/EditScreenContainer/EditSubjects"]
+margin_left = 40.0
+margin_top = 1000.0
+margin_right = 344.0
+margin_bottom = 1072.0
+custom_fonts/font = SubResource( 34 )
+text = "Topic:"
+
+[node name="TopicSelector" type="ItemList" parent="ReviewScreen/EditScreenContainer/EditSubjects"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 1100.0
+margin_bottom = -250.0
+custom_fonts/font = SubResource( 33 )
+
+[node name="ButtonTopicDelete" type="Button" parent="ReviewScreen/EditScreenContainer/EditSubjects"]
+margin_left = 70.0
+margin_top = 1650.0
+margin_right = 370.0
+margin_bottom = 1750.0
+custom_fonts/font = SubResource( 35 )
+text = "Delete"
+
+[node name="ButtonTopicEdit" type="Button" parent="ReviewScreen/EditScreenContainer/EditSubjects"]
+margin_left = 650.0
+margin_top = 1650.0
+margin_right = 950.0
+margin_bottom = 1750.0
+custom_fonts/font = SubResource( 35 )
+text = "Edit"
 
 [node name="TestScreenCard" type="Control" parent="."]
 visible = false
@@ -562,7 +610,5 @@ __meta__ = {
 [connection signal="pressed" from="AddScreen/ButtonCreate/PopupCreateTopic/ButtonCancel" to="AddScreen/ButtonCreate" method="topic_creation_cacelled"]
 [connection signal="pressed" from="ReviewScreen/HBoxContainer/ButtonEditTerms" to="ReviewScreen/EditScreenContainer" method="change_edit_mode" binds= [ 0 ]]
 [connection signal="pressed" from="ReviewScreen/HBoxContainer/ButtonEditSubjects" to="ReviewScreen/EditScreenContainer" method="change_edit_mode" binds= [ 1 ]]
-[connection signal="pressed" from="ReviewScreen/HBoxContainer/ButtonEditTopic" to="ReviewScreen/EditScreenContainer" method="change_edit_mode" binds= [ 2 ]]
 [connection signal="refresh_data" from="ReviewScreen/EditScreenContainer" to="ReviewScreen/EditScreenContainer/EditTerms" method="refresh_data"]
 [connection signal="refresh_data" from="ReviewScreen/EditScreenContainer" to="ReviewScreen/EditScreenContainer/EditSubjects" method="refresh_data"]
-[connection signal="refresh_data" from="ReviewScreen/EditScreenContainer" to="ReviewScreen/EditScreenContainer/EditTopics" method="refresh_data"]
