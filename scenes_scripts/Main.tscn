@@ -610,5 +610,5 @@ __meta__ = {
 [connection signal="pressed" from="AddScreen/ButtonCreate/PopupCreateTopic/ButtonCancel" to="AddScreen/ButtonCreate" method="topic_creation_cacelled"]
 [connection signal="pressed" from="ReviewScreen/HBoxContainer/ButtonEditTerms" to="ReviewScreen/EditScreenContainer" method="change_edit_mode" binds= [ 0 ]]
 [connection signal="pressed" from="ReviewScreen/HBoxContainer/ButtonEditSubjects" to="ReviewScreen/EditScreenContainer" method="change_edit_mode" binds= [ 1 ]]
-[connection signal="refresh_data" from="ReviewScreen/EditScreenContainer" to="ReviewScreen/EditScreenContainer/EditTerms" method="refresh_data"]
-[connection signal="refresh_data" from="ReviewScreen/EditScreenContainer" to="ReviewScreen/EditScreenContainer/EditSubjects" method="refresh_data"]
+[connection signal="tab_changed" from="ReviewScreen/EditScreenContainer" to="ReviewScreen/EditScreenContainer" method="change_edit_mode"]
+[connection signal="pressed" from="ReviewScreen/EditScreenContainer/EditSubjects/ButtonSubjectDelete" to="ReviewScreen/EditScreenContainer/EditSubjects" method="delete_subject"]
