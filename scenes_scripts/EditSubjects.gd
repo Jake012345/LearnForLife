@@ -8,7 +8,12 @@ func refresh_data():
    list_subjects.clear()
    for i in GlobalDatabase.subjects:
       list_subjects.add_item(i.text)
-      pass
+   pass
+
+func refresh_topic_data(selected_subject: int = -1):
+   list_topics.clear()
+   for i in GlobalDatabase.subjects[selected_subject].topics:
+      list_topics.add_item(i)
    pass
 
 
@@ -19,5 +24,17 @@ func delete_subject():
    pass
 
 func subject_deletion_accepted():
-   #write the code of subject deletion
+   for i in list_subjects.get_selected_items():
+      GlobalDatabase.remove_subject(i)
+   refresh_data()
+   pass
+
+func delete_topic():
+   GlobalFunctions.show_warning(self, "topic_deletion_accepted", \
+   "Do you really want to delete the selected Topic(s)?" + "\n" + \
+   "(The connected Terms are going to be deleted as well.)")
+   pass
+
+func topic_deletion_accepted():
+   
    pass

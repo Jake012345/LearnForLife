@@ -25,8 +25,8 @@ func remove_term(term_id: int):     ###not sure if it works cuz it's not string
    terms[term_id] = null
    pass
 
-func remove_subject(subject: Subject):
-   subject.remove(subject.find(subject))
+func remove_subject(subject: int):
+   subjects.remove(subject)
    pass
 
 func remove_topic(topic: String, subject: Subject):

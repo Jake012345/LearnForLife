@@ -50,7 +50,7 @@ func show_warning(parent: Node, triggered_func: String, text: String):
    cancel.connect("pressed", self, "warning_answered", [false])
    warning.popup_centered()
    yield(self, "accept_warning")
-   if warning_accepted:
+   if warning_accepted and triggered_func != "":
       parent.call(triggered_func)
    warning.call_deferred("free")
    pass

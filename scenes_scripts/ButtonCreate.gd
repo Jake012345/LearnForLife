@@ -54,14 +54,16 @@ func confirmation_accepted():
 
 func refresh_subjects():
    edit_subject.clear()
-   for i in GlobalDatabase.subjects:
-      edit_subject.add_item(i.text)
+   if GlobalDatabase.subjects.size() > 0:
+      for i in GlobalDatabase.subjects:
+         edit_subject.add_item(i.text)
+   refresh_topics()
    pass
 
 func refresh_topics(selected_subject_index: int = edit_subject.selected):
    edit_topic.clear()
-   var tmp = GlobalDatabase.get_subject(selected_subject_index).get_topics()
-   if tmp.size() > 0:
+   if selected_subject_index != -1:
+      var tmp = GlobalDatabase.get_subject(selected_subject_index).get_topics()
       for i in tmp:
          edit_topic.add_item(String(i))
    pass

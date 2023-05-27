@@ -127,7 +127,6 @@ __meta__ = {
 }
 
 [node name="SelectorScreen" type="Control" parent="."]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
@@ -231,7 +230,6 @@ margin_right = 1040.0
 margin_bottom = 730.0
 custom_fonts/font = SubResource( 27 )
 wrap_enabled = true
-caret_block_mode = true
 caret_blink = true
 __meta__ = {
 "_edit_lock_": true
@@ -255,6 +253,7 @@ margin_right = 1040.0
 margin_bottom = 1900.0
 custom_fonts/font = SubResource( 5 )
 wrap_enabled = true
+caret_blink = true
 __meta__ = {
 "_edit_lock_": true
 }
@@ -433,6 +432,7 @@ __meta__ = {
 }
 
 [node name="ReviewScreen" type="Control" parent="."]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
@@ -488,9 +488,11 @@ anchor_bottom = 1.0
 margin_top = 400.0
 tabs_visible = false
 script = ExtResource( 5 )
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="EditTerms" type="Control" parent="ReviewScreen/EditScreenContainer"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
@@ -500,6 +502,7 @@ margin_bottom = -4.0
 script = ExtResource( 6 )
 
 [node name="EditSubjects" type="Control" parent="ReviewScreen/EditScreenContainer"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
@@ -522,6 +525,7 @@ anchor_bottom = 1.0
 margin_top = 150.0
 margin_bottom = -1200.0
 custom_fonts/font = SubResource( 33 )
+allow_reselect = true
 
 [node name="ButtonSubjectDelete" type="Button" parent="ReviewScreen/EditScreenContainer/EditSubjects"]
 margin_left = 80.0
@@ -599,6 +603,7 @@ __meta__ = {
 [connection signal="pressed" from="SelectorScreen/ButtonAdd" to="." method="change_screen" binds= [ 1 ]]
 [connection signal="pressed" from="SelectorScreen/ButtonTest" to="." method="change_screen" binds= [ 2 ]]
 [connection signal="pressed" from="SelectorScreen/ButtonReview" to="." method="change_screen" binds= [ 3 ]]
+[connection signal="draw" from="AddScreen" to="AddScreen/ButtonCreate" method="refresh_subjects"]
 [connection signal="pressed" from="AddScreen/ButtonNewSubject" to="AddScreen/ButtonCreate" method="create_subject"]
 [connection signal="item_selected" from="AddScreen/OptionButtonSubject" to="AddScreen/ButtonCreate" method="refresh_topics"]
 [connection signal="pressed" from="AddScreen/ButtonNewTopic" to="AddScreen/ButtonCreate" method="create_topic"]
@@ -608,7 +613,11 @@ __meta__ = {
 [connection signal="pressed" from="AddScreen/ButtonCreate/PopupCreateSubject/ButtonCancel" to="AddScreen/ButtonCreate" method="subject_creation_cancelled"]
 [connection signal="pressed" from="AddScreen/ButtonCreate/PopupCreateTopic/ButtonOk" to="AddScreen/ButtonCreate" method="topic_created"]
 [connection signal="pressed" from="AddScreen/ButtonCreate/PopupCreateTopic/ButtonCancel" to="AddScreen/ButtonCreate" method="topic_creation_cacelled"]
+[connection signal="draw" from="ReviewScreen" to="ReviewScreen/EditScreenContainer/EditSubjects" method="refresh_data"]
 [connection signal="pressed" from="ReviewScreen/HBoxContainer/ButtonEditTerms" to="ReviewScreen/EditScreenContainer" method="change_edit_mode" binds= [ 0 ]]
 [connection signal="pressed" from="ReviewScreen/HBoxContainer/ButtonEditSubjects" to="ReviewScreen/EditScreenContainer" method="change_edit_mode" binds= [ 1 ]]
-[connection signal="tab_changed" from="ReviewScreen/EditScreenContainer" to="ReviewScreen/EditScreenContainer" method="change_edit_mode"]
+[connection signal="gui_input" from="ReviewScreen/EditScreenContainer/EditSubjects/SubjectSelector" to="ReviewScreen/EditScreenContainer/EditSubjects" method="refresh_topic_data"]
+[connection signal="item_activated" from="ReviewScreen/EditScreenContainer/EditSubjects/SubjectSelector" to="ReviewScreen/EditScreenContainer/EditSubjects" method="refresh_topic_data"]
+[connection signal="item_selected" from="ReviewScreen/EditScreenContainer/EditSubjects/SubjectSelector" to="ReviewScreen/EditScreenContainer/EditSubjects" method="refresh_topic_data"]
 [connection signal="pressed" from="ReviewScreen/EditScreenContainer/EditSubjects/ButtonSubjectDelete" to="ReviewScreen/EditScreenContainer/EditSubjects" method="delete_subject"]
+[connection signal="pressed" from="ReviewScreen/EditScreenContainer/EditSubjects/ButtonTopicDelete" to="ReviewScreen/EditScreenContainer/EditSubjects" method="delete_topic"]
