@@ -36,5 +36,8 @@ func delete_topic():
    pass
 
 func topic_deletion_accepted():
-   
+   for i in list_subjects.get_selected_items():
+      for j in list_topics.get_selected_items():
+         GlobalDatabase.subjects[i].topics.remove(j)
+   refresh_topic_data()
    pass

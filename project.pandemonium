@@ -26,7 +26,7 @@ _global_script_class_icons={
 
 [application]
 
-config/name="StudyForLife"
+config/name="LearnForLife"
 run/main_scene="res://scenes_scripts/Main.tscn"
 config/icon="res://lib/textures/icon.png"
 config/quit_on_go_back=false
