@@ -3,11 +3,73 @@ extends Node
 var terms = {}
 var subjects = []
 var next_term_id = 0
+var data_file_path = "Database.txt"
+var data_file = File.new()
 
+func _ready():
+   load_data()
+   pass
+
+func load_data():
+   var raw_data = ""
+   if data_file.file_exists(data_file_path):
+      data_file.open(data_file_path, File.READ)
+      raw_data = data_file.get_as_text()
+   else:
+      data_file.open(data_file_path, File.WRITE)
+      #>>maybe a warning asw (there were problems)
+   data_file.close()
+
+   var line = ""
+   var lines = []
+   for i in raw_data:
+      if i != "\n":
+         line += i
+      else:
+         if line == "":
+            continue
+         lines.append(line.strip_edges())
+         line.clear()
+#   print(lines)   #> PARSING IS REQUIRED
+   if lines.size() >= 3:    ##>>>>  ELSE --->>> SURELY DAMAGED/ CORRUPT FILE
+      next_term_id = int(lines[0])
+      var terms_size = int(lines[1])
+      var subjects_size = int(lines[2])
+      for i in range(3):
+         lines.remove(0)
+      for i in terms_size:
+         var tmp_term = Term.new()
+         var tmp_term_id = String(lines[0]).split(";")[0]
+         var tmp_term_data = String(lines[0]).split(";")[1]
+         tmp_term.from_list_string(tmp_term_data)
+         terms[int(tmp_term_id)] = tmp_term
+         lines.remove(0)
+      for i in subjects_size:
+         pass    #>>>>>>>>>>>>>>>>> PARSING SUBJECTS
+   print(terms[1].as_list())
+   pass
+
+func save_data():  #>>>>> SAFETY SAVE:   TMP_FILE --> REAL FILE
+   var text_to_save = String(
+      String(next_term_id) + "\n" +
+      String(terms.size()) + "\n" +
+      String(subjects.size()) + "\n"
+      )
+   for i in terms.keys():
+      text_to_save += String(i) + ";" + String(terms[i].as_list()) + "\n"
+   for i in subjects:
+      text_to_save += String(i.as_list()) + "\n"
+      pass
+   data_file.open(data_file_path, File.WRITE)
+   data_file.store_string(text_to_save)
+   data_file.close()
+   print(text_to_save)
+   pass
 
 func add_term(term: Term):
    terms[next_term_id] = term
    next_term_id += 1
+   save_data()
    pass
 
 func add_subject(text: String, topics: Array = []):
@@ -15,22 +77,27 @@ func add_subject(text: String, topics: Array = []):
    tmp_subject.text = text
    tmp_subject.topics += topics
    subjects.append(tmp_subject)
+   save_data()
    pass
 
 func add_topic(topic: String, subject: Subject):
    subject.add_topic(topic)
+   save_data()
    pass
 
 func remove_term(term_id: int):     ###not sure if it works cuz it's not string
-   terms[term_id] = null
+   terms.erase(term_id)
+   save_data()
    pass
 
 func remove_subject(subject: int):
    subjects.remove(subject)
+   save_data()
    pass
 
 func remove_topic(topic: String, subject: Subject):
    subject.remove_topic(topic)
+   save_data()
    pass
 
 func get_terms_by_subject(subject: Subject):

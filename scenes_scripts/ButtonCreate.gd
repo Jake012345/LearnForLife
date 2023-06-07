@@ -112,7 +112,7 @@ func create_term():
    var tmp = Term.new()
    tmp.text = edit_term.text
    tmp.definition = edit_definition.text
-   tmp.subject = GlobalDatabase.get_subject_by_name(edit_subject.text)
+   tmp.subject = edit_subject.text
    tmp.topic = edit_topic.text
    tmp.creation_day = OS.get_datetime()
    GlobalDatabase.add_term(tmp)

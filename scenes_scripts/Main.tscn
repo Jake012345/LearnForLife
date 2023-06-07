@@ -97,7 +97,7 @@ font_data = ExtResource( 1 )
 size = 64
 font_data = ExtResource( 1 )
 
-[sub_resource type="DynamicFont" id=30]
+[sub_resource type="DynamicFont" id=36]
 size = 50
 font_data = ExtResource( 1 )
 
@@ -468,7 +468,7 @@ margin_right = 534.0
 margin_bottom = 100.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_fonts/font = SubResource( 30 )
+custom_fonts/font = SubResource( 36 )
 toggle_mode = true
 text = "Terms"
 
@@ -500,6 +500,73 @@ margin_top = 8.0
 margin_right = -4.0
 margin_bottom = -4.0
 script = ExtResource( 6 )
+
+[node name="LabelSort" type="Label" parent="ReviewScreen/EditScreenContainer/EditTerms"]
+margin_left = 40.0
+margin_top = 40.0
+margin_right = 344.0
+margin_bottom = 112.0
+custom_fonts/font = SubResource( 36 )
+text = "Sort by:"
+
+[node name="OptionButtonSort" type="OptionButton" parent="ReviewScreen/EditScreenContainer/EditTerms"]
+margin_left = 400.0
+margin_top = 40.0
+margin_right = 700.0
+margin_bottom = 104.0
+text = "A-Z"
+items = [ "A-Z", null, false, 0, null, "Subject-Topic", null, false, 1, null ]
+selected = 0
+
+[node name="LabelSubject" type="Label" parent="ReviewScreen/EditScreenContainer/EditTerms"]
+margin_left = 40.0
+margin_top = 140.0
+margin_right = 280.0
+margin_bottom = 198.0
+custom_fonts/font = SubResource( 36 )
+text = "Subject:"
+
+[node name="OptionButtonSubject" type="OptionButton" parent="ReviewScreen/EditScreenContainer/EditTerms"]
+margin_left = 400.0
+margin_top = 140.0
+margin_right = 700.0
+margin_bottom = 204.0
+
+[node name="LabelTopic" type="Label" parent="ReviewScreen/EditScreenContainer/EditTerms"]
+margin_left = 40.0
+margin_top = 240.0
+margin_right = 220.0
+margin_bottom = 298.0
+custom_fonts/font = SubResource( 36 )
+text = "Topic:"
+
+[node name="OptionButtonTopic" type="OptionButton" parent="ReviewScreen/EditScreenContainer/EditTerms"]
+margin_left = 400.0
+margin_top = 240.0
+margin_right = 700.0
+margin_bottom = 304.0
+
+[node name="TermsList" type="ItemList" parent="ReviewScreen/EditScreenContainer/EditTerms"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 400.0
+margin_bottom = -200.0
+
+[node name="ButtonDelete" type="Button" parent="ReviewScreen/EditScreenContainer/EditTerms"]
+margin_left = 100.0
+margin_top = 1750.0
+margin_right = 400.0
+margin_bottom = 1850.0
+custom_fonts/font = SubResource( 36 )
+text = "Delete"
+
+[node name="ButtonEdit" type="Button" parent="ReviewScreen/EditScreenContainer/EditTerms"]
+margin_left = 600.0
+margin_top = 1750.0
+margin_right = 900.0
+margin_bottom = 1850.0
+custom_fonts/font = SubResource( 36 )
+text = "Edit"
 
 [node name="EditSubjects" type="Control" parent="ReviewScreen/EditScreenContainer"]
 visible = false
@@ -587,6 +654,9 @@ margin_left = 4.0
 margin_top = 8.0
 margin_right = -4.0
 margin_bottom = -4.0
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="TestScreenType" type="Control" parent="."]
 visible = false
@@ -613,9 +683,11 @@ __meta__ = {
 [connection signal="pressed" from="AddScreen/ButtonCreate/PopupCreateSubject/ButtonCancel" to="AddScreen/ButtonCreate" method="subject_creation_cancelled"]
 [connection signal="pressed" from="AddScreen/ButtonCreate/PopupCreateTopic/ButtonOk" to="AddScreen/ButtonCreate" method="topic_created"]
 [connection signal="pressed" from="AddScreen/ButtonCreate/PopupCreateTopic/ButtonCancel" to="AddScreen/ButtonCreate" method="topic_creation_cacelled"]
-[connection signal="draw" from="ReviewScreen" to="ReviewScreen/EditScreenContainer/EditSubjects" method="refresh_data"]
+[connection signal="draw" from="ReviewScreen" to="ReviewScreen/EditScreenContainer/EditTerms" method="refresh_data"]
+[connection signal="draw" from="ReviewScreen" to="ReviewScreen/EditScreenContainer/EditSubjects" method="refresh_all_data"]
 [connection signal="pressed" from="ReviewScreen/HBoxContainer/ButtonEditTerms" to="ReviewScreen/EditScreenContainer" method="change_edit_mode" binds= [ 0 ]]
 [connection signal="pressed" from="ReviewScreen/HBoxContainer/ButtonEditSubjects" to="ReviewScreen/EditScreenContainer" method="change_edit_mode" binds= [ 1 ]]
+[connection signal="pressed" from="ReviewScreen/EditScreenContainer/EditTerms/ButtonDelete" to="ReviewScreen/EditScreenContainer/EditTerms" method="delete_term"]
 [connection signal="gui_input" from="ReviewScreen/EditScreenContainer/EditSubjects/SubjectSelector" to="ReviewScreen/EditScreenContainer/EditSubjects" method="refresh_topic_data"]
 [connection signal="item_activated" from="ReviewScreen/EditScreenContainer/EditSubjects/SubjectSelector" to="ReviewScreen/EditScreenContainer/EditSubjects" method="refresh_topic_data"]
 [connection signal="item_selected" from="ReviewScreen/EditScreenContainer/EditSubjects/SubjectSelector" to="ReviewScreen/EditScreenContainer/EditSubjects" method="refresh_topic_data"]
