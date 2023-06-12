@@ -689,7 +689,6 @@ __meta__ = {
 [connection signal="pressed" from="ReviewScreen/HBoxContainer/ButtonEditTerms" to="ReviewScreen/EditScreenContainer" method="change_edit_mode" binds= [ 0 ]]
 [connection signal="pressed" from="ReviewScreen/HBoxContainer/ButtonEditSubjects" to="ReviewScreen/EditScreenContainer" method="change_edit_mode" binds= [ 1 ]]
 [connection signal="pressed" from="ReviewScreen/EditScreenContainer/EditTerms/ButtonDelete" to="ReviewScreen/EditScreenContainer/EditTerms" method="delete_term"]
-[connection signal="gui_input" from="ReviewScreen/EditScreenContainer/EditSubjects/SubjectSelector" to="ReviewScreen/EditScreenContainer/EditSubjects" method="refresh_topic_data"]
 [connection signal="item_activated" from="ReviewScreen/EditScreenContainer/EditSubjects/SubjectSelector" to="ReviewScreen/EditScreenContainer/EditSubjects" method="refresh_topic_data"]
 [connection signal="item_selected" from="ReviewScreen/EditScreenContainer/EditSubjects/SubjectSelector" to="ReviewScreen/EditScreenContainer/EditSubjects" method="refresh_topic_data"]
 [connection signal="pressed" from="ReviewScreen/EditScreenContainer/EditSubjects/ButtonSubjectDelete" to="ReviewScreen/EditScreenContainer/EditSubjects" method="delete_subject"]

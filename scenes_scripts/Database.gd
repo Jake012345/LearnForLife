@@ -47,8 +47,14 @@ func load_data():
       for i in subjects_size:
          var tmp_data = lines[0]
          var tmp_subject = Subject.new()
-         tmp_data = tmp_data.remove(0)
-         tmp_data = tmp_data.split(",")
+         tmp_subject.text = tmp_data.split(",")[0].replace("[", "").strip_edges()
+         tmp_data[0] = ""
+         tmp_data = tmp_data.split("[")[1]
+         tmp_data = tmp_data.replace("]]", "").strip_edges()
+         for j in tmp_data.split(","):
+            tmp_subject.topics.append(String(j.strip_edges()))
+         lines.remove(0)
+         subjects.append(tmp_subject)
          pass    #>>>>>>>>>>>>>>>>> PARSING SUBJECTS
 
    pass
