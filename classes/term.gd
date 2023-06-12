@@ -16,6 +16,7 @@ func from_list(term_as_list: Array):
    subject = term_as_list[2]
    topic = term_as_list[3]
    creation_day = term_as_list[4]
+   pass
 
 func from_list_string(term_list_as_string: String):
    term_list_as_string.remove(0)

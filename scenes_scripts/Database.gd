@@ -3,7 +3,7 @@ extends Node
 var terms = {}
 var subjects = []
 var next_term_id = 0
-var data_file_path = "Database.txt"
+var data_file_path = "user://Database.txt"
 var data_file = File.new()
 
 func _ready():
@@ -39,14 +39,18 @@ func load_data():
          lines.remove(0)
       for i in terms_size:
          var tmp_term = Term.new()
-         var tmp_term_id = String(lines[0]).split(";")[0]
-         var tmp_term_data = String(lines[0]).split(";")[1]
+         var tmp_term_id = int(String(lines[0]).split(";")[0].strip_edges())
+         var tmp_term_data = String(lines[0]).split(";")[1].strip_edges()
          tmp_term.from_list_string(tmp_term_data)
          terms[int(tmp_term_id)] = tmp_term
          lines.remove(0)
       for i in subjects_size:
+         var tmp_data = lines[0]
+         var tmp_subject = Subject.new()
+         tmp_data = tmp_data.remove(0)
+         tmp_data = tmp_data.split(",")
          pass    #>>>>>>>>>>>>>>>>> PARSING SUBJECTS
-   print(terms[1].as_list())
+
    pass
 
 func save_data():  #>>>>> SAFETY SAVE:   TMP_FILE --> REAL FILE
