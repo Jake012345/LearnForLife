@@ -54,14 +54,16 @@ func confirmation_accepted():
 
 func refresh_subjects():
    edit_subject.clear()
-   for i in GlobalDatabase.subjects:
-      edit_subject.add_item(i.text)
+   if GlobalDatabase.subjects.size() > 0:
+      for i in GlobalDatabase.subjects:
+         edit_subject.add_item(i.text)
+   refresh_topics()
    pass
 
 func refresh_topics(selected_subject_index: int = edit_subject.selected):
    edit_topic.clear()
-   var tmp = GlobalDatabase.get_subject(selected_subject_index).get_topics()
-   if tmp.size() > 0:
+   if selected_subject_index != -1:
+      var tmp = GlobalDatabase.get_subject(selected_subject_index).get_topics()
       for i in tmp:
          edit_topic.add_item(String(i))
    pass
@@ -108,10 +110,10 @@ func topic_creation_cacelled():
 
 func create_term():
    var tmp = Term.new()
-   tmp.text = edit_term.text
-   tmp.definition = edit_definition.text
-   tmp.subject = GlobalDatabase.get_subject_by_name(edit_subject.text)
+   tmp.text = edit_term.text.strip_edges()
+   tmp.definition = edit_definition.text.strip_edges()
+   tmp.subject = edit_subject.text
    tmp.topic = edit_topic.text
-   tmp.creation_day = OS.get_datetime()
+   tmp.creation_day = int(Time.get_unix_time_from_system())
    GlobalDatabase.add_term(tmp)
    pass

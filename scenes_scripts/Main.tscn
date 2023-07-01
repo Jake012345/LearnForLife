@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=2]
+[gd_scene load_steps=52 format=2]
 
 [ext_resource path="res://lib/font/CourierPrime-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://scenes_scripts/Main.gd" type="Script" id=2]
@@ -7,7 +7,10 @@
 [ext_resource path="res://scenes_scripts/EditScreenContainer.gd" type="Script" id=5]
 [ext_resource path="res://scenes_scripts/EditTerms.gd" type="Script" id=6]
 [ext_resource path="res://scenes_scripts/EditSubjects.gd" type="Script" id=7]
+[ext_resource path="res://scenes_scripts/TestScreen.gd" type="Script" id=8]
 [ext_resource path="res://lib/textures/arrow.png" type="Texture" id=9]
+[ext_resource path="res://scenes_scripts/TestScreenType.gd" type="Script" id=10]
+[ext_resource path="res://lib/font/CourierPrime-Bold.ttf" type="DynamicFontData" id=11]
 
 [sub_resource type="DynamicFont" id=2]
 size = 72
@@ -93,11 +96,27 @@ font_data = ExtResource( 1 )
 size = 32
 font_data = ExtResource( 1 )
 
+[sub_resource type="DynamicFont" id=37]
+size = 64
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=38]
+size = 50
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=39]
+size = 50
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=40]
+size = 50
+font_data = ExtResource( 1 )
+
 [sub_resource type="DynamicFont" id=29]
 size = 64
 font_data = ExtResource( 1 )
 
-[sub_resource type="DynamicFont" id=30]
+[sub_resource type="DynamicFont" id=36]
 size = 50
 font_data = ExtResource( 1 )
 
@@ -117,17 +136,120 @@ font_data = ExtResource( 1 )
 size = 50
 font_data = ExtResource( 1 )
 
+[sub_resource type="DynamicFont" id=41]
+size = 64
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=42]
+size = 50
+font_data = ExtResource( 11 )
+
+[sub_resource type="DynamicFont" id=43]
+size = 50
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=44]
+size = 50
+font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxFlat" id=45]
+bg_color = Color( 0.101961, 0.509804, 0.196078, 1 )
+skew = Vector2( 0.1, 0 )
+border_width_left = 30
+border_width_top = 30
+border_width_right = 30
+border_width_bottom = 30
+border_color = Color( 0.588235, 0.172549, 0.172549, 1 )
+border_blend = true
+corner_radius_top_left = 100
+corner_radius_top_right = 100
+corner_radius_bottom_right = 100
+corner_radius_bottom_left = 100
+corner_detail = 20
+
+[sub_resource type="StyleBoxFlat" id=46]
+bg_color = Color( 0.466667, 0.14902, 0.14902, 1 )
+skew = Vector2( 0.1, 0 )
+border_width_left = 30
+border_width_top = 30
+border_width_right = 30
+border_width_bottom = 30
+border_color = Color( 0.14902, 0.443137, 0.145098, 1 )
+border_blend = true
+corner_radius_top_left = 100
+corner_radius_top_right = 100
+corner_radius_bottom_right = 100
+corner_radius_bottom_left = 100
+corner_detail = 20
+
+[sub_resource type="Animation" id=47]
+resource_name = "GreenCover"
+tracks/0/type = "value"
+tracks/0/path = NodePath("CoverGreen:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1300, 0 ), Vector2( -1300, 0 ) ]
+}
+
+[sub_resource type="Animation" id=48]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("CoverGreen:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1300, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("CoverRed:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -1300, 0 ) ]
+}
+
+[sub_resource type="Animation" id=49]
+resource_name = "RedCover"
+tracks/0/type = "value"
+tracks/0/path = NodePath("CoverRed:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1300, 0 ), Vector2( -1300, 0 ) ]
+}
+
 [node name="Main" type="TabContainer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 tabs_visible = false
+all_tabs_in_front = true
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_lock_": true
 }
 
 [node name="SelectorScreen" type="Control" parent="."]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
@@ -231,8 +353,6 @@ margin_right = 1040.0
 margin_bottom = 730.0
 custom_fonts/font = SubResource( 27 )
 wrap_enabled = true
-caret_block_mode = true
-caret_blink = true
 __meta__ = {
 "_edit_lock_": true
 }
@@ -428,11 +548,144 @@ margin_left = 4.0
 margin_top = 8.0
 margin_right = -4.0
 margin_bottom = -4.0
+script = ExtResource( 8 )
 __meta__ = {
 "_edit_lock_": true
 }
 
+[node name="Title" type="Label" parent="TestScreen"]
+anchor_right = 1.0
+margin_top = 40.0
+margin_bottom = 72.0
+custom_fonts/font = SubResource( 37 )
+text = "Test Yourself"
+align = 1
+valign = 1
+
+[node name="LabelSubject" type="Label" parent="TestScreen"]
+margin_left = 40.0
+margin_top = 200.0
+margin_right = 280.0
+margin_bottom = 258.0
+custom_fonts/font = SubResource( 38 )
+text = "Subject:"
+
+[node name="SubjectSelector" type="OptionButton" parent="TestScreen"]
+margin_left = 40.0
+margin_top = 300.0
+margin_right = 340.0
+margin_bottom = 400.0
+
+[node name="LabelTopic" type="Label" parent="TestScreen"]
+margin_left = 40.0
+margin_top = 500.0
+margin_right = 220.0
+margin_bottom = 558.0
+custom_fonts/font = SubResource( 38 )
+text = "Topic:"
+
+[node name="TopicSelector" type="OptionButton" parent="TestScreen"]
+margin_left = 40.0
+margin_top = 600.0
+margin_right = 340.0
+margin_bottom = 700.0
+
+[node name="VSeparator" type="VSeparator" parent="TestScreen"]
+margin_left = 500.0
+margin_top = 200.0
+margin_right = 520.0
+margin_bottom = 700.0
+
+[node name="LabelQuestionType" type="Label" parent="TestScreen"]
+margin_left = 600.0
+margin_top = 200.0
+margin_right = 870.0
+margin_bottom = 258.0
+custom_fonts/font = SubResource( 38 )
+text = "Ask with:"
+
+[node name="QuestionTypeSelector" type="OptionButton" parent="TestScreen"]
+margin_left = 600.0
+margin_top = 300.0
+margin_right = 900.0
+margin_bottom = 400.0
+text = "Term"
+items = [ "Term", null, false, 0, null, "Definition", null, false, 1, null ]
+selected = 0
+
+[node name="LabelAnswerType" type="Label" parent="TestScreen"]
+margin_left = 600.0
+margin_top = 500.0
+margin_right = 960.0
+margin_bottom = 558.0
+custom_fonts/font = SubResource( 38 )
+text = "Answer with:"
+
+[node name="AnswerTypeSelector" type="OptionButton" parent="TestScreen"]
+margin_left = 600.0
+margin_top = 600.0
+margin_right = 900.0
+margin_bottom = 700.0
+text = "Definition"
+items = [ "Term", null, false, 0, null, "Definition", null, false, 1, null ]
+selected = 1
+
+[node name="LabelMode" type="Label" parent="TestScreen"]
+margin_left = 40.0
+margin_top = 800.0
+margin_right = 670.0
+margin_bottom = 858.0
+custom_fonts/font = SubResource( 38 )
+text = "Select the test mode:"
+
+[node name="LabelCards" type="Label" parent="TestScreen"]
+margin_left = 150.0
+margin_top = 950.0
+margin_right = 350.0
+margin_bottom = 1050.0
+custom_fonts/font = SubResource( 39 )
+text = "Cards"
+align = 1
+valign = 1
+
+[node name="CheckCards" type="CheckBox" parent="TestScreen"]
+margin_left = 40.0
+margin_top = 950.0
+margin_right = 140.0
+margin_bottom = 975.0
+rect_scale = Vector2( 4, 4 )
+
+[node name="LabelType" type="Label" parent="TestScreen"]
+margin_left = 150.0
+margin_top = 1100.0
+margin_right = 350.0
+margin_bottom = 1200.0
+custom_fonts/font = SubResource( 39 )
+text = "Type"
+align = 1
+valign = 1
+
+[node name="CheckType" type="CheckBox" parent="TestScreen"]
+margin_left = 40.0
+margin_top = 1100.0
+margin_right = 140.0
+margin_bottom = 1125.0
+rect_scale = Vector2( 4, 4 )
+
+[node name="ButtonStart" type="Button" parent="TestScreen"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -150.0
+margin_top = -150.0
+margin_right = 150.0
+margin_bottom = -40.0
+custom_fonts/font = SubResource( 40 )
+text = "Start"
+
 [node name="ReviewScreen" type="Control" parent="."]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
@@ -468,7 +721,7 @@ margin_right = 534.0
 margin_bottom = 100.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_fonts/font = SubResource( 30 )
+custom_fonts/font = SubResource( 36 )
 toggle_mode = true
 text = "Terms"
 
@@ -488,9 +741,11 @@ anchor_bottom = 1.0
 margin_top = 400.0
 tabs_visible = false
 script = ExtResource( 5 )
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="EditTerms" type="Control" parent="ReviewScreen/EditScreenContainer"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
@@ -499,7 +754,75 @@ margin_right = -4.0
 margin_bottom = -4.0
 script = ExtResource( 6 )
 
+[node name="LabelSort" type="Label" parent="ReviewScreen/EditScreenContainer/EditTerms"]
+margin_left = 40.0
+margin_top = 40.0
+margin_right = 344.0
+margin_bottom = 112.0
+custom_fonts/font = SubResource( 36 )
+text = "Sort by:"
+
+[node name="OptionButtonSort" type="OptionButton" parent="ReviewScreen/EditScreenContainer/EditTerms"]
+margin_left = 400.0
+margin_top = 40.0
+margin_right = 700.0
+margin_bottom = 104.0
+text = "A-Z"
+items = [ "A-Z", null, false, 0, null, "Subject-Topic [NOT WORKING]", null, false, 1, null ]
+selected = 0
+
+[node name="LabelSubject" type="Label" parent="ReviewScreen/EditScreenContainer/EditTerms"]
+margin_left = 40.0
+margin_top = 140.0
+margin_right = 280.0
+margin_bottom = 198.0
+custom_fonts/font = SubResource( 36 )
+text = "Subject:"
+
+[node name="OptionButtonSubject" type="OptionButton" parent="ReviewScreen/EditScreenContainer/EditTerms"]
+margin_left = 400.0
+margin_top = 140.0
+margin_right = 700.0
+margin_bottom = 204.0
+
+[node name="LabelTopic" type="Label" parent="ReviewScreen/EditScreenContainer/EditTerms"]
+margin_left = 40.0
+margin_top = 240.0
+margin_right = 220.0
+margin_bottom = 298.0
+custom_fonts/font = SubResource( 36 )
+text = "Topic:"
+
+[node name="OptionButtonTopic" type="OptionButton" parent="ReviewScreen/EditScreenContainer/EditTerms"]
+margin_left = 400.0
+margin_top = 240.0
+margin_right = 700.0
+margin_bottom = 304.0
+
+[node name="TermsList" type="ItemList" parent="ReviewScreen/EditScreenContainer/EditTerms"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 400.0
+margin_bottom = -200.0
+
+[node name="ButtonDelete" type="Button" parent="ReviewScreen/EditScreenContainer/EditTerms"]
+margin_left = 100.0
+margin_top = 1750.0
+margin_right = 400.0
+margin_bottom = 1850.0
+custom_fonts/font = SubResource( 36 )
+text = "Delete"
+
+[node name="ButtonEdit" type="Button" parent="ReviewScreen/EditScreenContainer/EditTerms"]
+margin_left = 600.0
+margin_top = 1750.0
+margin_right = 900.0
+margin_bottom = 1850.0
+custom_fonts/font = SubResource( 36 )
+text = "Edit"
+
 [node name="EditSubjects" type="Control" parent="ReviewScreen/EditScreenContainer"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
@@ -522,6 +845,7 @@ anchor_bottom = 1.0
 margin_top = 150.0
 margin_bottom = -1200.0
 custom_fonts/font = SubResource( 33 )
+allow_reselect = true
 
 [node name="ButtonSubjectDelete" type="Button" parent="ReviewScreen/EditScreenContainer/EditSubjects"]
 margin_left = 80.0
@@ -583,6 +907,9 @@ margin_left = 4.0
 margin_top = 8.0
 margin_right = -4.0
 margin_bottom = -4.0
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="TestScreenType" type="Control" parent="."]
 visible = false
@@ -592,13 +919,122 @@ margin_left = 4.0
 margin_top = 8.0
 margin_right = -4.0
 margin_bottom = -4.0
+script = ExtResource( 10 )
 __meta__ = {
 "_edit_lock_": true
 }
 
+[node name="Title" type="Label" parent="TestScreenType"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -285.0
+margin_top = 40.0
+margin_right = 285.0
+margin_bottom = 72.0
+custom_fonts/font = SubResource( 41 )
+text = "Type the answer"
+align = 1
+valign = 1
+
+[node name="LabelQuestionNumber" type="Label" parent="TestScreenType"]
+margin_left = 40.0
+margin_top = 150.0
+margin_right = 160.0
+margin_bottom = 208.0
+custom_fonts/font = SubResource( 42 )
+text = "0/0"
+
+[node name="LabelQuestionMode" type="Label" parent="TestScreenType"]
+margin_left = 40.0
+margin_top = 250.0
+margin_right = 490.0
+margin_bottom = 369.0
+custom_fonts/font = SubResource( 43 )
+text = "Asking with:
+Answering with:"
+
+[node name="LabelSubject" type="Label" parent="TestScreenType"]
+margin_left = 250.0
+margin_top = 400.0
+margin_right = 490.0
+margin_bottom = 458.0
+custom_fonts/font = SubResource( 43 )
+text = "Subject:"
+
+[node name="LabelTopic" type="Label" parent="TestScreenType"]
+margin_left = 310.0
+margin_top = 450.0
+margin_right = 490.0
+margin_bottom = 508.0
+custom_fonts/font = SubResource( 43 )
+text = "Topic:"
+
+[node name="LabelQuestion" type="Label" parent="TestScreenType"]
+margin_left = 40.0
+margin_top = 600.0
+margin_right = 280.0
+margin_bottom = 658.0
+custom_fonts/font = SubResource( 43 )
+text = "Question:"
+
+[node name="EditQuestion" type="TextEdit" parent="TestScreenType"]
+margin_left = 40.0
+margin_top = 700.0
+margin_right = 1040.0
+margin_bottom = 1200.0
+readonly = true
+
+[node name="LabelAnswer" type="Label" parent="TestScreenType"]
+margin_left = 40.0
+margin_top = 1300.0
+margin_right = 280.0
+margin_bottom = 1358.0
+custom_fonts/font = SubResource( 43 )
+text = "Answer:"
+
+[node name="EditAnswer" type="TextEdit" parent="TestScreenType"]
+margin_left = 40.0
+margin_top = 1400.0
+margin_right = 1040.0
+margin_bottom = 1900.0
+
+[node name="ButtonLeave" type="Button" parent="TestScreenType"]
+margin_left = 80.0
+margin_top = 2100.0
+margin_right = 380.0
+margin_bottom = 2200.0
+custom_fonts/font = SubResource( 44 )
+text = "Leave"
+
+[node name="ButtonNext" type="Button" parent="TestScreenType"]
+margin_left = 700.0
+margin_top = 2100.0
+margin_right = 1000.0
+margin_bottom = 2200.0
+custom_fonts/font = SubResource( 44 )
+text = "Next"
+
+[node name="CoverGreen" type="Panel" parent="TestScreenType"]
+margin_left = 1300.0
+margin_right = 2380.0
+margin_bottom = 2300.0
+custom_styles/panel = SubResource( 45 )
+
+[node name="CoverRed" type="Panel" parent="TestScreenType"]
+margin_left = -1300.0
+margin_right = -220.0
+margin_bottom = 2300.0
+custom_styles/panel = SubResource( 46 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="TestScreenType"]
+anims/GreenCover = SubResource( 47 )
+anims/RESET = SubResource( 48 )
+anims/RedCover = SubResource( 49 )
+
 [connection signal="pressed" from="SelectorScreen/ButtonAdd" to="." method="change_screen" binds= [ 1 ]]
 [connection signal="pressed" from="SelectorScreen/ButtonTest" to="." method="change_screen" binds= [ 2 ]]
 [connection signal="pressed" from="SelectorScreen/ButtonReview" to="." method="change_screen" binds= [ 3 ]]
+[connection signal="draw" from="AddScreen" to="AddScreen/ButtonCreate" method="refresh_subjects"]
 [connection signal="pressed" from="AddScreen/ButtonNewSubject" to="AddScreen/ButtonCreate" method="create_subject"]
 [connection signal="item_selected" from="AddScreen/OptionButtonSubject" to="AddScreen/ButtonCreate" method="refresh_topics"]
 [connection signal="pressed" from="AddScreen/ButtonNewTopic" to="AddScreen/ButtonCreate" method="create_topic"]
@@ -608,7 +1044,23 @@ __meta__ = {
 [connection signal="pressed" from="AddScreen/ButtonCreate/PopupCreateSubject/ButtonCancel" to="AddScreen/ButtonCreate" method="subject_creation_cancelled"]
 [connection signal="pressed" from="AddScreen/ButtonCreate/PopupCreateTopic/ButtonOk" to="AddScreen/ButtonCreate" method="topic_created"]
 [connection signal="pressed" from="AddScreen/ButtonCreate/PopupCreateTopic/ButtonCancel" to="AddScreen/ButtonCreate" method="topic_creation_cacelled"]
+[connection signal="draw" from="TestScreen" to="TestScreen" method="refresh_data"]
+[connection signal="item_selected" from="TestScreen/SubjectSelector" to="TestScreen" method="refresh_topic_data"]
+[connection signal="item_selected" from="TestScreen/QuestionTypeSelector" to="TestScreen" method="question_type_changed"]
+[connection signal="item_selected" from="TestScreen/AnswerTypeSelector" to="TestScreen" method="answer_type_changed"]
+[connection signal="pressed" from="TestScreen/CheckCards" to="TestScreen" method="mode_select" binds= [ 0 ]]
+[connection signal="pressed" from="TestScreen/CheckType" to="TestScreen" method="mode_select" binds= [ 1 ]]
+[connection signal="pressed" from="TestScreen/ButtonStart" to="TestScreen" method="start_test"]
+[connection signal="draw" from="ReviewScreen" to="ReviewScreen/EditScreenContainer/EditTerms" method="refresh_data"]
+[connection signal="draw" from="ReviewScreen" to="ReviewScreen/EditScreenContainer/EditSubjects" method="refresh_all_data"]
 [connection signal="pressed" from="ReviewScreen/HBoxContainer/ButtonEditTerms" to="ReviewScreen/EditScreenContainer" method="change_edit_mode" binds= [ 0 ]]
 [connection signal="pressed" from="ReviewScreen/HBoxContainer/ButtonEditSubjects" to="ReviewScreen/EditScreenContainer" method="change_edit_mode" binds= [ 1 ]]
-[connection signal="tab_changed" from="ReviewScreen/EditScreenContainer" to="ReviewScreen/EditScreenContainer" method="change_edit_mode"]
+[connection signal="item_selected" from="ReviewScreen/EditScreenContainer/EditTerms/OptionButtonSort" to="ReviewScreen/EditScreenContainer/EditTerms" method="refresh_data"]
+[connection signal="pressed" from="ReviewScreen/EditScreenContainer/EditTerms/ButtonDelete" to="ReviewScreen/EditScreenContainer/EditTerms" method="delete_term"]
+[connection signal="item_activated" from="ReviewScreen/EditScreenContainer/EditSubjects/SubjectSelector" to="ReviewScreen/EditScreenContainer/EditSubjects" method="refresh_topic_data"]
+[connection signal="item_selected" from="ReviewScreen/EditScreenContainer/EditSubjects/SubjectSelector" to="ReviewScreen/EditScreenContainer/EditSubjects" method="refresh_topic_data"]
 [connection signal="pressed" from="ReviewScreen/EditScreenContainer/EditSubjects/ButtonSubjectDelete" to="ReviewScreen/EditScreenContainer/EditSubjects" method="delete_subject"]
+[connection signal="pressed" from="ReviewScreen/EditScreenContainer/EditSubjects/ButtonTopicDelete" to="ReviewScreen/EditScreenContainer/EditSubjects" method="delete_topic"]
+[connection signal="answered_with_text" from="TestScreenType" to="TestScreenType" method="question_answered"]
+[connection signal="pressed" from="TestScreenType/ButtonLeave" to="." method="leave_request"]
+[connection signal="pressed" from="TestScreenType/ButtonNext" to="TestScreenType" method="validate_answer"]
