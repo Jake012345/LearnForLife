@@ -9,6 +9,8 @@ onready var screen_cards = main.get_node("TestScreenCard")
 onready var screen_type = main.get_node("TestScreenType")
 onready var question_type_selector = get_node("QuestionTypeSelector")
 onready var answer_type_selector = get_node("AnswerTypeSelector")
+onready var check_cycle = get_node("CheckEnableCycle")
+onready var check_ignore_categories = get_node("CheckIgnoreCategories")
 
 
 func _ready():
@@ -21,28 +23,28 @@ func _ready():
 
 func mode_select(mode: int = -1):
    if mode == 0:  #card mode
-      check_type.pressed = false
+     check_type.pressed = false
    if mode == 1:  #type mode
-      check_cards.pressed = false
+     check_cards.pressed = false
    pass
 
 
 func refresh_data():
    subject_selector.clear()
    for i in GlobalDatabase.subjects:
-      subject_selector.add_item(i.text)
+     subject_selector.add_item(i.text)
    refresh_topic_data()
    pass
 
 func refresh_topic_data(selected_subject: int = -1):
    if selected_subject == -1:
-      selected_subject = subject_selector.get_selected_id()
+     selected_subject = subject_selector.get_selected_id()
    topic_selector.clear()
    if selected_subject  != -1:
-      for i in GlobalDatabase.subjects[selected_subject].topics:
-         topic_selector.add_item(i)
+     for i in GlobalDatabase.subjects[selected_subject].topics:
+       topic_selector.add_item(i)
    else:
-      GlobalFunctions.show_warning(main, "go_to_add", "You need to add cards first!")
+     GlobalFunctions.show_warning(main, "go_to_add", "You need to add cards first!")
    pass
 
 func question_type_changed(index):
@@ -55,15 +57,25 @@ func answer_type_changed(index):
 
 func start_test():
    if subject_selector.text == "" or topic_selector.text == "": #nothing's selected
-      GlobalFunctions.show_warning(self, "", "Both Subject and topic needs to be specified to start the test.")
-      return
+     GlobalFunctions.show_warning(self, "", "Both Subject and topic needs to be specified to start the test.")
+     return
    if check_cards.pressed:
-      main.change_screen(4)  #cards screen
-      screen_cards
+     main.change_screen(4)  #cards screen
+     screen_cards.set_data(check_ignore_categories.pressed, subject_selector.text, topic_selector.text, question_type_selector.selected, check_cycle.pressed)
    elif check_type.pressed:
-      main.change_screen(5) #type screen
-      screen_type.set_data(subject_selector.text, topic_selector.text, question_type_selector.selected)
+     main.change_screen(5) #type screen
+     screen_type.set_data(check_ignore_categories.pressed, subject_selector.text, topic_selector.text, question_type_selector.selected, check_cycle.pressed)
    #elif ..... other screens
    else: # nothing selected
-      GlobalFunctions.show_warning(self, "", "You have to choose a mode for testing.")
+     GlobalFunctions.show_warning(self, "", "You have to choose a mode for testing.")
+   pass
+
+
+func help_cycle():
+   GlobalFunctions.show_warning(self, "", "Enable the cycle system to answer questions if the preveiously set amount of days have passed. \n (See more in the Settings)")
+   pass
+
+
+func help_ignore_categories():
+   GlobalFunctions.show_warning(self, "", "Ignoring categories causes you to get questions from all categories. \n (The cycle system can be enabled still)")
    pass
