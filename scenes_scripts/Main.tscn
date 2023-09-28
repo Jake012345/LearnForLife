@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=2]
+[gd_scene load_steps=87 format=2]
 
 [ext_resource path="res://lib/font/CourierPrime-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://scenes_scripts/Main.gd" type="Script" id=2]
@@ -7,7 +7,13 @@
 [ext_resource path="res://scenes_scripts/EditScreenContainer.gd" type="Script" id=5]
 [ext_resource path="res://scenes_scripts/EditTerms.gd" type="Script" id=6]
 [ext_resource path="res://scenes_scripts/EditSubjects.gd" type="Script" id=7]
+[ext_resource path="res://scenes_scripts/TestScreen.gd" type="Script" id=8]
 [ext_resource path="res://lib/textures/arrow.png" type="Texture" id=9]
+[ext_resource path="res://scenes_scripts/TestScreenType.gd" type="Script" id=10]
+[ext_resource path="res://lib/font/CourierPrime-Bold.ttf" type="DynamicFontData" id=11]
+[ext_resource path="res://scenes_scripts/Settings.gd" type="Script" id=12]
+[ext_resource path="res://lib/resources/wide_scroll.tres" type="Theme" id=13]
+[ext_resource path="res://scenes_scripts/TestScreenCard.gd" type="Script" id=14]
 
 [sub_resource type="DynamicFont" id=2]
 size = 72
@@ -25,16 +31,181 @@ font_data = ExtResource( 1 )
 size = 200
 font_data = ExtResource( 1 )
 
-[sub_resource type="DynamicFont" id=25]
-size = 64
-font_data = ExtResource( 1 )
-
 [sub_resource type="DynamicFont" id=26]
 size = 64
 font_data = ExtResource( 1 )
 
+[sub_resource type="DynamicFont" id=50]
+size = 80
+font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxFlat" id=51]
+bg_color = Color( 0, 0.270588, 0.568627, 1 )
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+
+[sub_resource type="StyleBoxFlat" id=52]
+bg_color = Color( 0.223529, 0.458824, 0.721569, 1 )
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+
 [sub_resource type="DynamicFont" id=27]
 size = 50
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=9]
+size = 50
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=55]
+font_data = ExtResource( 1 )
+
+[sub_resource type="Theme" id=54]
+default_font = SubResource( 55 )
+
+[sub_resource type="DynamicFont" id=83]
+size = 30
+font_data = ExtResource( 1 )
+
+[sub_resource type="Theme" id=82]
+default_font = SubResource( 83 )
+Button/colors/font_color = Color( 1, 1, 1, 1 )
+Button/colors/font_color_disabled = Color( 1, 1, 1, 1 )
+Button/colors/font_color_focus = Color( 1, 1, 1, 1 )
+Button/colors/font_color_hover = Color( 1, 1, 1, 1 )
+Button/colors/font_color_hover_pressed = Color( 1, 1, 1, 1 )
+Button/colors/font_color_pressed = Color( 1, 1, 1, 1 )
+Button/colors/icon_color_disabled = Color( 1, 1, 1, 1 )
+Button/colors/icon_color_focus = Color( 1, 1, 1, 1 )
+Button/colors/icon_color_hover = Color( 1, 1, 1, 1 )
+Button/colors/icon_color_hover_pressed = Color( 1, 1, 1, 1 )
+Button/colors/icon_color_normal = Color( 1, 1, 1, 1 )
+Button/colors/icon_color_pressed = Color( 1, 1, 1, 1 )
+Button/constants/hseparation = 2
+CheckBox/fonts/font = SubResource( 83 )
+CheckBox/icons/checked = null
+CheckBox/icons/checked_disabled = null
+CheckBox/icons/radio_checked = null
+CheckBox/icons/radio_checked_disabled = null
+CheckBox/icons/radio_unchecked = null
+CheckBox/icons/radio_unchecked_disabled = null
+CheckBox/icons/unchecked = null
+CheckBox/icons/unchecked_disabled = null
+CheckButton/fonts/font = SubResource( 83 )
+CheckButton/icons/off = null
+CheckButton/icons/off_disabled = null
+CheckButton/icons/on = null
+CheckButton/icons/on_disabled = null
+ColorPicker/icons/add_preset = null
+ColorPicker/icons/color_hue = null
+ColorPicker/icons/color_sample = null
+ColorPicker/icons/overbright_indicator = null
+ColorPicker/icons/preset_bg = null
+ColorPicker/icons/screen_picker = null
+ColorPickerButton/fonts/font = SubResource( 83 )
+ColorPickerButton/icons/bg = null
+ColorPresetButton/icons/overbright_indicator = null
+ColorPresetButton/icons/preset_bg_icon = null
+FileDialog/icons/file = null
+FileDialog/icons/folder = null
+FileDialog/icons/parent_folder = null
+FileDialog/icons/reload = null
+FileDialog/icons/toggle_hidden = null
+Fonts/fonts/large = SubResource( 83 )
+Fonts/fonts/normal = SubResource( 83 )
+GraphEdit/icons/minimap = null
+GraphEdit/icons/minus = null
+GraphEdit/icons/more = null
+GraphEdit/icons/reset = null
+GraphEdit/icons/snap = null
+GraphEditMinimap/icons/resizer = null
+GraphNode/fonts/title_font = SubResource( 83 )
+GraphNode/icons/close = null
+GraphNode/icons/port = null
+GraphNode/icons/resizer = null
+HScrollBar/icons/decrement = null
+HScrollBar/icons/decrement_highlight = null
+HScrollBar/icons/decrement_pressed = null
+HScrollBar/icons/increment = null
+HScrollBar/icons/increment_highlight = null
+HScrollBar/icons/increment_pressed = null
+HSlider/icons/grabber = null
+HSlider/icons/grabber_disabled = null
+HSlider/icons/grabber_highlight = null
+HSlider/icons/tick = null
+HSplitContainer/icons/grabber = null
+Icons/icons/close = null
+ItemList/fonts/font = SubResource( 83 )
+Label/fonts/font = SubResource( 83 )
+LineEdit/fonts/font = SubResource( 83 )
+LineEdit/icons/clear = null
+LinkButton/fonts/font = SubResource( 83 )
+MenuButton/fonts/font = SubResource( 83 )
+OptionButton/fonts/font = SubResource( 83 )
+OptionButton/icons/arrow = null
+PopupMenu/fonts/font = SubResource( 83 )
+PopupMenu/fonts/font_separator = SubResource( 83 )
+PopupMenu/icons/checked = null
+PopupMenu/icons/radio_checked = null
+PopupMenu/icons/radio_unchecked = null
+PopupMenu/icons/submenu = null
+PopupMenu/icons/unchecked = null
+ProgressBar/fonts/font = SubResource( 83 )
+RichTextLabel/fonts/bold_font = SubResource( 83 )
+RichTextLabel/fonts/bold_italics_font = SubResource( 83 )
+RichTextLabel/fonts/italics_font = SubResource( 83 )
+RichTextLabel/fonts/mono_font = SubResource( 83 )
+RichTextLabel/fonts/normal_font = SubResource( 83 )
+SpinBox/icons/updown = null
+TabContainer/fonts/font = SubResource( 83 )
+TabContainer/icons/decrement = null
+TabContainer/icons/decrement_highlight = null
+TabContainer/icons/increment = null
+TabContainer/icons/increment_highlight = null
+TabContainer/icons/menu = null
+TabContainer/icons/menu_highlight = null
+Tabs/fonts/font = SubResource( 83 )
+Tabs/icons/close = null
+Tabs/icons/decrement = null
+Tabs/icons/decrement_highlight = null
+Tabs/icons/increment = null
+Tabs/icons/increment_highlight = null
+TextEdit/fonts/font = SubResource( 83 )
+TextEdit/icons/fold = null
+TextEdit/icons/folded = null
+TextEdit/icons/space = null
+TextEdit/icons/tab = null
+ToolButton/fonts/font = SubResource( 83 )
+TooltipLabel/fonts/font = SubResource( 83 )
+Tree/fonts/font = SubResource( 83 )
+Tree/fonts/title_button_font = SubResource( 83 )
+Tree/icons/arrow = null
+Tree/icons/arrow_collapsed = null
+Tree/icons/checked = null
+Tree/icons/select_arrow = null
+Tree/icons/unchecked = null
+Tree/icons/updown = null
+VScrollBar/icons/decrement = null
+VScrollBar/icons/decrement_highlight = null
+VScrollBar/icons/decrement_pressed = null
+VScrollBar/icons/increment = null
+VScrollBar/icons/increment_highlight = null
+VScrollBar/icons/increment_pressed = null
+VSlider/icons/grabber = null
+VSlider/icons/grabber_disabled = null
+VSlider/icons/grabber_highlight = null
+VSlider/icons/tick = null
+VSplitContainer/icons/grabber = null
+WindowDialog/fonts/title_font = SubResource( 83 )
+WindowDialog/icons/close = null
+WindowDialog/icons/close_highlight = null
+
+[sub_resource type="DynamicFont" id=25]
+size = 64
 font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=28]
@@ -50,10 +221,6 @@ size = 64
 font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=6]
-size = 50
-font_data = ExtResource( 1 )
-
-[sub_resource type="DynamicFont" id=9]
 size = 50
 font_data = ExtResource( 1 )
 
@@ -93,6 +260,35 @@ font_data = ExtResource( 1 )
 size = 32
 font_data = ExtResource( 1 )
 
+[sub_resource type="DynamicFont" id=56]
+size = 30
+font_data = ExtResource( 1 )
+
+[sub_resource type="Theme" id=57]
+default_font = SubResource( 56 )
+RichTextLabel/colors/default_color = Color( 1, 1, 1, 0.498039 )
+
+[sub_resource type="DynamicFont" id=37]
+size = 64
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=38]
+size = 50
+font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxFlat" id=63]
+border_width_left = 3
+border_width_right = 3
+border_color = Color( 0.6, 0.6, 0.6, 1 )
+
+[sub_resource type="DynamicFont" id=39]
+size = 50
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=40]
+size = 50
+font_data = ExtResource( 1 )
+
 [sub_resource type="DynamicFont" id=29]
 size = 64
 font_data = ExtResource( 1 )
@@ -105,6 +301,26 @@ font_data = ExtResource( 1 )
 size = 50
 font_data = ExtResource( 1 )
 
+[sub_resource type="DynamicFont" id=58]
+size = 40
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=61]
+size = 40
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=62]
+size = 40
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=59]
+size = 40
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=77]
+size = 40
+font_data = ExtResource( 1 )
+
 [sub_resource type="DynamicFont" id=34]
 size = 64
 font_data = ExtResource( 1 )
@@ -113,9 +329,249 @@ font_data = ExtResource( 1 )
 size = 50
 font_data = ExtResource( 1 )
 
+[sub_resource type="DynamicFont" id=64]
+size = 40
+font_data = ExtResource( 1 )
+
 [sub_resource type="DynamicFont" id=35]
 size = 50
 font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=60]
+size = 60
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=65]
+size = 60
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=66]
+size = 40
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=67]
+size = 50
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=68]
+size = 40
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=69]
+size = 40
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=70]
+size = 80
+font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxFlat" id=71]
+bg_color = Color( 0.168627, 0.364706, 0.121569, 1 )
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+shadow_size = 20
+
+[sub_resource type="StyleBoxFlat" id=72]
+bg_color = Color( 0.243137, 0.517647, 0.176471, 1 )
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+shadow_size = 20
+
+[sub_resource type="StyleBoxFlat" id=73]
+bg_color = Color( 0.478431, 0, 0, 1 )
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+shadow_size = 20
+
+[sub_resource type="StyleBoxFlat" id=74]
+bg_color = Color( 0.666667, 0, 0, 1 )
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+shadow_size = 20
+
+[sub_resource type="StyleBoxFlat" id=45]
+bg_color = Color( 0.101961, 0.509804, 0.196078, 1 )
+skew = Vector2( 0.1, 0 )
+border_width_left = 30
+border_width_top = 30
+border_width_right = 30
+border_width_bottom = 30
+border_color = Color( 0.588235, 0.172549, 0.172549, 1 )
+border_blend = true
+corner_radius_top_left = 100
+corner_radius_top_right = 100
+corner_radius_bottom_right = 100
+corner_radius_bottom_left = 100
+corner_detail = 20
+
+[sub_resource type="StyleBoxFlat" id=46]
+bg_color = Color( 0.466667, 0.14902, 0.14902, 1 )
+skew = Vector2( 0.1, 0 )
+border_width_left = 30
+border_width_top = 30
+border_width_right = 30
+border_width_bottom = 30
+border_color = Color( 0.14902, 0.443137, 0.145098, 1 )
+border_blend = true
+corner_radius_top_left = 100
+corner_radius_top_right = 100
+corner_radius_bottom_right = 100
+corner_radius_bottom_left = 100
+corner_detail = 20
+
+[sub_resource type="Animation" id=78]
+resource_name = "Green Cover"
+tracks/0/type = "value"
+tracks/0/path = NodePath("CoverGreen:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1300, 0 ), Vector2( -1300, 0 ) ]
+}
+
+[sub_resource type="Animation" id=79]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("CoverGreen:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1300, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("CoverRed:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -1300, 0 ) ]
+}
+
+[sub_resource type="Animation" id=80]
+resource_name = "Red Cover"
+tracks/0/type = "value"
+tracks/0/path = NodePath("CoverRed:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -1300, 0 ), Vector2( 1300, 0 ) ]
+}
+
+[sub_resource type="DynamicFont" id=41]
+size = 64
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=42]
+size = 50
+font_data = ExtResource( 11 )
+
+[sub_resource type="DynamicFont" id=43]
+size = 50
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=44]
+size = 50
+font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxFlat" id=75]
+bg_color = Color( 0.113725, 0.458824, 0, 1 )
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+shadow_size = 20
+
+[sub_resource type="StyleBoxFlat" id=76]
+bg_color = Color( 0.164706, 0.65098, 0, 1 )
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+shadow_size = 20
+
+[sub_resource type="Animation" id=47]
+resource_name = "GreenCover"
+tracks/0/type = "value"
+tracks/0/path = NodePath("CoverGreen:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1300, 0 ), Vector2( -1300, 0 ) ]
+}
+
+[sub_resource type="Animation" id=48]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("CoverGreen:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1300, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("CoverRed:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -1300, 0 ) ]
+}
+
+[sub_resource type="Animation" id=49]
+resource_name = "RedCover"
+tracks/0/type = "value"
+tracks/0/path = NodePath("CoverRed:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1300, 0 ), Vector2( -1300, 0 ) ]
+}
 
 [node name="Main" type="TabContainer"]
 anchor_right = 1.0
@@ -186,6 +642,185 @@ __meta__ = {
 "_edit_lock_": true
 }
 
+[node name="ButtonSettings" type="Button" parent="SelectorScreen"]
+margin_left = 900.0
+margin_top = 50.0
+margin_right = 1000.0
+margin_bottom = 150.0
+
+[node name="GearIcon" type="PaintProject" parent="SelectorScreen/ButtonSettings"]
+size = Vector2i( 100, 100 )
+current_color = Color( 0.513726, 0.501961, 0.501961, 1 )
+
+[node name="PaintCanvasBackground" type="PaintCanvasBackground" parent="SelectorScreen/ButtonSettings/GearIcon"]
+visible = false
+size = Vector2i( 100, 100 )
+
+[node name="PaintVisualGrid" type="PaintVisualGrid" parent="SelectorScreen/ButtonSettings/GearIcon"]
+visible = false
+size = Vector2i( 100, 100 )
+
+[node name="PaintCanvas" type="PaintCanvas" parent="SelectorScreen/ButtonSettings/GearIcon"]
+size = Vector2i( 100, 100 )
+brush_prefab = 1
+brush_size = 63
+image_data_compressed = PoolByteArray( 100, 0, 0, 0, 100, 0, 0, 0, 64, 156, 0, 0, 31, 0, 1, 0, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 103, 79, 131, 128, 128, 255, 4, 0, 57, 15, 183, 19, 255, 46, 15, 140, 1, 57, 0, 76, 0, 15, 144, 1, 255, 255, 255, 255, 255, 255, 95, 15, 112, 6, 245, 0, 8, 1, 15, 4, 0, 73, 15, 212, 7, 17, 8, 128, 0, 15, 48, 0, 17, 15, 2, 0, 149, 15, 216, 0, 25, 8, 44, 0, 15, 12, 0, 81, 15, 68, 1, 5, 15, 124, 0, 1, 15, 44, 0, 5, 15, 2, 0, 153, 15, 216, 0, 21, 15, 40, 0, 1, 15, 20, 0, 89, 8, 84, 1, 15, 120, 0, 9, 8, 40, 0, 15, 2, 0, 157, 15, 216, 0, 17, 15, 36, 0, 9, 15, 28, 0, 133, 15, 136, 1, 157, 0, 2, 0, 15, 76, 1, 133, 15, 152, 0, 53, 0, 228, 0, 15, 2, 0, 145, 15, 240, 0, 53, 15, 72, 0, 145, 15, 144, 1, 141, 15, 68, 1, 145, 15, 164, 0, 61, 15, 148, 1, 137, 15, 236, 0, 61, 15, 80, 0, 149, 15, 148, 1, 129, 15, 60, 1, 149, 15, 168, 0, 69, 15, 148, 1, 121, 15, 228, 0, 69, 15, 88, 0, 149, 15, 140, 1, 121, 0, 2, 0, 15, 56, 1, 101, 0, 124, 0, 15, 2, 0, 5, 15, 148, 0, 85, 15, 128, 0, 5, 15, 2, 0, 109, 15, 0, 1, 81, 15, 228, 0, 41, 15, 160, 0, 65, 15, 144, 0, 41, 15, 2, 0, 81, 15, 244, 0, 65, 0, 84, 0, 15, 188, 0, 57, 0, 80, 0, 15, 4, 0, 49, 15, 148, 0, 57, 15, 2, 0, 73, 15, 236, 0, 49, 4, 68, 0, 15, 168, 0, 137, 15, 156, 0, 73, 15, 2, 0, 61, 4, 80, 1, 15, 8, 0, 41, 15, 148, 0, 61, 15, 2, 0, 1, 15, 160, 0, 41, 0, 60, 0, 15, 84, 0, 1, 15, 2, 0, 129, 0, 172, 0, 15, 4, 0, 37, 15, 208, 0, 97, 15, 172, 0, 153, 15, 2, 0, 29, 15, 220, 0, 37, 0, 56, 0, 15, 108, 0, 29, 15, 2, 0, 57, 0, 128, 0, 15, 4, 0, 33, 15, 132, 0, 57, 15, 2, 0, 65, 15, 212, 0, 33, 0, 52, 0, 15, 140, 0, 65, 15, 2, 0, 29, 0, 136, 0, 15, 4, 0, 29, 15, 100, 0, 29, 15, 2, 0, 89, 15, 204, 0, 29, 8, 48, 0, 15, 168, 0, 89, 15, 2, 0, 5, 8, 144, 0, 15, 12, 0, 25, 15, 80, 0, 5, 15, 2, 0, 109, 15, 196, 0, 25, 8, 44, 0, 15, 184, 0, 109, 8, 2, 0, 8, 152, 0, 15, 12, 0, 21, 8, 64, 0, 15, 2, 0, 117, 15, 188, 0, 21, 12, 40, 0, 15, 192, 0, 117, 8, 2, 0, 12, 164, 0, 15, 16, 0, 17, 8, 64, 0, 15, 2, 0, 113, 15, 180, 0, 17, 15, 36, 0, 1, 15, 188, 0, 113, 12, 2, 0, 15, 168, 0, 1, 15, 20, 0, 13, 12, 68, 0, 15, 2, 0, 109, 15, 176, 0, 13, 15, 32, 0, 1, 15, 180, 0, 109, 15, 2, 0, 9, 15, 176, 0, 1, 15, 20, 0, 9, 15, 76, 0, 9, 15, 2, 0, 77, 15, 152, 0, 9, 15, 28, 0, 25, 15, 168, 0, 77, 15, 2, 0, 41, 15, 200, 0, 25, 15, 44, 0, 5, 15, 128, 0, 41, 15, 2, 0, 25, 15, 128, 0, 5, 15, 24, 0, 25, 15, 112, 0, 25, 15, 2, 0, 101, 15, 208, 0, 25, 15, 44, 0, 1, 15, 184, 0, 85, 15, 124, 0, 1, 15, 20, 0, 29, 15, 172, 0, 85, 15, 2, 0, 41, 15, 212, 0, 29, 12, 48, 0, 15, 124, 0, 41, 15, 2, 0, 25, 12, 120, 0, 15, 16, 0, 33, 15, 112, 0, 25, 15, 2, 0, 101, 15, 216, 0, 33, 8, 52, 0, 15, 184, 0, 85, 8, 116, 0, 15, 12, 0, 37, 15, 172, 0, 85, 15, 2, 0, 41, 15, 220, 0, 37, 4, 56, 0, 15, 124, 0, 41, 15, 2, 0, 25, 4, 112, 0, 15, 8, 0, 37, 15, 108, 0, 25, 15, 2, 0, 109, 15, 228, 0, 37, 0, 56, 0, 15, 188, 0, 85, 0, 108, 0, 15, 4, 0, 41, 15, 168, 0, 85, 15, 2, 0, 49, 15, 232, 0, 145, 15, 164, 0, 41, 0, 60, 0, 15, 40, 1, 49, 15, 2, 0, 85, 0, 176, 0, 15, 4, 0, 37, 15, 164, 0, 145, 0, 220, 0, 15, 168, 0, 85, 15, 2, 0, 49, 0, 176, 0, 15, 4, 0, 37, 15, 128, 0, 49, 15, 2, 0, 17, 15, 160, 0, 37, 4, 56, 0, 15, 100, 0, 17, 15, 2, 0, 117, 4, 180, 0, 15, 8, 0, 33, 15, 196, 0, 85, 15, 156, 0, 33, 8, 52, 0, 15, 168, 0, 85, 15, 2, 0, 49, 8, 184, 0, 15, 12, 0, 29, 15, 128, 0, 49, 15, 2, 0, 17, 15, 152, 0, 29, 12, 48, 0, 15, 100, 0, 17, 15, 2, 0, 117, 12, 188, 0, 15, 16, 0, 25, 15, 196, 0, 85, 15, 148, 0, 25, 15, 44, 0, 5, 15, 172, 0, 85, 15, 2, 0, 41, 15, 188, 0, 5, 15, 24, 0, 21, 15, 124, 0, 41, 15, 2, 0, 25, 15, 144, 0, 21, 15, 40, 0, 9, 15, 112, 0, 25, 15, 2, 0, 101, 15, 192, 0, 9, 15, 28, 0, 17, 15, 184, 0, 85, 15, 140, 0, 17, 15, 36, 0, 13, 15, 172, 0, 85, 15, 2, 0, 41, 15, 196, 0, 13, 15, 32, 0, 13, 15, 124, 0, 41, 15, 2, 0, 41, 15, 152, 0, 13, 15, 32, 0, 1, 15, 112, 0, 41, 15, 2, 0, 85, 15, 184, 0, 1, 15, 20, 0, 25, 15, 168, 0, 85, 12, 2, 0, 15, 164, 0, 25, 8, 44, 0, 12, 72, 0, 15, 2, 0, 121, 8, 168, 0, 15, 12, 0, 37, 15, 208, 0, 101, 15, 176, 0, 157, 15, 2, 0, 17, 15, 212, 0, 33, 15, 88, 0, 17, 15, 2, 0, 85, 15, 192, 0, 33, 0, 52, 0, 15, 160, 0, 85, 15, 2, 0, 25, 0, 152, 0, 15, 4, 0, 29, 15, 96, 0, 25, 15, 2, 0, 81, 15, 192, 0, 29, 4, 48, 0, 15, 156, 0, 81, 15, 2, 0, 29, 4, 156, 0, 15, 8, 0, 25, 15, 100, 0, 29, 15, 2, 0, 77, 15, 188, 0, 25, 12, 44, 0, 15, 156, 0, 77, 15, 2, 0, 25, 12, 156, 0, 15, 16, 0, 21, 15, 100, 0, 25, 15, 2, 0, 85, 15, 188, 0, 21, 15, 40, 0, 1, 15, 164, 0, 85, 15, 2, 0, 9, 15, 152, 0, 1, 15, 20, 0, 17, 15, 84, 0, 9, 15, 2, 0, 105, 15, 188, 0, 17, 15, 36, 0, 5, 15, 184, 0, 105, 4, 2, 0, 15, 156, 0, 5, 15, 24, 0, 13, 4, 64, 0, 15, 2, 0, 121, 15, 180, 0, 13, 15, 32, 0, 17, 15, 208, 0, 105, 15, 160, 0, 17, 15, 36, 0, 1, 15, 180, 0, 105, 15, 2, 0, 5, 15, 168, 0, 1, 15, 20, 0, 37, 15, 100, 0, 5, 15, 2, 0, 73, 15, 172, 0, 37, 0, 56, 0, 15, 152, 0, 73, 15, 2, 0, 29, 0, 144, 0, 15, 4, 0, 69, 15, 140, 0, 29, 15, 2, 0, 33, 15, 188, 0, 45, 15, 116, 0, 33, 15, 2, 0, 69, 15, 204, 0, 45, 15, 64, 0, 17, 15, 188, 0, 69, 0, 2, 0, 15, 128, 0, 17, 15, 36, 0, 13, 0, 72, 0, 15, 2, 0, 117, 15, 172, 0, 13, 15, 32, 0, 57, 15, 244, 0, 57, 15, 152, 0, 53, 15, 148, 0, 57, 15, 2, 0, 53, 15, 220, 0, 53, 15, 72, 0, 21, 15, 184, 0, 41, 15, 100, 0, 21, 15, 40, 0, 25, 15, 144, 0, 41, 15, 2, 0, 65, 15, 188, 0, 25, 15, 44, 0, 65, 15, 212, 0, 9, 15, 112, 0, 65, 15, 84, 0, 1, 15, 132, 0, 9, 15, 2, 0, 97, 15, 164, 0, 1, 15, 20, 0, 217, 15, 116, 1, 97, 15, 2, 0, 13, 15, 128, 1, 217, 15, 236, 0, 1, 15, 32, 1, 13, 15, 2, 0, 97, 15, 168, 0, 1, 15, 20, 0, 213, 15, 112, 1, 97, 15, 2, 0, 13, 15, 124, 1, 213, 8, 232, 0, 15, 20, 1, 13, 15, 2, 0, 109, 8, 172, 0, 15, 12, 0, 209, 15, 112, 1, 109, 15, 2, 0, 17, 15, 136, 1, 13, 0, 68, 0, 15, 36, 0, 13, 15, 32, 0, 141, 0, 196, 0, 15, 2, 0, 153, 15, 80, 1, 5, 12, 196, 0, 15, 40, 0, 5, 15, 24, 0, 137, 12, 196, 0, 15, 2, 0, 149, 12, 84, 1, 15, 184, 0, 5, 12, 40, 0, 15, 16, 0, 137, 15, 196, 0, 5, 15, 2, 0, 153, 0, 96, 1, 15, 176, 0, 17, 0, 40, 0, 15, 4, 0, 105, 4, 164, 0, 15, 132, 0, 9, 4, 36, 0, 15, 2, 0, 217, 15, 16, 1, 9, 15, 28, 0, 65, 15, 92, 1, 1, 15, 104, 0, 1, 15, 40, 0, 1, 15, 2, 0, 217, 15, 20, 1, 1, 15, 20, 0, 57, 15, 76, 1, 13, 4, 108, 0, 15, 40, 0, 13, 15, 2, 0, 225, 4, 28, 1, 15, 8, 0, 45, 15, 60, 1, 225, 15, 2, 0, 65, 15, 136, 1, 45, 4, 64, 0, 15, 156, 0, 65, 15, 2, 0, 225, 4, 80, 1, 15, 8, 0, 45, 15, 60, 1, 225, 15, 2, 0, 65, 15, 136, 1, 45, 4, 64, 0, 15, 156, 0, 65, 15, 2, 0, 225, 4, 80, 1, 15, 8, 0, 45, 15, 60, 1, 225, 15, 2, 0, 65, 15, 136, 1, 45, 4, 64, 0, 15, 156, 0, 65, 15, 2, 0, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 7, 80, 0, 0, 0, 0, 0 )
+
+[node name="Settings" type="Panel" parent="SelectorScreen"]
+margin_left = -10.0
+margin_right = 1076.0
+margin_bottom = 2313.0
+script = ExtResource( 12 )
+
+[node name="Title" type="Label" parent="SelectorScreen/Settings"]
+anchor_right = 1.0
+margin_top = 40.0
+margin_bottom = 122.0
+custom_fonts/font = SubResource( 2 )
+text = "Settins"
+align = 1
+valign = 1
+
+[node name="LabelCycleList" type="Label" parent="SelectorScreen/Settings"]
+margin_left = 40.0
+margin_top = 200.0
+margin_right = 610.0
+margin_bottom = 272.0
+custom_fonts/font = SubResource( 26 )
+text = "Cycle Settings:"
+
+[node name="HelpCycle" type="Button" parent="SelectorScreen/Settings"]
+margin_left = 620.0
+margin_top = 180.0
+margin_right = 720.0
+margin_bottom = 280.0
+custom_fonts/font = SubResource( 50 )
+custom_styles/normal = SubResource( 51 )
+custom_styles/pressed = SubResource( 52 )
+custom_styles/hover = SubResource( 51 )
+text = "?"
+
+[node name="CycleList" type="ItemList" parent="SelectorScreen/Settings"]
+margin_left = 40.0
+margin_top = 300.0
+margin_right = 340.0
+margin_bottom = 600.0
+custom_fonts/font = SubResource( 27 )
+
+[node name="ButtonCycleAdd" type="Button" parent="SelectorScreen/Settings"]
+margin_left = 350.0
+margin_top = 300.0
+margin_right = 650.0
+margin_bottom = 380.0
+custom_fonts/font = SubResource( 9 )
+text = "Add"
+
+[node name="ButtonCycleModify" type="Button" parent="SelectorScreen/Settings"]
+margin_left = 350.0
+margin_top = 400.0
+margin_right = 650.0
+margin_bottom = 480.0
+custom_fonts/font = SubResource( 9 )
+text = "Modify"
+
+[node name="ButtonCycleRemove" type="Button" parent="SelectorScreen/Settings"]
+margin_left = 350.0
+margin_top = 500.0
+margin_right = 650.0
+margin_bottom = 580.0
+custom_fonts/font = SubResource( 9 )
+text = "Remove"
+
+[node name="SpinBoxCycle" type="SpinBox" parent="SelectorScreen/Settings"]
+margin_left = 683.0
+margin_top = 378.0
+margin_right = 833.0
+margin_bottom = 428.0
+rect_scale = Vector2( 2.5, 2.5 )
+theme = SubResource( 54 )
+min_value = 1.0
+max_value = 1000.0
+value = 1.0
+allow_greater = true
+suffix = "day(s)"
+
+[node name="ButtonApply" type="Button" parent="SelectorScreen/Settings"]
+margin_left = 670.0
+margin_top = 2150.0
+margin_right = 970.0
+margin_bottom = 2250.0
+custom_fonts/font = SubResource( 9 )
+text = "Apply"
+
+[node name="ButtonCancel" type="Button" parent="SelectorScreen/Settings"]
+margin_left = 150.0
+margin_top = 2150.0
+margin_right = 450.0
+margin_bottom = 2250.0
+custom_fonts/font = SubResource( 9 )
+text = "Cancel"
+
+[node name="LabelResetLibrary" type="Label" parent="SelectorScreen/Settings"]
+margin_left = 40.0
+margin_top = 700.0
+margin_right = 572.0
+margin_bottom = 780.0
+custom_fonts/font = SubResource( 26 )
+text = "Reset Library:"
+valign = 1
+
+[node name="ButtonResetLibrary" type="Button" parent="SelectorScreen/Settings"]
+margin_left = 40.0
+margin_top = 800.0
+margin_right = 540.0
+margin_bottom = 900.0
+custom_fonts/font = SubResource( 9 )
+
+[node name="PaintProject" type="PaintProject" parent="SelectorScreen/Settings/ButtonResetLibrary"]
+size = Vector2i( 500, 100 )
+current_color = Color( 0.576471, 0.152941, 0.152941, 1 )
+
+[node name="PaintCanvasBackground" type="PaintCanvasBackground" parent="SelectorScreen/Settings/ButtonResetLibrary/PaintProject"]
+visible = false
+size = Vector2i( 500, 100 )
+
+[node name="PaintVisualGrid" type="PaintVisualGrid" parent="SelectorScreen/Settings/ButtonResetLibrary/PaintProject"]
+visible = false
+size = Vector2i( 500, 100 )
+
+[node name="PaintCanvas" type="PaintCanvas" parent="SelectorScreen/Settings/ButtonResetLibrary/PaintProject"]
+size = Vector2i( 500, 100 )
+brush_prefab = 1
+brush_size = 14
+image_data_compressed = PoolByteArray( 244, 1, 0, 0, 100, 0, 0, 0, 64, 13, 3, 0, 31, 0, 1, 0, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 74, 72, 147, 39, 39, 255, 4, 0, 15, 27, 82, 255, 255, 255, 255, 255, 255, 255, 176, 8, 200, 7, 4, 12, 0, 15, 208, 7, 255, 255, 255, 255, 255, 255, 255, 196, 15, 212, 7, 255, 255, 255, 255, 255, 255, 255, 172, 4, 144, 15, 15, 8, 0, 5, 15, 168, 15, 255, 255, 255, 255, 255, 255, 255, 160, 15, 196, 7, 5, 12, 24, 0, 15, 212, 7, 255, 255, 255, 255, 255, 255, 255, 152, 12, 180, 7, 15, 16, 0, 13, 15, 212, 7, 255, 255, 255, 255, 255, 255, 255, 144, 15, 188, 7, 13, 15, 32, 0, 5, 15, 212, 7, 255, 255, 255, 255, 255, 255, 255, 136, 15, 172, 7, 5, 15, 24, 0, 21, 15, 212, 7, 255, 255, 255, 255, 255, 255, 255, 132, 15, 184, 7, 21, 15, 40, 0, 5, 15, 208, 7, 255, 255, 255, 255, 255, 255, 255, 128, 15, 164, 7, 5, 15, 24, 0, 29, 15, 212, 7, 255, 255, 255, 255, 255, 255, 255, 120, 15, 180, 7, 5, 53, 217, 239, 65, 4, 0, 15, 36, 0, 5, 12, 24, 0, 15, 208, 7, 255, 255, 255, 255, 255, 255, 255, 116, 12, 144, 7, 4, 16, 0, 4, 200, 7, 8, 8, 0, 4, 28, 0, 15, 8, 0, 13, 15, 212, 7, 255, 255, 255, 255, 255, 255, 255, 108, 15, 152, 7, 9, 8, 200, 7, 8, 12, 0, 15, 52, 0, 9, 8, 28, 0, 15, 212, 7, 255, 255, 255, 255, 255, 255, 255, 104, 8, 128, 7, 8, 12, 0, 8, 192, 7, 15, 12, 0, 1, 8, 44, 0, 15, 12, 0, 5, 15, 208, 7, 255, 255, 255, 255, 255, 255, 255, 100, 15, 136, 7, 5, 15, 208, 7, 53, 15, 228, 93, 255, 255, 255, 255, 255, 255, 255, 100, 15, 208, 7, 5, 15, 144, 15, 1, 15, 20, 0, 1, 15, 64, 0, 5, 12, 24, 0, 15, 168, 15, 255, 255, 255, 255, 255, 255, 255, 88, 12, 116, 7, 8, 16, 0, 15, 188, 7, 1, 15, 20, 0, 9, 8, 60, 0, 15, 12, 0, 5, 15, 212, 7, 255, 255, 255, 255, 255, 255, 255, 80, 15, 116, 7, 5, 15, 104, 23, 17, 15, 216, 7, 1, 15, 80, 0, 9, 4, 28, 0, 15, 208, 7, 255, 255, 255, 255, 255, 255, 255, 196, 15, 76, 31, 255, 255, 255, 255, 255, 255, 255, 76, 4, 48, 15, 15, 8, 0, 5, 15, 128, 15, 1, 15, 20, 0, 17, 15, 80, 0, 5, 8, 24, 0, 15, 164, 15, 255, 255, 255, 255, 255, 255, 255, 72, 8, 96, 7, 12, 12, 0, 15, 184, 7, 9, 4, 44, 0, 15, 36, 0, 5, 4, 32, 0, 15, 8, 0, 13, 15, 212, 7, 255, 255, 255, 255, 255, 255, 255, 64, 15, 108, 7, 9, 15, 168, 7, 29, 15, 48, 0, 1, 15, 96, 0, 9, 8, 28, 0, 15, 212, 7, 255, 255, 255, 255, 255, 255, 255, 60, 8, 84, 7, 12, 12, 0, 15, 160, 7, 1, 15, 164, 7, 9, 15, 48, 0, 29, 8, 112, 0, 15, 208, 7, 255, 255, 255, 255, 255, 255, 255, 56, 8, 80, 7, 12, 12, 0, 15, 156, 7, 37, 15, 56, 0, 37, 15, 28, 39, 255, 255, 255, 255, 255, 255, 255, 56, 12, 196, 7, 8, 16, 0, 15, 152, 7, 37, 15, 56, 0, 5, 15, 216, 15, 9, 8, 120, 0, 15, 168, 15, 255, 255, 255, 255, 255, 255, 255, 44, 8, 68, 7, 12, 12, 0, 15, 148, 7, 41, 15, 60, 0, 9, 15, 212, 7, 17, 15, 208, 7, 255, 255, 255, 255, 255, 255, 255, 40, 12, 192, 7, 8, 16, 0, 15, 144, 7, 45, 15, 64, 0, 45, 15, 120, 23, 255, 255, 255, 255, 255, 255, 255, 36, 8, 188, 7, 15, 12, 0, 1, 15, 144, 7, 45, 15, 64, 0, 13, 15, 164, 15, 17, 15, 212, 7, 255, 255, 255, 255, 255, 255, 255, 28, 15, 192, 7, 1, 8, 20, 0, 15, 140, 7, 49, 15, 68, 0, 17, 15, 212, 7, 255, 255, 255, 255, 255, 255, 255, 60, 8, 188, 7, 12, 12, 0, 15, 136, 7, 53, 15, 72, 0, 53, 15, 164, 15, 255, 255, 255, 255, 255, 255, 255, 20, 12, 192, 7, 12, 16, 0, 15, 136, 7, 53, 15, 72, 0, 21, 15, 164, 15, 255, 255, 255, 255, 255, 255, 255, 48, 12, 188, 7, 12, 16, 0, 15, 132, 7, 57, 15, 76, 0, 57, 15, 164, 15, 255, 255, 255, 255, 255, 255, 255, 12, 12, 192, 7, 12, 16, 0, 15, 132, 7, 57, 15, 76, 0, 25, 15, 164, 15, 255, 255, 255, 255, 255, 255, 255, 40, 12, 188, 7, 15, 16, 0, 1, 15, 132, 7, 25, 15, 64, 0, 1, 8, 20, 0, 15, 76, 0, 25, 15, 208, 7, 21, 15, 168, 15, 255, 255, 255, 255, 255, 255, 255, 0, 8, 108, 7, 15, 12, 0, 1, 15, 128, 7, 61, 15, 80, 0, 29, 15, 212, 7, 255, 255, 255, 255, 255, 255, 255, 32, 15, 192, 7, 1, 12, 20, 0, 15, 128, 7, 29, 12, 64, 0, 12, 16, 0, 15, 80, 0, 29, 8, 48, 0, 12, 76, 0, 12, 16, 0, 15, 60, 78, 255, 255, 255, 255, 255, 255, 243, 12, 16, 7, 15, 16, 0, 1, 8, 80, 7, 15, 12, 0, 17, 15, 68, 0, 1, 8, 20, 0, 15, 68, 0, 17, 15, 36, 0, 5, 8, 72, 0, 15, 12, 0, 5, 15, 212, 7, 255, 255, 255, 255, 255, 255, 235, 15, 16, 7, 5, 8, 24, 0, 15, 88, 7, 5, 15, 24, 0, 9, 8, 64, 0, 15, 12, 0, 1, 15, 60, 0, 9, 15, 28, 0, 17, 15, 84, 0, 1, 12, 20, 0, 15, 212, 7, 255, 255, 255, 255, 255, 255, 227, 12, 0, 7, 15, 16, 0, 1, 15, 92, 7, 17, 15, 36, 0, 1, 15, 76, 0, 1, 8, 20, 0, 15, 52, 0, 1, 15, 20, 0, 25, 8, 76, 0, 15, 12, 0, 5, 15, 208, 7, 255, 255, 255, 255, 255, 255, 223, 15, 4, 7, 5, 12, 24, 0, 15, 100, 7, 25, 8, 44, 0, 12, 72, 0, 12, 16, 0, 8, 44, 0, 15, 12, 0, 37, 12, 84, 0, 15, 16, 0, 1, 15, 212, 7, 255, 255, 255, 255, 255, 255, 215, 15, 248, 6, 1, 15, 20, 0, 1, 15, 104, 7, 37, 15, 140, 46, 17, 15, 92, 0, 41, 8, 60, 0, 15, 184, 0, 1, 12, 20, 0, 15, 212, 7, 255, 255, 255, 255, 255, 255, 207, 12, 236, 6, 15, 16, 0, 9, 8, 56, 7, 15, 12, 0, 29, 15, 88, 0, 9, 15, 172, 187, 37, 15, 132, 0, 5, 15, 108, 0, 13, 15, 152, 62, 255, 255, 255, 255, 255, 255, 207, 15, 252, 6, 17, 15, 112, 7, 49, 15, 104, 0, 13, 15, 156, 7, 5, 15, 24, 0, 37, 15, 112, 0, 13, 15, 164, 15, 255, 255, 255, 255, 255, 255, 199, 15, 244, 6, 13, 8, 32, 0, 15, 88, 7, 37, 4, 56, 0, 8, 76, 0, 15, 12, 0, 1, 4, 40, 0, 15, 8, 0, 53, 15, 100, 0, 1, 12, 20, 0, 15, 212, 7, 255, 255, 255, 255, 255, 255, 195, 12, 224, 6, 15, 16, 0, 5, 15, 100, 7, 49, 15, 92, 0, 5, 4, 24, 0, 15, 100, 0, 49, 12, 68, 0, 4, 92, 0, 15, 8, 0, 9, 15, 212, 7, 255, 255, 255, 255, 255, 255, 187, 15, 228, 6, 9, 12, 28, 0, 12, 40, 7, 15, 16, 0, 33, 12, 84, 0, 12, 16, 0, 15, 84, 0, 33, 15, 52, 0, 17, 12, 104, 0, 15, 16, 0, 1, 15, 212, 7, 255, 255, 255, 255, 255, 255, 179, 15, 212, 6, 1, 15, 20, 0, 5, 15, 52, 7, 17, 15, 36, 0, 17, 15, 96, 0, 5, 4, 24, 0, 15, 68, 0, 17, 15, 36, 0, 37, 4, 100, 0, 15, 8, 0, 9, 15, 212, 7, 255, 255, 255, 255, 255, 255, 171, 15, 212, 6, 9, 15, 28, 0, 1, 15, 68, 7, 37, 12, 56, 0, 15, 92, 0, 1, 8, 20, 0, 12, 48, 0, 15, 16, 0, 61, 8, 108, 0, 15, 12, 0, 1, 15, 208, 7, 255, 255, 255, 255, 255, 255, 215, 15, 84, 7, 85, 15, 104, 0, 61, 15, 80, 0, 5, 15, 200, 7, 1, 8, 20, 0, 15, 212, 7, 255, 255, 255, 255, 255, 255, 163, 8, 188, 6, 15, 12, 0, 17, 15, 24, 7, 5, 15, 24, 0, 37, 15, 116, 0, 5, 15, 80, 0, 37, 15, 56, 0, 29, 15, 128, 0, 5, 4, 24, 0, 15, 208, 7, 255, 255, 255, 255, 255, 255, 207, 15, 44, 7, 29, 15, 48, 0, 25, 4, 64, 7, 15, 52, 0, 25, 15, 44, 0, 53, 4, 124, 0, 15, 8, 0, 5, 15, 212, 7, 255, 255, 255, 255, 255, 255, 155, 15, 192, 6, 5, 15, 24, 0, 1, 15, 60, 7, 53, 15, 72, 0, 133, 15, 244, 0, 1, 8, 20, 0, 15, 212, 7, 255, 255, 255, 255, 255, 255, 147, 8, 172, 6, 15, 12, 0, 13, 15, 132, 7, 133, 15, 152, 0, 57, 15, 4, 1, 13, 15, 16, 86, 255, 255, 255, 255, 255, 255, 143, 15, 188, 6, 17, 4, 36, 0, 15, 52, 7, 57, 15, 76, 0, 5, 4, 108, 0, 4, 8, 0, 15, 40, 0, 5, 15, 24, 0, 77, 4, 128, 0, 15, 8, 0, 5, 15, 164, 15, 255, 255, 255, 255, 255, 255, 135, 15, 172, 6, 5, 15, 24, 0, 5, 15, 68, 7, 73, 15, 116, 0, 5, 4, 24, 0, 15, 124, 0, 73, 15, 92, 0, 5, 4, 124, 0, 15, 8, 0, 5, 15, 212, 7, 255, 255, 255, 255, 255, 255, 131, 15, 168, 6, 5, 15, 24, 0, 1, 15, 244, 6, 5, 15, 24, 0, 53, 15, 116, 0, 1, 8, 20, 0, 15, 104, 0, 53, 15, 72, 0, 25, 8, 128, 0, 15, 12, 0, 5, 15, 212, 7, 255, 255, 255, 255, 255, 255, 123, 15, 160, 6, 5, 15, 24, 0, 1, 15, 4, 7, 25, 15, 44, 0, 33, 15, 116, 0, 1, 15, 20, 0, 1, 15, 92, 0, 33, 15, 52, 0, 45, 15, 136, 0, 1, 8, 20, 0, 15, 208, 7, 255, 255, 255, 255, 255, 255, 119, 8, 144, 6, 15, 12, 0, 13, 15, 16, 7, 45, 15, 64, 0, 17, 15, 132, 0, 13, 4, 32, 0, 15, 76, 0, 17, 15, 36, 0, 69, 4, 132, 0, 15, 8, 0, 5, 15, 216, 7, 255, 255, 255, 255, 255, 255, 111, 15, 148, 6, 5, 15, 24, 0, 1, 15, 32, 7, 69, 8, 88, 0, 15, 120, 0, 1, 15, 20, 0, 5, 8, 56, 0, 15, 12, 0, 89, 15, 144, 0, 5, 4, 24, 0, 15, 208, 7, 255, 255, 255, 255, 255, 255, 107, 4, 128, 6, 15, 8, 0, 17, 15, 48, 7, 85, 15, 140, 0, 17, 4, 36, 0, 15, 148, 0, 85, 15, 104, 0, 1, 4, 132, 0, 15, 8, 0, 9, 15, 216, 7, 255, 255, 255, 255, 255, 255, 99, 15, 140, 6, 9, 8, 28, 0, 15, 208, 6, 1, 15, 20, 0, 73, 8, 124, 0, 15, 12, 0, 5, 15, 128, 0, 73, 15, 92, 0, 17, 15, 152, 0, 5, 8, 24, 0, 15, 208, 7, 255, 255, 255, 255, 255, 255, 95, 8, 120, 6, 15, 12, 0, 9, 15, 220, 6, 17, 15, 36, 0, 61, 15, 144, 0, 9, 4, 28, 0, 15, 116, 0, 61, 15, 80, 0, 29, 4, 136, 0, 15, 8, 0, 13, 15, 212, 7, 255, 255, 255, 255, 255, 255, 87, 15, 132, 6, 13, 8, 32, 0, 15, 232, 6, 29, 15, 48, 0, 57, 8, 136, 0, 4, 12, 0, 15, 96, 0, 57, 15, 76, 0, 45, 4, 148, 0, 15, 8, 0, 13, 15, 212, 7, 255, 255, 255, 255, 255, 255, 79, 15, 124, 6, 13, 12, 32, 0, 15, 244, 6, 45, 15, 64, 0, 205, 12, 48, 1, 15, 16, 0, 1, 15, 208, 7, 255, 255, 255, 255, 255, 255, 75, 15, 108, 6, 1, 15, 20, 0, 5, 15, 136, 7, 205, 15, 224, 0, 57, 15, 68, 1, 5, 8, 24, 0, 15, 212, 7, 255, 255, 255, 255, 255, 255, 71, 8, 96, 6, 15, 12, 0, 9, 15, 236, 6, 57, 15, 76, 0, 209, 15, 76, 1, 9, 4, 28, 0, 15, 208, 7, 255, 255, 255, 255, 255, 255, 67, 4, 88, 6, 15, 8, 0, 17, 15, 132, 7, 209, 15, 228, 0, 65, 15, 92, 1, 13, 15, 212, 7, 255, 255, 255, 255, 255, 255, 63, 15, 108, 6, 13, 15, 32, 0, 255, 82, 15, 208, 7, 255, 255, 255, 255, 255, 255, 59, 15, 172, 7, 255, 82, 15, 100, 1, 21, 15, 212, 7, 255, 255, 255, 255, 255, 255, 51, 15, 104, 6, 21, 15, 40, 0, 255, 90, 15, 212, 7, 255, 255, 255, 255, 255, 255, 43, 15, 164, 7, 255, 90, 15, 108, 1, 25, 15, 208, 7, 255, 255, 255, 255, 255, 255, 39, 15, 96, 6, 25, 15, 44, 0, 255, 94, 15, 208, 7, 255, 255, 255, 255, 255, 255, 39, 15, 2, 0, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 237, 80, 0, 0, 0, 0, 0 )
+
+[node name="LabelExportDatabase" type="Label" parent="SelectorScreen/Settings"]
+margin_left = 40.0
+margin_top = 1000.0
+margin_right = 648.0
+margin_bottom = 1080.0
+custom_fonts/font = SubResource( 26 )
+text = "Export Database:"
+valign = 1
+
+[node name="ButtonExportDatabase" type="Button" parent="SelectorScreen/Settings"]
+margin_left = 40.0
+margin_top = 1100.0
+margin_right = 540.0
+margin_bottom = 1200.0
+
+[node name="FileDialogExportDatabase" type="FileDialog" parent="SelectorScreen/Settings"]
+margin_top = 50.0
+margin_right = 1080.0
+margin_bottom = 2250.0
+rect_min_size = Vector2( 150, 52.5 )
+theme = SubResource( 82 )
+popup_exclusive = true
+window_title = "Export Database"
+dialog_text = "Choose where you want to save your exported Database"
+access = 2
+filters = PoolStringArray( "*.txt" )
+
 [node name="AddScreen" type="Control" parent="."]
 visible = false
 anchor_right = 1.0
@@ -229,9 +864,9 @@ margin_left = 40.0
 margin_top = 280.0
 margin_right = 1040.0
 margin_bottom = 730.0
+focus_next = NodePath("../TextEditDefinition")
 custom_fonts/font = SubResource( 27 )
 wrap_enabled = true
-caret_blink = true
 __meta__ = {
 "_edit_lock_": true
 }
@@ -252,9 +887,10 @@ margin_left = 40.0
 margin_top = 900.0
 margin_right = 1040.0
 margin_bottom = 1900.0
+focus_next = NodePath("../OptionButtonSubject")
+focus_previous = NodePath("../TextEditTerm")
 custom_fonts/font = SubResource( 5 )
 wrap_enabled = true
-caret_blink = true
 __meta__ = {
 "_edit_lock_": true
 }
@@ -286,6 +922,8 @@ margin_left = 40.0
 margin_top = 2040.0
 margin_right = 390.0
 margin_bottom = 2090.0
+focus_next = NodePath("../OptionButtonTopic")
+focus_previous = NodePath("../TextEditDefinition")
 clip_text = true
 __meta__ = {
 "_edit_lock_": true
@@ -307,6 +945,8 @@ margin_left = 450.0
 margin_top = 2040.0
 margin_right = 800.0
 margin_bottom = 2090.0
+focus_next = NodePath("../ButtonCreate")
+focus_previous = NodePath("../OptionButtonSubject")
 __meta__ = {
 "_edit_lock_": true
 }
@@ -395,6 +1035,7 @@ text = "Cancel"
 [node name="PopupCreateTopic" type="PopupDialog" parent="AddScreen/ButtonCreate"]
 margin_right = 780.0
 margin_bottom = 440.0
+popup_exclusive = true
 
 [node name="Text" type="LineEdit" parent="AddScreen/ButtonCreate/PopupCreateTopic"]
 margin_left = 10.0
@@ -420,6 +1061,14 @@ margin_bottom = 370.0
 custom_fonts/font = SubResource( 20 )
 text = "Cancel"
 
+[node name="AddScreenLog" type="RichTextLabel" parent="AddScreen"]
+margin_left = 40.0
+margin_top = 2100.0
+margin_right = 640.0
+margin_bottom = 2280.0
+theme = SubResource( 57 )
+scroll_following = true
+
 [node name="TestScreen" type="Control" parent="."]
 visible = false
 anchor_right = 1.0
@@ -428,9 +1077,216 @@ margin_left = 4.0
 margin_top = 8.0
 margin_right = -4.0
 margin_bottom = -4.0
+script = ExtResource( 8 )
 __meta__ = {
 "_edit_lock_": true
 }
+
+[node name="Title" type="Label" parent="TestScreen"]
+anchor_right = 1.0
+margin_top = 40.0
+margin_bottom = 72.0
+custom_fonts/font = SubResource( 37 )
+text = "Test Yourself"
+align = 1
+valign = 1
+
+[node name="LabelSubject" type="Label" parent="TestScreen"]
+margin_left = 40.0
+margin_top = 200.0
+margin_right = 280.0
+margin_bottom = 258.0
+custom_fonts/font = SubResource( 38 )
+text = "Subject:"
+
+[node name="SubjectSelector" type="OptionButton" parent="TestScreen"]
+margin_left = 40.0
+margin_top = 300.0
+margin_right = 340.0
+margin_bottom = 400.0
+
+[node name="LabelTopic" type="Label" parent="TestScreen"]
+margin_left = 40.0
+margin_top = 500.0
+margin_right = 220.0
+margin_bottom = 558.0
+custom_fonts/font = SubResource( 38 )
+text = "Topic:"
+
+[node name="TopicSelector" type="OptionButton" parent="TestScreen"]
+margin_left = 40.0
+margin_top = 600.0
+margin_right = 340.0
+margin_bottom = 700.0
+
+[node name="VSeparator" type="VSeparator" parent="TestScreen"]
+margin_left = 500.0
+margin_top = 200.0
+margin_right = 520.0
+margin_bottom = 700.0
+custom_styles/separator = SubResource( 63 )
+
+[node name="LabelQuestionType" type="Label" parent="TestScreen"]
+margin_left = 600.0
+margin_top = 200.0
+margin_right = 870.0
+margin_bottom = 258.0
+custom_fonts/font = SubResource( 38 )
+text = "Ask with:"
+
+[node name="QuestionTypeSelector" type="OptionButton" parent="TestScreen"]
+margin_left = 600.0
+margin_top = 300.0
+margin_right = 900.0
+margin_bottom = 400.0
+text = "Term"
+items = [ "Term", null, false, 0, null, "Definition", null, false, 1, null ]
+selected = 0
+
+[node name="LabelAnswerType" type="Label" parent="TestScreen"]
+margin_left = 600.0
+margin_top = 500.0
+margin_right = 960.0
+margin_bottom = 558.0
+custom_fonts/font = SubResource( 38 )
+text = "Answer with:"
+
+[node name="AnswerTypeSelector" type="OptionButton" parent="TestScreen"]
+margin_left = 600.0
+margin_top = 600.0
+margin_right = 900.0
+margin_bottom = 700.0
+text = "Definition"
+items = [ "Term", null, false, 0, null, "Definition", null, false, 1, null ]
+selected = 1
+
+[node name="LabelMode" type="Label" parent="TestScreen"]
+margin_left = 40.0
+margin_top = 800.0
+margin_right = 670.0
+margin_bottom = 858.0
+custom_fonts/font = SubResource( 38 )
+text = "Select the test mode:"
+
+[node name="LabelCards" type="Label" parent="TestScreen"]
+margin_left = 150.0
+margin_top = 900.0
+margin_right = 350.0
+margin_bottom = 1000.0
+custom_fonts/font = SubResource( 39 )
+text = "Cards"
+align = 1
+valign = 1
+
+[node name="CheckCards" type="CheckBox" parent="TestScreen"]
+margin_left = 40.0
+margin_top = 900.0
+margin_right = 140.0
+margin_bottom = 925.0
+rect_scale = Vector2( 4, 4 )
+
+[node name="LabelType" type="Label" parent="TestScreen"]
+margin_left = 150.0
+margin_top = 1000.0
+margin_right = 350.0
+margin_bottom = 1100.0
+custom_fonts/font = SubResource( 39 )
+text = "Type"
+align = 1
+valign = 1
+
+[node name="CheckType" type="CheckBox" parent="TestScreen"]
+margin_left = 40.0
+margin_top = 1000.0
+margin_right = 140.0
+margin_bottom = 1025.0
+rect_scale = Vector2( 4, 4 )
+
+[node name="LabelForToday" type="Label" parent="TestScreen"]
+margin_left = 40.0
+margin_top = 1150.0
+margin_right = 670.0
+margin_bottom = 1208.0
+custom_fonts/font = SubResource( 38 )
+text = "Only for today:"
+
+[node name="CheckEnableCycle" type="CheckBox" parent="TestScreen"]
+margin_left = 40.0
+margin_top = 1200.0
+margin_right = 140.0
+margin_bottom = 1225.0
+rect_scale = Vector2( 4, 4 )
+pressed = true
+
+[node name="LabelCycle" type="Label" parent="TestScreen"]
+margin_left = 150.0
+margin_top = 1200.0
+margin_right = 350.0
+margin_bottom = 1300.0
+custom_fonts/font = SubResource( 39 )
+text = "Enable Cycle"
+align = 1
+valign = 1
+
+[node name="HelpCycle" type="Button" parent="TestScreen"]
+margin_left = 600.0
+margin_top = 1150.0
+margin_right = 700.0
+margin_bottom = 1250.0
+custom_fonts/font = SubResource( 50 )
+custom_styles/normal = SubResource( 51 )
+custom_styles/pressed = SubResource( 52 )
+custom_styles/hover = SubResource( 51 )
+text = "?"
+
+[node name="LabelIgnoreCategories" type="Label" parent="TestScreen"]
+margin_left = 40.0
+margin_top = 1350.0
+margin_right = 670.0
+margin_bottom = 1408.0
+custom_fonts/font = SubResource( 38 )
+text = "Ignore categories:"
+
+[node name="CheckIgnoreCategories" type="CheckBox" parent="TestScreen"]
+margin_left = 40.0
+margin_top = 1400.0
+margin_right = 140.0
+margin_bottom = 1425.0
+rect_scale = Vector2( 4, 4 )
+pressed = true
+
+[node name="LabelIgnoreCategories2" type="Label" parent="TestScreen"]
+margin_left = 150.0
+margin_top = 1400.0
+margin_right = 510.0
+margin_bottom = 1500.0
+custom_fonts/font = SubResource( 39 )
+text = "Ignore"
+align = 1
+valign = 1
+
+[node name="HelpIgnoreCategories" type="Button" parent="TestScreen"]
+margin_left = 600.0
+margin_top = 1350.0
+margin_right = 700.0
+margin_bottom = 1450.0
+custom_fonts/font = SubResource( 50 )
+custom_styles/normal = SubResource( 51 )
+custom_styles/pressed = SubResource( 52 )
+custom_styles/hover = SubResource( 51 )
+text = "?"
+
+[node name="ButtonStart" type="Button" parent="TestScreen"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -150.0
+margin_top = -150.0
+margin_right = 150.0
+margin_bottom = -40.0
+custom_fonts/font = SubResource( 40 )
+text = "Start"
 
 [node name="ReviewScreen" type="Control" parent="."]
 visible = false
@@ -550,8 +1406,62 @@ margin_bottom = 304.0
 [node name="TermsList" type="ItemList" parent="ReviewScreen/EditScreenContainer/EditTerms"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = 30.0
 margin_top = 400.0
-margin_bottom = -200.0
+margin_right = -534.0
+margin_bottom = -786.0
+theme = ExtResource( 13 )
+custom_fonts/font = SubResource( 58 )
+
+[node name="LabelSelectedSubject" type="Label" parent="ReviewScreen/EditScreenContainer/EditTerms"]
+margin_left = 550.0
+margin_top = 400.0
+margin_right = 1050.0
+margin_bottom = 550.0
+custom_fonts/font = SubResource( 61 )
+text = "Subject:"
+
+[node name="LabelSelectedTopic" type="Label" parent="ReviewScreen/EditScreenContainer/EditTerms"]
+margin_left = 550.0
+margin_top = 600.0
+margin_right = 1050.0
+margin_bottom = 750.0
+custom_fonts/font = SubResource( 61 )
+text = "Topic:"
+
+[node name="LabelSelectedCreationDay" type="Label" parent="ReviewScreen/EditScreenContainer/EditTerms"]
+margin_left = 550.0
+margin_top = 800.0
+margin_right = 1050.0
+margin_bottom = 950.0
+custom_fonts/font = SubResource( 61 )
+text = "Day of creation:"
+
+[node name="LabelSelectedCycleState" type="Label" parent="ReviewScreen/EditScreenContainer/EditTerms"]
+margin_left = 550.0
+margin_top = 1000.0
+margin_right = 1050.0
+margin_bottom = 1150.0
+custom_fonts/font = SubResource( 61 )
+text = "Current Cycle: x
+Date: xxxx/xx/xx
+Days left: x"
+
+[node name="LabelDefinition" type="Label" parent="ReviewScreen/EditScreenContainer/EditTerms"]
+margin_left = 40.0
+margin_top = 1150.0
+margin_right = 304.0
+margin_bottom = 1196.0
+custom_fonts/font = SubResource( 62 )
+text = "Definition:"
+
+[node name="DefinitonDisplay" type="TextEdit" parent="ReviewScreen/EditScreenContainer/EditTerms"]
+margin_left = 40.0
+margin_top = 1200.0
+margin_right = 1040.0
+margin_bottom = 1700.0
+custom_fonts/font = SubResource( 59 )
+readonly = true
 
 [node name="ButtonDelete" type="Button" parent="ReviewScreen/EditScreenContainer/EditTerms"]
 margin_left = 100.0
@@ -568,6 +1478,117 @@ margin_right = 900.0
 margin_bottom = 1850.0
 custom_fonts/font = SubResource( 36 )
 text = "Edit"
+
+[node name="TermEditor" type="Popup" parent="ReviewScreen/EditScreenContainer/EditTerms"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -1064.0
+margin_bottom = -1886.0
+popup_exclusive = true
+
+[node name="Panel" type="Panel" parent="ReviewScreen/EditScreenContainer/EditTerms/TermEditor"]
+margin_top = 300.0
+margin_right = 1080.0
+margin_bottom = 2300.0
+
+[node name="LabelTerm" type="Label" parent="ReviewScreen/EditScreenContainer/EditTerms/TermEditor/Panel"]
+anchor_right = 1.0
+margin_left = 40.0
+margin_top = 100.0
+margin_right = -920.0
+margin_bottom = 146.0
+custom_fonts/font = SubResource( 62 )
+text = "Term:"
+valign = 1
+
+[node name="EditTerm" type="TextEdit" parent="ReviewScreen/EditScreenContainer/EditTerms/TermEditor/Panel"]
+margin_left = 40.0
+margin_top = 200.0
+margin_right = 1020.0
+margin_bottom = 700.0
+custom_fonts/font = SubResource( 59 )
+
+[node name="LabelDefinition" type="Label" parent="ReviewScreen/EditScreenContainer/EditTerms/TermEditor/Panel"]
+anchor_right = 1.0
+margin_left = 40.0
+margin_top = 800.0
+margin_right = -776.0
+margin_bottom = 846.0
+custom_fonts/font = SubResource( 62 )
+text = "Definition:"
+valign = 1
+
+[node name="EditDefinition" type="TextEdit" parent="ReviewScreen/EditScreenContainer/EditTerms/TermEditor/Panel"]
+margin_left = 40.0
+margin_top = 900.0
+margin_right = 1020.0
+margin_bottom = 1400.0
+custom_fonts/font = SubResource( 59 )
+
+[node name="LabelSubject" type="Label" parent="ReviewScreen/EditScreenContainer/EditTerms/TermEditor/Panel"]
+anchor_right = 1.0
+margin_left = 150.0
+margin_top = 1450.0
+margin_right = -666.0
+margin_bottom = 1496.0
+custom_fonts/font = SubResource( 62 )
+text = "Subject:"
+valign = 1
+
+[node name="SubjectSelector" type="OptionButton" parent="ReviewScreen/EditScreenContainer/EditTerms/TermEditor/Panel"]
+margin_left = 150.0
+margin_top = 1500.0
+margin_right = 450.0
+margin_bottom = 1552.0
+
+[node name="LabelTopic" type="Label" parent="ReviewScreen/EditScreenContainer/EditTerms/TermEditor/Panel"]
+anchor_right = 1.0
+margin_left = 600.0
+margin_top = 1450.0
+margin_right = -216.0
+margin_bottom = 1496.0
+custom_fonts/font = SubResource( 62 )
+text = "Topic:"
+valign = 1
+
+[node name="TopicSelector" type="OptionButton" parent="ReviewScreen/EditScreenContainer/EditTerms/TermEditor/Panel"]
+margin_left = 600.0
+margin_top = 1500.0
+margin_right = 900.0
+margin_bottom = 1552.0
+
+[node name="LabelCycleReset" type="Label" parent="ReviewScreen/EditScreenContainer/EditTerms/TermEditor/Panel"]
+anchor_right = 1.0
+margin_left = 700.0
+margin_top = 1625.0
+margin_right = -116.0
+margin_bottom = 1671.0
+custom_fonts/font = SubResource( 62 )
+text = "Reset cycle"
+valign = 1
+
+[node name="CheckResetCycle" type="CheckBox" parent="ReviewScreen/EditScreenContainer/EditTerms/TermEditor/Panel"]
+margin_left = 600.0
+margin_top = 1600.0
+margin_right = 700.0
+margin_bottom = 1624.0
+rect_scale = Vector2( 4, 4 )
+
+[node name="ButtonCancel" type="Button" parent="ReviewScreen/EditScreenContainer/EditTerms/TermEditor/Panel"]
+margin_left = 150.0
+margin_top = 1700.0
+margin_right = 450.0
+margin_bottom = 1900.0
+custom_fonts/font = SubResource( 77 )
+text = "Cancel"
+
+[node name="ButtonAccept" type="Button" parent="ReviewScreen/EditScreenContainer/EditTerms/TermEditor/Panel"]
+margin_left = 600.0
+margin_top = 1700.0
+margin_right = 900.0
+margin_bottom = 1900.0
+custom_fonts/font = SubResource( 77 )
+text = "Accept"
 
 [node name="EditSubjects" type="Control" parent="ReviewScreen/EditScreenContainer"]
 visible = false
@@ -591,9 +1612,26 @@ text = "Subject:"
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = 150.0
+margin_right = -364.0
 margin_bottom = -1200.0
 custom_fonts/font = SubResource( 33 )
 allow_reselect = true
+
+[node name="LabelSubjectTopics" type="Label" parent="ReviewScreen/EditScreenContainer/EditSubjects"]
+margin_left = 750.0
+margin_top = 150.0
+margin_right = 1050.0
+margin_bottom = 350.0
+custom_fonts/font = SubResource( 64 )
+text = "Topics:"
+
+[node name="LabelSubjectTerms" type="Label" parent="ReviewScreen/EditScreenContainer/EditSubjects"]
+margin_left = 750.0
+margin_top = 400.0
+margin_right = 1050.0
+margin_bottom = 600.0
+custom_fonts/font = SubResource( 64 )
+text = "Terms:"
 
 [node name="ButtonSubjectDelete" type="Button" parent="ReviewScreen/EditScreenContainer/EditSubjects"]
 margin_left = 80.0
@@ -628,8 +1666,17 @@ text = "Topic:"
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = 1100.0
+margin_right = -364.0
 margin_bottom = -250.0
 custom_fonts/font = SubResource( 33 )
+
+[node name="LabelTopicTerms" type="Label" parent="ReviewScreen/EditScreenContainer/EditSubjects"]
+margin_left = 750.0
+margin_top = 1100.0
+margin_right = 1050.0
+margin_bottom = 1300.0
+custom_fonts/font = SubResource( 64 )
+text = "Terms:"
 
 [node name="ButtonTopicDelete" type="Button" parent="ReviewScreen/EditScreenContainer/EditSubjects"]
 margin_left = 70.0
@@ -647,6 +1694,48 @@ margin_bottom = 1750.0
 custom_fonts/font = SubResource( 35 )
 text = "Edit"
 
+[node name="EditDialog" type="PopupPanel" parent="ReviewScreen/EditScreenContainer/EditSubjects"]
+margin_left = 30.0
+margin_top = 500.0
+margin_right = 1030.0
+margin_bottom = 1000.0
+popup_exclusive = true
+
+[node name="ButtonCancel" type="Button" parent="ReviewScreen/EditScreenContainer/EditSubjects/EditDialog"]
+margin_left = 4.0
+margin_top = 4.0
+margin_right = 996.0
+margin_bottom = 496.0
+custom_fonts/font = SubResource( 35 )
+text = "Cancel"
+
+[node name="ButtonAccept" type="Button" parent="ReviewScreen/EditScreenContainer/EditSubjects/EditDialog"]
+margin_left = 4.0
+margin_top = 4.0
+margin_right = 996.0
+margin_bottom = 496.0
+custom_fonts/font = SubResource( 35 )
+text = "Accept"
+
+[node name="LineEdit" type="LineEdit" parent="ReviewScreen/EditScreenContainer/EditSubjects/EditDialog"]
+margin_left = 4.0
+margin_top = 4.0
+margin_right = 996.0
+margin_bottom = 496.0
+custom_fonts/font = SubResource( 35 )
+placeholder_text = "Type here the new name..."
+
+[node name="Label" type="Label" parent="ReviewScreen/EditScreenContainer/EditSubjects/EditDialog"]
+anchor_right = 1.0
+margin_left = 4.0
+margin_top = 4.0
+margin_right = -4.0
+margin_bottom = 496.0
+custom_fonts/font = SubResource( 60 )
+text = "Edit name:"
+align = 1
+valign = 1
+
 [node name="TestScreenCard" type="Control" parent="."]
 visible = false
 anchor_right = 1.0
@@ -655,9 +1744,122 @@ margin_left = 4.0
 margin_top = 8.0
 margin_right = -4.0
 margin_bottom = -4.0
+script = ExtResource( 14 )
 __meta__ = {
 "_edit_lock_": true
 }
+
+[node name="Title" type="Label" parent="TestScreenCard"]
+anchor_right = 1.0
+margin_top = 40.0
+margin_bottom = 108.0
+custom_fonts/font = SubResource( 65 )
+text = "Are they matching?"
+align = 1
+valign = 1
+
+[node name="LabelQuestionNumber" type="Label" parent="TestScreenCard"]
+margin_left = 40.0
+margin_top = 150.0
+margin_right = 112.0
+margin_bottom = 196.0
+custom_fonts/font = SubResource( 66 )
+text = "0/0"
+align = 1
+valign = 1
+
+[node name="LabelSubject" type="Label" parent="TestScreenCard"]
+margin_left = 40.0
+margin_top = 200.0
+margin_right = 232.0
+margin_bottom = 246.0
+custom_fonts/font = SubResource( 66 )
+text = "Subject:"
+align = 1
+valign = 1
+
+[node name="LabelTopic" type="Label" parent="TestScreenCard"]
+margin_left = 40.0
+margin_top = 250.0
+margin_right = 184.0
+margin_bottom = 296.0
+custom_fonts/font = SubResource( 66 )
+text = "Topic:"
+align = 1
+valign = 1
+
+[node name="LabelQuestionType" type="Label" parent="TestScreenCard"]
+margin_left = 40.0
+margin_top = 400.0
+margin_right = 490.0
+margin_bottom = 458.0
+custom_fonts/font = SubResource( 67 )
+text = "Question:"
+valign = 1
+
+[node name="EditQuestion" type="TextEdit" parent="TestScreenCard"]
+margin_left = 40.0
+margin_top = 500.0
+margin_right = 1020.0
+margin_bottom = 1100.0
+custom_fonts/font = SubResource( 68 )
+readonly = true
+
+[node name="LabelAnswerType" type="Label" parent="TestScreenCard"]
+margin_left = 40.0
+margin_top = 1200.0
+margin_right = 490.0
+margin_bottom = 1258.0
+custom_fonts/font = SubResource( 67 )
+text = "Answer:"
+valign = 1
+
+[node name="EditAnswer" type="TextEdit" parent="TestScreenCard"]
+margin_left = 40.0
+margin_top = 1300.0
+margin_right = 1020.0
+margin_bottom = 1900.0
+custom_fonts/font = SubResource( 69 )
+readonly = true
+
+[node name="ButtonTrue" type="Button" parent="TestScreenCard"]
+margin_left = 600.0
+margin_top = 1950.0
+margin_right = 1000.0
+margin_bottom = 2250.0
+custom_fonts/font = SubResource( 70 )
+custom_styles/normal = SubResource( 71 )
+custom_styles/pressed = SubResource( 72 )
+custom_styles/hover = SubResource( 71 )
+text = "True"
+
+[node name="ButtonFalse" type="Button" parent="TestScreenCard"]
+margin_left = 100.0
+margin_top = 1950.0
+margin_right = 500.0
+margin_bottom = 2250.0
+custom_fonts/font = SubResource( 70 )
+custom_styles/normal = SubResource( 73 )
+custom_styles/pressed = SubResource( 74 )
+custom_styles/hover = SubResource( 73 )
+text = "False"
+
+[node name="CoverGreen" type="Panel" parent="TestScreenCard"]
+margin_left = 1300.0
+margin_right = 2380.0
+margin_bottom = 2300.0
+custom_styles/panel = SubResource( 45 )
+
+[node name="CoverRed" type="Panel" parent="TestScreenCard"]
+margin_left = -1300.0
+margin_right = -220.0
+margin_bottom = 2300.0
+custom_styles/panel = SubResource( 46 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="TestScreenCard"]
+"anims/Green Cover" = SubResource( 78 )
+anims/RESET = SubResource( 79 )
+"anims/Red Cover" = SubResource( 80 )
 
 [node name="TestScreenType" type="Control" parent="."]
 visible = false
@@ -667,13 +1869,128 @@ margin_left = 4.0
 margin_top = 8.0
 margin_right = -4.0
 margin_bottom = -4.0
+script = ExtResource( 10 )
 __meta__ = {
 "_edit_lock_": true
 }
 
+[node name="Title" type="Label" parent="TestScreenType"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -285.0
+margin_top = 40.0
+margin_right = 285.0
+margin_bottom = 72.0
+custom_fonts/font = SubResource( 41 )
+text = "Type the answer"
+align = 1
+valign = 1
+
+[node name="LabelQuestionNumber" type="Label" parent="TestScreenType"]
+margin_left = 40.0
+margin_top = 150.0
+margin_right = 160.0
+margin_bottom = 208.0
+custom_fonts/font = SubResource( 42 )
+text = "0/0"
+
+[node name="LabelSubject" type="Label" parent="TestScreenType"]
+margin_left = 250.0
+margin_top = 250.0
+margin_right = 490.0
+margin_bottom = 308.0
+custom_fonts/font = SubResource( 43 )
+text = "Subject:"
+
+[node name="LabelTopic" type="Label" parent="TestScreenType"]
+margin_left = 310.0
+margin_top = 300.0
+margin_right = 490.0
+margin_bottom = 358.0
+custom_fonts/font = SubResource( 43 )
+text = "Topic:"
+
+[node name="LabelQuestionType" type="Label" parent="TestScreenType"]
+margin_left = 40.0
+margin_top = 500.0
+margin_right = 310.0
+margin_bottom = 558.0
+custom_fonts/font = SubResource( 43 )
+text = "Question:"
+
+[node name="EditQuestion" type="TextEdit" parent="TestScreenType"]
+margin_left = 40.0
+margin_top = 600.0
+margin_right = 1040.0
+margin_bottom = 1100.0
+readonly = true
+
+[node name="LabelAnswerType" type="Label" parent="TestScreenType"]
+margin_left = 40.0
+margin_top = 1200.0
+margin_right = 280.0
+margin_bottom = 1258.0
+custom_fonts/font = SubResource( 43 )
+text = "Answer:"
+
+[node name="EditAnswer" type="TextEdit" parent="TestScreenType"]
+margin_left = 40.0
+margin_top = 1300.0
+margin_right = 1040.0
+margin_bottom = 1800.0
+
+[node name="ButtonLeave" type="Button" parent="TestScreenType"]
+margin_left = 80.0
+margin_top = 1950.0
+margin_right = 480.0
+margin_bottom = 2250.0
+custom_fonts/font = SubResource( 44 )
+text = "Leave"
+
+[node name="ButtonNext" type="Button" parent="TestScreenType"]
+margin_left = 600.0
+margin_top = 1950.0
+margin_right = 1000.0
+margin_bottom = 2250.0
+custom_fonts/font = SubResource( 44 )
+custom_styles/normal = SubResource( 75 )
+custom_styles/pressed = SubResource( 76 )
+custom_styles/hover = SubResource( 75 )
+text = "Next"
+
+[node name="CoverGreen" type="Panel" parent="TestScreenType"]
+margin_left = 1300.0
+margin_right = 2380.0
+margin_bottom = 2300.0
+custom_styles/panel = SubResource( 45 )
+
+[node name="CoverRed" type="Panel" parent="TestScreenType"]
+margin_left = -1300.0
+margin_right = -220.0
+margin_bottom = 2300.0
+custom_styles/panel = SubResource( 46 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="TestScreenType"]
+anims/GreenCover = SubResource( 47 )
+anims/RESET = SubResource( 48 )
+anims/RedCover = SubResource( 49 )
+
 [connection signal="pressed" from="SelectorScreen/ButtonAdd" to="." method="change_screen" binds= [ 1 ]]
 [connection signal="pressed" from="SelectorScreen/ButtonTest" to="." method="change_screen" binds= [ 2 ]]
 [connection signal="pressed" from="SelectorScreen/ButtonReview" to="." method="change_screen" binds= [ 3 ]]
+[connection signal="pressed" from="SelectorScreen/ButtonSettings" to="." method="show_settings"]
+[connection signal="draw" from="SelectorScreen/Settings" to="SelectorScreen/Settings" method="load_data"]
+[connection signal="pressed" from="SelectorScreen/Settings/HelpCycle" to="SelectorScreen/Settings" method="show_cycle_help"]
+[connection signal="pressed" from="SelectorScreen/Settings/ButtonCycleAdd" to="SelectorScreen/Settings" method="add_cycle_number"]
+[connection signal="pressed" from="SelectorScreen/Settings/ButtonCycleModify" to="SelectorScreen/Settings" method="modify_cycle_number"]
+[connection signal="pressed" from="SelectorScreen/Settings/ButtonCycleRemove" to="SelectorScreen/Settings" method="remove_cycle_number"]
+[connection signal="pressed" from="SelectorScreen/Settings/ButtonApply" to="SelectorScreen/Settings" method="apply_settings"]
+[connection signal="pressed" from="SelectorScreen/Settings/ButtonCancel" to="SelectorScreen/Settings" method="cancel_settings"]
+[connection signal="pressed" from="SelectorScreen/Settings/ButtonResetLibrary" to="SelectorScreen/Settings" method="library_reset"]
+[connection signal="pressed" from="SelectorScreen/Settings/ButtonExportDatabase" to="SelectorScreen/Settings" method="export_database"]
+[connection signal="file_selected" from="SelectorScreen/Settings/FileDialogExportDatabase" to="SelectorScreen/Settings" method="export_database_accepted"]
+[connection signal="draw" from="AddScreen" to="AddScreen/ButtonCreate" method="clear_log"]
+[connection signal="draw" from="AddScreen" to="AddScreen/ButtonCreate" method="focus_edit_term"]
 [connection signal="draw" from="AddScreen" to="AddScreen/ButtonCreate" method="refresh_subjects"]
 [connection signal="pressed" from="AddScreen/ButtonNewSubject" to="AddScreen/ButtonCreate" method="create_subject"]
 [connection signal="item_selected" from="AddScreen/OptionButtonSubject" to="AddScreen/ButtonCreate" method="refresh_topics"]
@@ -684,12 +2001,37 @@ __meta__ = {
 [connection signal="pressed" from="AddScreen/ButtonCreate/PopupCreateSubject/ButtonCancel" to="AddScreen/ButtonCreate" method="subject_creation_cancelled"]
 [connection signal="pressed" from="AddScreen/ButtonCreate/PopupCreateTopic/ButtonOk" to="AddScreen/ButtonCreate" method="topic_created"]
 [connection signal="pressed" from="AddScreen/ButtonCreate/PopupCreateTopic/ButtonCancel" to="AddScreen/ButtonCreate" method="topic_creation_cacelled"]
-[connection signal="draw" from="ReviewScreen" to="ReviewScreen/EditScreenContainer/EditTerms" method="refresh_data"]
-[connection signal="draw" from="ReviewScreen" to="ReviewScreen/EditScreenContainer/EditSubjects" method="refresh_all_data"]
+[connection signal="draw" from="TestScreen" to="TestScreen" method="refresh_data"]
+[connection signal="item_selected" from="TestScreen/SubjectSelector" to="TestScreen" method="refresh_topic_data"]
+[connection signal="item_selected" from="TestScreen/QuestionTypeSelector" to="TestScreen" method="question_type_changed"]
+[connection signal="item_selected" from="TestScreen/AnswerTypeSelector" to="TestScreen" method="answer_type_changed"]
+[connection signal="pressed" from="TestScreen/CheckCards" to="TestScreen" method="mode_select" binds= [ 0 ]]
+[connection signal="pressed" from="TestScreen/CheckType" to="TestScreen" method="mode_select" binds= [ 1 ]]
+[connection signal="pressed" from="TestScreen/HelpCycle" to="TestScreen" method="help_cycle"]
+[connection signal="pressed" from="TestScreen/HelpIgnoreCategories" to="TestScreen" method="help_ignore_categories"]
+[connection signal="pressed" from="TestScreen/ButtonStart" to="TestScreen" method="start_test"]
 [connection signal="pressed" from="ReviewScreen/HBoxContainer/ButtonEditTerms" to="ReviewScreen/EditScreenContainer" method="change_edit_mode" binds= [ 0 ]]
 [connection signal="pressed" from="ReviewScreen/HBoxContainer/ButtonEditSubjects" to="ReviewScreen/EditScreenContainer" method="change_edit_mode" binds= [ 1 ]]
+[connection signal="draw" from="ReviewScreen/EditScreenContainer/EditTerms" to="ReviewScreen/EditScreenContainer/EditTerms" method="refresh_data"]
+[connection signal="item_selected" from="ReviewScreen/EditScreenContainer/EditTerms/OptionButtonSort" to="ReviewScreen/EditScreenContainer/EditTerms" method="refresh_data"]
+[connection signal="item_selected" from="ReviewScreen/EditScreenContainer/EditTerms/OptionButtonSort" to="ReviewScreen/EditScreenContainer/EditTerms" method="refresh_subject_list"]
+[connection signal="item_selected" from="ReviewScreen/EditScreenContainer/EditTerms/OptionButtonSubject" to="ReviewScreen/EditScreenContainer/EditTerms" method="refresh_data"]
+[connection signal="item_selected" from="ReviewScreen/EditScreenContainer/EditTerms/OptionButtonSubject" to="ReviewScreen/EditScreenContainer/EditTerms" method="refresh_topic_list"]
+[connection signal="item_selected" from="ReviewScreen/EditScreenContainer/EditTerms/OptionButtonTopic" to="ReviewScreen/EditScreenContainer/EditTerms" method="refresh_data"]
+[connection signal="item_selected" from="ReviewScreen/EditScreenContainer/EditTerms/TermsList" to="ReviewScreen/EditScreenContainer/EditTerms" method="term_selected"]
 [connection signal="pressed" from="ReviewScreen/EditScreenContainer/EditTerms/ButtonDelete" to="ReviewScreen/EditScreenContainer/EditTerms" method="delete_term"]
-[connection signal="item_activated" from="ReviewScreen/EditScreenContainer/EditSubjects/SubjectSelector" to="ReviewScreen/EditScreenContainer/EditSubjects" method="refresh_topic_data"]
+[connection signal="pressed" from="ReviewScreen/EditScreenContainer/EditTerms/ButtonEdit" to="ReviewScreen/EditScreenContainer/EditTerms" method="edit_selected_term"]
+[connection signal="item_selected" from="ReviewScreen/EditScreenContainer/EditTerms/TermEditor/Panel/SubjectSelector" to="ReviewScreen/EditScreenContainer/EditTerms" method="refresh_term_edit_topic"]
+[connection signal="pressed" from="ReviewScreen/EditScreenContainer/EditTerms/TermEditor/Panel/ButtonCancel" to="ReviewScreen/EditScreenContainer/EditTerms" method="term_edit_cancel"]
+[connection signal="pressed" from="ReviewScreen/EditScreenContainer/EditTerms/TermEditor/Panel/ButtonAccept" to="ReviewScreen/EditScreenContainer/EditTerms" method="term_edit_accept"]
+[connection signal="visibility_changed" from="ReviewScreen/EditScreenContainer/EditSubjects" to="ReviewScreen/EditScreenContainer/EditSubjects" method="refresh_all_data"]
 [connection signal="item_selected" from="ReviewScreen/EditScreenContainer/EditSubjects/SubjectSelector" to="ReviewScreen/EditScreenContainer/EditSubjects" method="refresh_topic_data"]
 [connection signal="pressed" from="ReviewScreen/EditScreenContainer/EditSubjects/ButtonSubjectDelete" to="ReviewScreen/EditScreenContainer/EditSubjects" method="delete_subject"]
+[connection signal="pressed" from="ReviewScreen/EditScreenContainer/EditSubjects/ButtonSubjectEdit" to="ReviewScreen/EditScreenContainer/EditSubjects" method="edit_subject"]
+[connection signal="item_selected" from="ReviewScreen/EditScreenContainer/EditSubjects/TopicSelector" to="ReviewScreen/EditScreenContainer/EditSubjects" method="topic_selected"]
 [connection signal="pressed" from="ReviewScreen/EditScreenContainer/EditSubjects/ButtonTopicDelete" to="ReviewScreen/EditScreenContainer/EditSubjects" method="delete_topic"]
+[connection signal="pressed" from="ReviewScreen/EditScreenContainer/EditSubjects/ButtonTopicEdit" to="ReviewScreen/EditScreenContainer/EditSubjects" method="edit_topic"]
+[connection signal="pressed" from="TestScreenCard/ButtonTrue" to="TestScreenCard" method="question_answered" binds= [ true ]]
+[connection signal="pressed" from="TestScreenCard/ButtonFalse" to="TestScreenCard" method="question_answered" binds= [ false ]]
+[connection signal="pressed" from="TestScreenType/ButtonLeave" to="." method="leave_request"]
+[connection signal="pressed" from="TestScreenType/ButtonNext" to="TestScreenType" method="validate_answer"]
