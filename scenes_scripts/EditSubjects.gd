@@ -17,8 +17,7 @@ var selected_topic = ""
 
 
 func _ready():
-   GlobalFunctions.set_wide_scroll(list_subjects)
-   GlobalFunctions.set_wide_scroll(list_topics)
+   
    pass
 
 func refresh_all_data():

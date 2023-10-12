@@ -20,8 +20,7 @@ var question_mode = 0
 onready var animation_player = get_node("AnimationPlayer")
 
 func _ready():
-   GlobalFunctions.set_wide_scroll(edit_answer)
-   GlobalFunctions.set_wide_scroll(edit_question)
+
    pass
 
 
@@ -73,7 +72,8 @@ func next_question():
       tmp_wrong_answers.merge(answered_wrong)
       if tmp_wrong_answers.size() <= 1:
          tmp_wrong_answers.merge(answered_right)
-      if tmp_wrong_answers.has(current_question_index):
+      if tmp_wrong_answers.has(current_question_index) and \
+         tmp_wrong_answers.size() > 1:  ## because if the all question base is 1, erasing the self, makes the possibile  answers to be 0 .. >:3
          tmp_wrong_answers.erase(current_question_index)
       tmp_random_i = randi() % tmp_wrong_answers.size() ### RANDOM FALSE ANSWER
       tmp_random_counter = 0

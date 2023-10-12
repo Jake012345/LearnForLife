@@ -7,9 +7,9 @@ var next_term_id = 0
 var data_file_path = "user://Database.txt"
 var data_file = File.new()
 var term_returning_cycles = [1, 3, 5, 7, 10]
+signal database_missing
 
 func _ready():
-   load_data()
    pass
 
 func load_data():
@@ -17,13 +17,15 @@ func load_data():
    subjects.clear()
    var raw_data = ""
    if data_file.file_exists(data_file_path):
-     data_file.open(data_file_path, File.READ)
-     raw_data = data_file.get_as_text()
+      data_file.open(data_file_path, File.READ)
+      raw_data = data_file.get_as_text()
    else:
-     data_file.open(data_file_path, File.WRITE)
+      data_file.open(data_file_path, File.WRITE)
+      emit_signal("database_missing")
      #>>maybe a warning asw (there were problems)
    data_file.close()
-
+   
+   
    var line = ""
    var lines = []
    for i in raw_data:
@@ -35,6 +37,7 @@ func load_data():
          lines.append(line.strip_edges())
          line.clear()
 #   print(lines)   #> PARSING IS REQUIRED
+   
    if lines.size() >= 5:    ##>>>>  ELSE --->>> SURELY DAMAGED/ CORRUPT FILE
       var data_pack_version = float(lines[0])
       if data_pack_version != app_version:
@@ -94,6 +97,16 @@ func save_data():  #>>>>> SAFETY SAVE:   TMP_FILE --> REAL FILE
    data_file.store_string(text_to_save)
    data_file.close()
    pass
+
+func export_database(filepath):
+   data_file.open(data_file_path, File.READ)
+   var exported_file = File.new()
+   exported_file.open(filepath, File.WRITE)
+   exported_file.store_string(data_file.get_as_text())
+   data_file.close()
+   exported_file.close()
+   pass
+
 
 func add_term(term: Term):
    terms[next_term_id] = term

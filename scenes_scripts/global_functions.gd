@@ -4,7 +4,6 @@ extends Node
 var font = load("res://lib/font/CourierPrime-Regular.ttf")
 var warning_accepted = false
 signal accept_warning
-onready var wide_scroll_theme = load("res://lib/resources/wide_scroll.tres")
 
 
 func set_font(node: Control, font_size: int = 32):
@@ -15,10 +14,6 @@ func set_font(node: Control, font_size: int = 32):
    node.theme = tmp_theme
    pass
 
-func set_wide_scroll(node: Control):
-   node.theme = wide_scroll_theme
-   pass
-
 func show_warning(parent: Node = self, triggered_func: String = "", text: String = ""):
    var warning = PopupDialog.new()
    var label = Label.new()
@@ -26,7 +21,7 @@ func show_warning(parent: Node = self, triggered_func: String = "", text: String
    var cancel = Button.new()
    parent.call_deferred("add_child", warning)
    yield(warning, "tree_entered")
-   warning.add_child(label)
+   warning.call_deferred("add_child", label)
    warning.rect_size.x = 780
    warning.rect_size.y = 440
    warning.popup_exclusive = true

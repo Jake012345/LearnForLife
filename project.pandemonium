@@ -54,12 +54,13 @@ window/size/height=2310
 window/size/test_width=486
 window/size/test_height=1040
 window/handheld/orientation="portrait"
+window/ios/hide_home_indicator=false
 window/stretch/mode="viewport"
 window/stretch/aspect="keep"
 
 [editor_plugins]
 
-enabled=PoolStringArray( "res://addons/NativeLib/plugin.cfg" )
+enabled=PoolStringArray(  )
 
 [gdnative]
 

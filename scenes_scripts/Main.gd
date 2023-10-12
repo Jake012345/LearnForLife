@@ -2,7 +2,10 @@ extends TabContainer
 
 onready var settings = get_node("SelectorScreen/Settings")
 
+
 func _ready():
+   GlobalDatabase.connect("database_missing", self, "show_first_start_warning")
+   GlobalDatabase.load_data() ## calling from here so the signal is surely bound at it's run
    settings.hide()
    current_tab = 0
    randomize()
@@ -45,3 +48,14 @@ func go_to_add():
 func show_settings():
    settings.show()
    pass
+
+func show_first_start_warning():
+   print("show")
+   GlobalFunctions.show_warning(self, "show_first_start_warning_2", "Oops....\nIt seems you are running the application the first time or your database is missing for some reason.\n" \
+    + "If you just updated the application and lost all your data, contact the author(s).")
+pass
+
+func show_first_start_warning_2():
+   GlobalFunctions.show_warning(self, "", "In case you are new to this application, you might consider to check the settings first, using the little gear icon at the top on the main screen.\nAnywhere in the app you can use the blue information buttons whenever something complicated shows up.")
+   pass
+
