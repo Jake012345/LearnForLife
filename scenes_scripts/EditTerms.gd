@@ -26,7 +26,6 @@ func _ready():
    GlobalFunctions.set_font(term_edit_select_subject, 32)
    GlobalFunctions.set_font(term_edit_select_topic, 32)
    list_terms.get_v_scroll().visible = true
-   GlobalFunctions.set_wide_scroll(list_terms.get_v_scroll())
    term_editor.visible = false
    pass
 

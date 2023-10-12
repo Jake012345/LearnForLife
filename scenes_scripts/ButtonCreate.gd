@@ -11,10 +11,6 @@ onready var popup_topic = get_node("PopupCreateTopic")
 onready var log_label = get_parent().get_node("AddScreenLog")
 
 func _ready():
-   GlobalFunctions.set_font(edit_subject, 32)
-   GlobalFunctions.set_font(edit_topic, 32)
-   GlobalFunctions.set_wide_scroll(edit_term)
-   GlobalFunctions.set_wide_scroll(edit_definition)
    pass
 
 func on_press():

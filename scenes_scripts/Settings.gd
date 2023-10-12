@@ -5,6 +5,7 @@ onready var cycle_number_selector = get_node("SpinBoxCycle")
 var settings_file_path = "user_settings.txt"
 var settings = File.new()
 onready var file_dialog = get_node("FileDialogExportDatabase")
+onready var https_request = get_node("HTTPRequest")
 
 
 func load_data():
@@ -101,10 +102,28 @@ func library_reset_accepted():
 func export_database():
    file_dialog.show()
    file_dialog.current_dir = OS.get_system_dir(OS.SYSTEM_DIR_DOCUMENTS)
-   file_dialog.current_file = "Database.export"
+   file_dialog.current_file = "Database"
+   file_dialog.get_label().autowrap = true
    pass
 
 
 func export_database_accepted(path):
    GlobalDatabase.export_database(path)
+   pass
+
+
+func download_latest_version():
+   var previous_install_file = File.new()
+   if previous_install_file.file_exists(OS.get_system_dir(OS.SYSTEM_DIR_DOWNLOADS)+"/LearnForLife.apk"):
+      #delete file 
+      pass
+   https_request.download_file = OS.get_system_dir(OS.SYSTEM_DIR_DOWNLOADS) + "/LearnForLife.apk"
+   if https_request.request("https://github.com/Jake012345/LearnForLife/releases/latest/download/LearnForLife.apk") != OK:
+      GlobalFunctions.show_warning(self, "", "Something went wrong, try again later!")
+   pass
+
+func download_latest_version_completed(result: int, response_code: int, headers: PoolStringArray, body: PoolByteArray): #what are the args?
+   var downloaded_file = File.new()
+   if downloaded_file.file_exists(OS.get_system_dir(OS.SYSTEM_DIR_DOWNLOADS)+"/LearnForLife.apk"):
+      GlobalFunctions.show_warning(self, "", "Download Successful, you might look up the downloaded file 'LearnForLife.apk' in the 'Downloads' folder and run it.")
    pass

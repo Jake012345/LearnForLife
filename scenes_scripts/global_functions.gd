@@ -4,7 +4,6 @@ extends Node
 var font = load("res://lib/font/CourierPrime-Regular.ttf")
 var warning_accepted = false
 signal accept_warning
-onready var wide_scroll_theme = load("res://lib/resources/wide_scroll.tres")
 
 
 func set_font(node: Control, font_size: int = 32):
@@ -13,10 +12,6 @@ func set_font(node: Control, font_size: int = 32):
    tmp_theme.default_font.font_data = font
    tmp_theme.default_font.size = font_size
    node.theme = tmp_theme
-   pass
-
-func set_wide_scroll(node: Control):
-   node.theme = wide_scroll_theme
    pass
 
 func show_warning(parent: Node = self, triggered_func: String = "", text: String = ""):

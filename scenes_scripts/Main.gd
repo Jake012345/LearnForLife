@@ -2,9 +2,6 @@ extends TabContainer
 
 onready var settings = get_node("SelectorScreen/Settings")
 
-func asd():
-   print("asd")
-   pass
 
 func _ready():
    GlobalDatabase.connect("database_missing", self, "show_first_start_warning")
@@ -61,3 +58,4 @@ pass
 func show_first_start_warning_2():
    GlobalFunctions.show_warning(self, "", "In case you are new to this application, you might consider to check the settings first, using the little gear icon at the top on the main screen.\nAnywhere in the app you can use the blue information buttons whenever something complicated shows up.")
    pass
+
