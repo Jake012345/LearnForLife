@@ -51,9 +51,12 @@ func refresh_topic_data(index = -1):
 
 
 func delete_subject():
-   GlobalFunctions.show_warning(self, "subject_deletion_accepted", \
+   if selected_subject != null:
+      GlobalFunctions.show_warning(self, "subject_deletion_accepted", \
    "Do you really want to delete the selected Subject(s)?" + "\n" + \
    "(The connected Topics and Terms are going to be deleted as well.)")
+   else:
+      GlobalFunctions.show_warning(self, "", "You need to select a Subject to remove.")
    pass
 
 func subject_deletion_accepted():
@@ -65,15 +68,20 @@ func subject_deletion_accepted():
    pass
 
 func delete_topic():
-   GlobalFunctions.show_warning(self, "topic_deletion_accepted", \
+   if list_topics.get_selected_items().size() > 0:
+      selected_topic = list_topics.get_item_text(list_topics.get_selected_items()[0])
+      GlobalFunctions.show_warning(self, "topic_deletion_accepted", \
    "Do you really want to delete the selected Topic(s)?" + "\n" + \
    "(The connected Terms are going to be deleted as well.)")
+   else:
+      GlobalFunctions.show_warning(self, "", "You need to select a Topic to remove.")
    pass
 
 func topic_deletion_accepted():
    if selected_topic != "":
       GlobalDatabase.remove_topic(selected_subject, selected_topic)
-      list_topics.remove_item(list_topics.items.find(selected_topic))
+      list_topics.remove_item(list_topics.get_selected_items()[0])
+      #list_topics.remove_item(list_topics.items.find(selected_topic))
       selected_topic = ""
       topic_selected()
    pass
@@ -108,7 +116,6 @@ func dialog_answered(accepted: bool, mode: String, subject: String, topic: Strin
    if mode == "topic":
      subject = list_subjects.get_item_text(list_subjects.get_selected_items()[0])
      topic = edit_dialog_text.text
-   print(subject)
    if edit_dialog_text.text != "" and not GlobalDatabase.exists(mode, subject, topic, ""):
      if accepted:
        dialog_accepted = true

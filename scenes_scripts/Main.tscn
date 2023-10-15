@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=2]
+[gd_scene load_steps=45 format=2]
 
 [ext_resource path="res://lib/font/CourierPrime-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://scenes_scripts/Main.gd" type="Script" id=2]
@@ -10,8 +10,9 @@
 [ext_resource path="res://scenes_scripts/TestScreen.gd" type="Script" id=8]
 [ext_resource path="res://lib/textures/arrow.png" type="Texture" id=9]
 [ext_resource path="res://scenes_scripts/TestScreenType.gd" type="Script" id=10]
+[ext_resource path="res://scenes_scripts/TestScreenCard.gd" type="Script" id=11]
 [ext_resource path="res://scenes_scripts/Settings.gd" type="Script" id=12]
-[ext_resource path="res://scenes_scripts/TestScreenCard.gd" type="Script" id=14]
+[ext_resource path="res://scenes_scripts/TestScreenTrueFalse.gd" type="Script" id=14]
 [ext_resource path="res://lib/resources/theme_1.tres" type="Theme" id=15]
 
 [sub_resource type="StyleBoxFlat" id=51]
@@ -265,6 +266,63 @@ tracks/0/keys = {
 "values": [ Vector2( 1300, 0 ), Vector2( -1300, 0 ) ]
 }
 
+[sub_resource type="Animation" id=81]
+resource_name = "GreenCover"
+tracks/0/type = "value"
+tracks/0/path = NodePath("CoverGreen:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1300, 0 ), Vector2( -1300, 0 ) ]
+}
+
+[sub_resource type="Animation" id=82]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("CoverGreen:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1300, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("CoverRed:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -1300, 0 ) ]
+}
+
+[sub_resource type="Animation" id=83]
+resource_name = "RedCover"
+tracks/0/type = "value"
+tracks/0/path = NodePath("CoverRed:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1300, 0 ), Vector2( -1300, 0 ) ]
+}
+
 [node name="Main" type="TabContainer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -360,6 +418,7 @@ brush_size = 63
 image_data_compressed = PoolByteArray( 100, 0, 0, 0, 100, 0, 0, 0, 64, 156, 0, 0, 31, 0, 1, 0, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 103, 79, 131, 128, 128, 255, 4, 0, 57, 15, 183, 19, 255, 46, 15, 140, 1, 57, 0, 76, 0, 15, 144, 1, 255, 255, 255, 255, 255, 255, 95, 15, 112, 6, 245, 0, 8, 1, 15, 4, 0, 73, 15, 212, 7, 17, 8, 128, 0, 15, 48, 0, 17, 15, 2, 0, 149, 15, 216, 0, 25, 8, 44, 0, 15, 12, 0, 81, 15, 68, 1, 5, 15, 124, 0, 1, 15, 44, 0, 5, 15, 2, 0, 153, 15, 216, 0, 21, 15, 40, 0, 1, 15, 20, 0, 89, 8, 84, 1, 15, 120, 0, 9, 8, 40, 0, 15, 2, 0, 157, 15, 216, 0, 17, 15, 36, 0, 9, 15, 28, 0, 133, 15, 136, 1, 157, 0, 2, 0, 15, 76, 1, 133, 15, 152, 0, 53, 0, 228, 0, 15, 2, 0, 145, 15, 240, 0, 53, 15, 72, 0, 145, 15, 144, 1, 141, 15, 68, 1, 145, 15, 164, 0, 61, 15, 148, 1, 137, 15, 236, 0, 61, 15, 80, 0, 149, 15, 148, 1, 129, 15, 60, 1, 149, 15, 168, 0, 69, 15, 148, 1, 121, 15, 228, 0, 69, 15, 88, 0, 149, 15, 140, 1, 121, 0, 2, 0, 15, 56, 1, 101, 0, 124, 0, 15, 2, 0, 5, 15, 148, 0, 85, 15, 128, 0, 5, 15, 2, 0, 109, 15, 0, 1, 81, 15, 228, 0, 41, 15, 160, 0, 65, 15, 144, 0, 41, 15, 2, 0, 81, 15, 244, 0, 65, 0, 84, 0, 15, 188, 0, 57, 0, 80, 0, 15, 4, 0, 49, 15, 148, 0, 57, 15, 2, 0, 73, 15, 236, 0, 49, 4, 68, 0, 15, 168, 0, 137, 15, 156, 0, 73, 15, 2, 0, 61, 4, 80, 1, 15, 8, 0, 41, 15, 148, 0, 61, 15, 2, 0, 1, 15, 160, 0, 41, 0, 60, 0, 15, 84, 0, 1, 15, 2, 0, 129, 0, 172, 0, 15, 4, 0, 37, 15, 208, 0, 97, 15, 172, 0, 153, 15, 2, 0, 29, 15, 220, 0, 37, 0, 56, 0, 15, 108, 0, 29, 15, 2, 0, 57, 0, 128, 0, 15, 4, 0, 33, 15, 132, 0, 57, 15, 2, 0, 65, 15, 212, 0, 33, 0, 52, 0, 15, 140, 0, 65, 15, 2, 0, 29, 0, 136, 0, 15, 4, 0, 29, 15, 100, 0, 29, 15, 2, 0, 89, 15, 204, 0, 29, 8, 48, 0, 15, 168, 0, 89, 15, 2, 0, 5, 8, 144, 0, 15, 12, 0, 25, 15, 80, 0, 5, 15, 2, 0, 109, 15, 196, 0, 25, 8, 44, 0, 15, 184, 0, 109, 8, 2, 0, 8, 152, 0, 15, 12, 0, 21, 8, 64, 0, 15, 2, 0, 117, 15, 188, 0, 21, 12, 40, 0, 15, 192, 0, 117, 8, 2, 0, 12, 164, 0, 15, 16, 0, 17, 8, 64, 0, 15, 2, 0, 113, 15, 180, 0, 17, 15, 36, 0, 1, 15, 188, 0, 113, 12, 2, 0, 15, 168, 0, 1, 15, 20, 0, 13, 12, 68, 0, 15, 2, 0, 109, 15, 176, 0, 13, 15, 32, 0, 1, 15, 180, 0, 109, 15, 2, 0, 9, 15, 176, 0, 1, 15, 20, 0, 9, 15, 76, 0, 9, 15, 2, 0, 77, 15, 152, 0, 9, 15, 28, 0, 25, 15, 168, 0, 77, 15, 2, 0, 41, 15, 200, 0, 25, 15, 44, 0, 5, 15, 128, 0, 41, 15, 2, 0, 25, 15, 128, 0, 5, 15, 24, 0, 25, 15, 112, 0, 25, 15, 2, 0, 101, 15, 208, 0, 25, 15, 44, 0, 1, 15, 184, 0, 85, 15, 124, 0, 1, 15, 20, 0, 29, 15, 172, 0, 85, 15, 2, 0, 41, 15, 212, 0, 29, 12, 48, 0, 15, 124, 0, 41, 15, 2, 0, 25, 12, 120, 0, 15, 16, 0, 33, 15, 112, 0, 25, 15, 2, 0, 101, 15, 216, 0, 33, 8, 52, 0, 15, 184, 0, 85, 8, 116, 0, 15, 12, 0, 37, 15, 172, 0, 85, 15, 2, 0, 41, 15, 220, 0, 37, 4, 56, 0, 15, 124, 0, 41, 15, 2, 0, 25, 4, 112, 0, 15, 8, 0, 37, 15, 108, 0, 25, 15, 2, 0, 109, 15, 228, 0, 37, 0, 56, 0, 15, 188, 0, 85, 0, 108, 0, 15, 4, 0, 41, 15, 168, 0, 85, 15, 2, 0, 49, 15, 232, 0, 145, 15, 164, 0, 41, 0, 60, 0, 15, 40, 1, 49, 15, 2, 0, 85, 0, 176, 0, 15, 4, 0, 37, 15, 164, 0, 145, 0, 220, 0, 15, 168, 0, 85, 15, 2, 0, 49, 0, 176, 0, 15, 4, 0, 37, 15, 128, 0, 49, 15, 2, 0, 17, 15, 160, 0, 37, 4, 56, 0, 15, 100, 0, 17, 15, 2, 0, 117, 4, 180, 0, 15, 8, 0, 33, 15, 196, 0, 85, 15, 156, 0, 33, 8, 52, 0, 15, 168, 0, 85, 15, 2, 0, 49, 8, 184, 0, 15, 12, 0, 29, 15, 128, 0, 49, 15, 2, 0, 17, 15, 152, 0, 29, 12, 48, 0, 15, 100, 0, 17, 15, 2, 0, 117, 12, 188, 0, 15, 16, 0, 25, 15, 196, 0, 85, 15, 148, 0, 25, 15, 44, 0, 5, 15, 172, 0, 85, 15, 2, 0, 41, 15, 188, 0, 5, 15, 24, 0, 21, 15, 124, 0, 41, 15, 2, 0, 25, 15, 144, 0, 21, 15, 40, 0, 9, 15, 112, 0, 25, 15, 2, 0, 101, 15, 192, 0, 9, 15, 28, 0, 17, 15, 184, 0, 85, 15, 140, 0, 17, 15, 36, 0, 13, 15, 172, 0, 85, 15, 2, 0, 41, 15, 196, 0, 13, 15, 32, 0, 13, 15, 124, 0, 41, 15, 2, 0, 41, 15, 152, 0, 13, 15, 32, 0, 1, 15, 112, 0, 41, 15, 2, 0, 85, 15, 184, 0, 1, 15, 20, 0, 25, 15, 168, 0, 85, 12, 2, 0, 15, 164, 0, 25, 8, 44, 0, 12, 72, 0, 15, 2, 0, 121, 8, 168, 0, 15, 12, 0, 37, 15, 208, 0, 101, 15, 176, 0, 157, 15, 2, 0, 17, 15, 212, 0, 33, 15, 88, 0, 17, 15, 2, 0, 85, 15, 192, 0, 33, 0, 52, 0, 15, 160, 0, 85, 15, 2, 0, 25, 0, 152, 0, 15, 4, 0, 29, 15, 96, 0, 25, 15, 2, 0, 81, 15, 192, 0, 29, 4, 48, 0, 15, 156, 0, 81, 15, 2, 0, 29, 4, 156, 0, 15, 8, 0, 25, 15, 100, 0, 29, 15, 2, 0, 77, 15, 188, 0, 25, 12, 44, 0, 15, 156, 0, 77, 15, 2, 0, 25, 12, 156, 0, 15, 16, 0, 21, 15, 100, 0, 25, 15, 2, 0, 85, 15, 188, 0, 21, 15, 40, 0, 1, 15, 164, 0, 85, 15, 2, 0, 9, 15, 152, 0, 1, 15, 20, 0, 17, 15, 84, 0, 9, 15, 2, 0, 105, 15, 188, 0, 17, 15, 36, 0, 5, 15, 184, 0, 105, 4, 2, 0, 15, 156, 0, 5, 15, 24, 0, 13, 4, 64, 0, 15, 2, 0, 121, 15, 180, 0, 13, 15, 32, 0, 17, 15, 208, 0, 105, 15, 160, 0, 17, 15, 36, 0, 1, 15, 180, 0, 105, 15, 2, 0, 5, 15, 168, 0, 1, 15, 20, 0, 37, 15, 100, 0, 5, 15, 2, 0, 73, 15, 172, 0, 37, 0, 56, 0, 15, 152, 0, 73, 15, 2, 0, 29, 0, 144, 0, 15, 4, 0, 69, 15, 140, 0, 29, 15, 2, 0, 33, 15, 188, 0, 45, 15, 116, 0, 33, 15, 2, 0, 69, 15, 204, 0, 45, 15, 64, 0, 17, 15, 188, 0, 69, 0, 2, 0, 15, 128, 0, 17, 15, 36, 0, 13, 0, 72, 0, 15, 2, 0, 117, 15, 172, 0, 13, 15, 32, 0, 57, 15, 244, 0, 57, 15, 152, 0, 53, 15, 148, 0, 57, 15, 2, 0, 53, 15, 220, 0, 53, 15, 72, 0, 21, 15, 184, 0, 41, 15, 100, 0, 21, 15, 40, 0, 25, 15, 144, 0, 41, 15, 2, 0, 65, 15, 188, 0, 25, 15, 44, 0, 65, 15, 212, 0, 9, 15, 112, 0, 65, 15, 84, 0, 1, 15, 132, 0, 9, 15, 2, 0, 97, 15, 164, 0, 1, 15, 20, 0, 217, 15, 116, 1, 97, 15, 2, 0, 13, 15, 128, 1, 217, 15, 236, 0, 1, 15, 32, 1, 13, 15, 2, 0, 97, 15, 168, 0, 1, 15, 20, 0, 213, 15, 112, 1, 97, 15, 2, 0, 13, 15, 124, 1, 213, 8, 232, 0, 15, 20, 1, 13, 15, 2, 0, 109, 8, 172, 0, 15, 12, 0, 209, 15, 112, 1, 109, 15, 2, 0, 17, 15, 136, 1, 13, 0, 68, 0, 15, 36, 0, 13, 15, 32, 0, 141, 0, 196, 0, 15, 2, 0, 153, 15, 80, 1, 5, 12, 196, 0, 15, 40, 0, 5, 15, 24, 0, 137, 12, 196, 0, 15, 2, 0, 149, 12, 84, 1, 15, 184, 0, 5, 12, 40, 0, 15, 16, 0, 137, 15, 196, 0, 5, 15, 2, 0, 153, 0, 96, 1, 15, 176, 0, 17, 0, 40, 0, 15, 4, 0, 105, 4, 164, 0, 15, 132, 0, 9, 4, 36, 0, 15, 2, 0, 217, 15, 16, 1, 9, 15, 28, 0, 65, 15, 92, 1, 1, 15, 104, 0, 1, 15, 40, 0, 1, 15, 2, 0, 217, 15, 20, 1, 1, 15, 20, 0, 57, 15, 76, 1, 13, 4, 108, 0, 15, 40, 0, 13, 15, 2, 0, 225, 4, 28, 1, 15, 8, 0, 45, 15, 60, 1, 225, 15, 2, 0, 65, 15, 136, 1, 45, 4, 64, 0, 15, 156, 0, 65, 15, 2, 0, 225, 4, 80, 1, 15, 8, 0, 45, 15, 60, 1, 225, 15, 2, 0, 65, 15, 136, 1, 45, 4, 64, 0, 15, 156, 0, 65, 15, 2, 0, 225, 4, 80, 1, 15, 8, 0, 45, 15, 60, 1, 225, 15, 2, 0, 65, 15, 136, 1, 45, 4, 64, 0, 15, 156, 0, 65, 15, 2, 0, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 7, 80, 0, 0, 0, 0, 0 )
 
 [node name="Settings" type="Panel" parent="SelectorScreen"]
+visible = false
 margin_left = -10.0
 margin_right = 1076.0
 margin_bottom = 2313.0
@@ -852,6 +911,7 @@ margin_left = 40.0
 margin_top = 900.0
 margin_right = 140.0
 margin_bottom = 925.0
+disabled = true
 text = "Cards"
 
 [node name="CheckType" type="CheckBox" parent="TestScreen"]
@@ -860,6 +920,13 @@ margin_top = 1000.0
 margin_right = 140.0
 margin_bottom = 1025.0
 text = "Type"
+
+[node name="CheckTrueFalse" type="CheckBox" parent="TestScreen"]
+margin_left = 300.0
+margin_top = 900.0
+margin_right = 478.0
+margin_bottom = 972.0
+text = "True-False"
 
 [node name="LabelForToday" type="Label" parent="TestScreen"]
 margin_left = 40.0
@@ -953,7 +1020,7 @@ margin_top = -849.0
 margin_bottom = -749.0
 
 [node name="ButtonEditTerms" type="Button" parent="ReviewScreen/HBoxContainer"]
-margin_right = 534.0
+margin_right = 536.0
 margin_bottom = 100.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -961,7 +1028,7 @@ toggle_mode = true
 text = "Terms"
 
 [node name="ButtonEditSubjects" type="Button" parent="ReviewScreen/HBoxContainer"]
-margin_left = 538.0
+margin_left = 536.0
 margin_right = 1072.0
 margin_bottom = 100.0
 size_flags_horizontal = 3
@@ -1335,7 +1402,7 @@ text = "Edit name:"
 align = 1
 valign = 1
 
-[node name="TestScreenCard" type="Control" parent="."]
+[node name="TestScreenTrueFalse" type="Control" parent="."]
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -1348,7 +1415,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Title" type="Label" parent="TestScreenCard"]
+[node name="Title" type="Label" parent="TestScreenTrueFalse"]
 anchor_right = 1.0
 margin_top = 40.0
 margin_bottom = 108.0
@@ -1356,7 +1423,7 @@ text = "Are they matching?"
 align = 1
 valign = 1
 
-[node name="LabelQuestionNumber" type="Label" parent="TestScreenCard"]
+[node name="LabelQuestionNumber" type="Label" parent="TestScreenTrueFalse"]
 margin_left = 40.0
 margin_top = 150.0
 margin_right = 112.0
@@ -1365,7 +1432,7 @@ text = "0/0"
 align = 1
 valign = 1
 
-[node name="LabelSubject" type="Label" parent="TestScreenCard"]
+[node name="LabelSubject" type="Label" parent="TestScreenTrueFalse"]
 margin_left = 40.0
 margin_top = 200.0
 margin_right = 232.0
@@ -1374,7 +1441,7 @@ text = "Subject:"
 align = 1
 valign = 1
 
-[node name="LabelTopic" type="Label" parent="TestScreenCard"]
+[node name="LabelTopic" type="Label" parent="TestScreenTrueFalse"]
 margin_left = 40.0
 margin_top = 250.0
 margin_right = 184.0
@@ -1383,7 +1450,7 @@ text = "Topic:"
 align = 1
 valign = 1
 
-[node name="LabelQuestionType" type="Label" parent="TestScreenCard"]
+[node name="LabelQuestionType" type="Label" parent="TestScreenTrueFalse"]
 margin_left = 40.0
 margin_top = 400.0
 margin_right = 490.0
@@ -1391,7 +1458,7 @@ margin_bottom = 458.0
 text = "Question:"
 valign = 1
 
-[node name="EditQuestion" type="TextEdit" parent="TestScreenCard"]
+[node name="EditQuestion" type="TextEdit" parent="TestScreenTrueFalse"]
 margin_left = 40.0
 margin_top = 500.0
 margin_right = 1020.0
@@ -1399,7 +1466,7 @@ margin_bottom = 1100.0
 readonly = true
 wrap_enabled = true
 
-[node name="LabelAnswerType" type="Label" parent="TestScreenCard"]
+[node name="LabelAnswerType" type="Label" parent="TestScreenTrueFalse"]
 margin_left = 40.0
 margin_top = 1200.0
 margin_right = 490.0
@@ -1407,7 +1474,7 @@ margin_bottom = 1258.0
 text = "Answer:"
 valign = 1
 
-[node name="EditAnswer" type="TextEdit" parent="TestScreenCard"]
+[node name="EditAnswer" type="TextEdit" parent="TestScreenTrueFalse"]
 margin_left = 40.0
 margin_top = 1300.0
 margin_right = 1020.0
@@ -1415,7 +1482,7 @@ margin_bottom = 1900.0
 readonly = true
 wrap_enabled = true
 
-[node name="ButtonTrue" type="Button" parent="TestScreenCard"]
+[node name="ButtonTrue" type="Button" parent="TestScreenTrueFalse"]
 margin_left = 600.0
 margin_top = 1950.0
 margin_right = 1000.0
@@ -1425,7 +1492,7 @@ custom_styles/pressed = SubResource( 72 )
 custom_styles/hover = SubResource( 71 )
 text = "True"
 
-[node name="ButtonFalse" type="Button" parent="TestScreenCard"]
+[node name="ButtonFalse" type="Button" parent="TestScreenTrueFalse"]
 margin_left = 100.0
 margin_top = 1950.0
 margin_right = 500.0
@@ -1435,19 +1502,19 @@ custom_styles/pressed = SubResource( 74 )
 custom_styles/hover = SubResource( 73 )
 text = "False"
 
-[node name="CoverGreen" type="Panel" parent="TestScreenCard"]
+[node name="CoverGreen" type="Panel" parent="TestScreenTrueFalse"]
 margin_left = 1300.0
 margin_right = 2380.0
 margin_bottom = 2300.0
 custom_styles/panel = SubResource( 45 )
 
-[node name="CoverRed" type="Panel" parent="TestScreenCard"]
+[node name="CoverRed" type="Panel" parent="TestScreenTrueFalse"]
 margin_left = -1300.0
 margin_right = -220.0
 margin_bottom = 2300.0
 custom_styles/panel = SubResource( 46 )
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="TestScreenCard"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="TestScreenTrueFalse"]
 "anims/Green Cover" = SubResource( 78 )
 anims/RESET = SubResource( 79 )
 "anims/Red Cover" = SubResource( 80 )
@@ -1560,6 +1627,177 @@ anims/GreenCover = SubResource( 47 )
 anims/RESET = SubResource( 48 )
 anims/RedCover = SubResource( 49 )
 
+[node name="PopupPanelCorrection" type="Popup" parent="TestScreenType"]
+margin_left = 40.0
+margin_top = 100.0
+margin_right = 1040.0
+margin_bottom = 1800.0
+
+[node name="Panel" type="Panel" parent="TestScreenType/PopupPanelCorrection"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Title" type="Label" parent="TestScreenType/PopupPanelCorrection/Panel"]
+margin_left = 300.0
+margin_top = 100.0
+margin_right = 700.0
+margin_bottom = 146.0
+text = "You were wrong"
+align = 1
+valign = 1
+
+[node name="LabelQuestion" type="Label" parent="TestScreenType/PopupPanelCorrection/Panel"]
+margin_left = 40.0
+margin_top = 200.0
+margin_right = 256.0
+margin_bottom = 246.0
+text = "Question:"
+
+[node name="EditQuestion" type="TextEdit" parent="TestScreenType/PopupPanelCorrection/Panel"]
+margin_left = 40.0
+margin_top = 300.0
+margin_right = 960.0
+margin_bottom = 700.0
+readonly = true
+wrap_enabled = true
+
+[node name="LabelAnswer" type="Label" parent="TestScreenType/PopupPanelCorrection/Panel"]
+margin_left = 40.0
+margin_top = 800.0
+margin_right = 208.0
+margin_bottom = 846.0
+text = "Answer:"
+
+[node name="EditAnswer" type="TextEdit" parent="TestScreenType/PopupPanelCorrection/Panel"]
+margin_left = 40.0
+margin_top = 900.0
+margin_right = 960.0
+margin_bottom = 1300.0
+readonly = true
+wrap_enabled = true
+
+[node name="ButtonOk" type="Button" parent="TestScreenType/PopupPanelCorrection/Panel"]
+margin_left = 600.0
+margin_top = 1500.0
+margin_right = 900.0
+margin_bottom = 1600.0
+text = "Ok"
+
+[node name="ButtonCorrrection" type="Button" parent="TestScreenType/PopupPanelCorrection/Panel"]
+margin_left = 100.0
+margin_top = 1500.0
+margin_right = 400.0
+margin_bottom = 1600.0
+text = "I was right"
+
+[node name="TestScreenCard" type="Control" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 8.0
+margin_right = -4.0
+margin_bottom = -4.0
+script = ExtResource( 11 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Title" type="Label" parent="TestScreenCard"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -285.0
+margin_top = 40.0
+margin_right = 285.0
+margin_bottom = 72.0
+text = "Type the answer"
+align = 1
+valign = 1
+
+[node name="LabelQuestionNumber" type="Label" parent="TestScreenCard"]
+margin_left = 40.0
+margin_top = 150.0
+margin_right = 160.0
+margin_bottom = 208.0
+text = "0/0"
+
+[node name="LabelSubject" type="Label" parent="TestScreenCard"]
+margin_left = 250.0
+margin_top = 250.0
+margin_right = 490.0
+margin_bottom = 308.0
+text = "Subject:"
+
+[node name="LabelTopic" type="Label" parent="TestScreenCard"]
+margin_left = 310.0
+margin_top = 300.0
+margin_right = 490.0
+margin_bottom = 358.0
+text = "Topic:"
+
+[node name="LabelQuestionType" type="Label" parent="TestScreenCard"]
+margin_left = 40.0
+margin_top = 500.0
+margin_right = 310.0
+margin_bottom = 558.0
+text = "Question:"
+
+[node name="EditQuestion" type="TextEdit" parent="TestScreenCard"]
+margin_left = 40.0
+margin_top = 600.0
+margin_right = 1040.0
+margin_bottom = 1100.0
+readonly = true
+wrap_enabled = true
+
+[node name="LabelAnswerType" type="Label" parent="TestScreenCard"]
+margin_left = 40.0
+margin_top = 1200.0
+margin_right = 280.0
+margin_bottom = 1258.0
+text = "Answer:"
+
+[node name="EditAnswer" type="TextEdit" parent="TestScreenCard"]
+margin_left = 40.0
+margin_top = 1300.0
+margin_right = 1040.0
+margin_bottom = 1800.0
+wrap_enabled = true
+
+[node name="ButtonLeave" type="Button" parent="TestScreenCard"]
+margin_left = 80.0
+margin_top = 1950.0
+margin_right = 480.0
+margin_bottom = 2250.0
+text = "Leave"
+
+[node name="ButtonNext" type="Button" parent="TestScreenCard"]
+margin_left = 600.0
+margin_top = 1950.0
+margin_right = 1000.0
+margin_bottom = 2250.0
+custom_styles/normal = SubResource( 75 )
+custom_styles/pressed = SubResource( 76 )
+custom_styles/hover = SubResource( 75 )
+text = "Next"
+
+[node name="CoverGreen" type="Panel" parent="TestScreenCard"]
+margin_left = 1300.0
+margin_right = 2380.0
+margin_bottom = 2300.0
+custom_styles/panel = SubResource( 45 )
+
+[node name="CoverRed" type="Panel" parent="TestScreenCard"]
+margin_left = -1300.0
+margin_right = -220.0
+margin_bottom = 2300.0
+custom_styles/panel = SubResource( 46 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="TestScreenCard"]
+anims/GreenCover = SubResource( 81 )
+anims/RESET = SubResource( 82 )
+anims/RedCover = SubResource( 83 )
+
 [connection signal="pressed" from="SelectorScreen/ButtonAdd" to="." method="change_screen" binds= [ 1 ]]
 [connection signal="pressed" from="SelectorScreen/ButtonTest" to="." method="change_screen" binds= [ 2 ]]
 [connection signal="pressed" from="SelectorScreen/ButtonReview" to="." method="change_screen" binds= [ 3 ]]
@@ -1576,8 +1814,8 @@ anims/RedCover = SubResource( 49 )
 [connection signal="file_selected" from="SelectorScreen/Settings/FileDialogExportDatabase" to="SelectorScreen/Settings" method="export_database_accepted"]
 [connection signal="pressed" from="SelectorScreen/Settings/ButtonUpdateVersion" to="SelectorScreen/Settings" method="download_latest_version"]
 [connection signal="request_completed" from="SelectorScreen/Settings/HTTPRequest" to="SelectorScreen/Settings" method="download_latest_version_completed"]
-[connection signal="draw" from="AddScreen" to="AddScreen/ButtonCreate" method="focus_edit_term"]
 [connection signal="draw" from="AddScreen" to="AddScreen/ButtonCreate" method="clear_log"]
+[connection signal="draw" from="AddScreen" to="AddScreen/ButtonCreate" method="focus_edit_term"]
 [connection signal="draw" from="AddScreen" to="AddScreen/ButtonCreate" method="refresh_subjects"]
 [connection signal="pressed" from="AddScreen/ButtonNewSubject" to="AddScreen/ButtonCreate" method="create_subject"]
 [connection signal="item_selected" from="AddScreen/OptionButtonSubject" to="AddScreen/ButtonCreate" method="refresh_topics"]
@@ -1594,16 +1832,17 @@ anims/RedCover = SubResource( 49 )
 [connection signal="item_selected" from="TestScreen/AnswerTypeSelector" to="TestScreen" method="answer_type_changed"]
 [connection signal="pressed" from="TestScreen/CheckCards" to="TestScreen" method="mode_select" binds= [ 0 ]]
 [connection signal="pressed" from="TestScreen/CheckType" to="TestScreen" method="mode_select" binds= [ 1 ]]
+[connection signal="pressed" from="TestScreen/CheckTrueFalse" to="TestScreen" method="mode_select" binds= [ 2 ]]
 [connection signal="pressed" from="TestScreen/HelpCycle" to="TestScreen" method="help_cycle"]
 [connection signal="pressed" from="TestScreen/HelpIgnoreCategories" to="TestScreen" method="help_ignore_categories"]
 [connection signal="pressed" from="TestScreen/ButtonStart" to="TestScreen" method="start_test"]
 [connection signal="pressed" from="ReviewScreen/HBoxContainer/ButtonEditTerms" to="ReviewScreen/EditScreenContainer" method="change_edit_mode" binds= [ 0 ]]
 [connection signal="pressed" from="ReviewScreen/HBoxContainer/ButtonEditSubjects" to="ReviewScreen/EditScreenContainer" method="change_edit_mode" binds= [ 1 ]]
 [connection signal="draw" from="ReviewScreen/EditScreenContainer/EditTerms" to="ReviewScreen/EditScreenContainer/EditTerms" method="refresh_data"]
-[connection signal="item_selected" from="ReviewScreen/EditScreenContainer/EditTerms/OptionButtonSort" to="ReviewScreen/EditScreenContainer/EditTerms" method="refresh_data"]
 [connection signal="item_selected" from="ReviewScreen/EditScreenContainer/EditTerms/OptionButtonSort" to="ReviewScreen/EditScreenContainer/EditTerms" method="refresh_subject_list"]
-[connection signal="item_selected" from="ReviewScreen/EditScreenContainer/EditTerms/OptionButtonSubject" to="ReviewScreen/EditScreenContainer/EditTerms" method="refresh_data"]
+[connection signal="item_selected" from="ReviewScreen/EditScreenContainer/EditTerms/OptionButtonSort" to="ReviewScreen/EditScreenContainer/EditTerms" method="refresh_data"]
 [connection signal="item_selected" from="ReviewScreen/EditScreenContainer/EditTerms/OptionButtonSubject" to="ReviewScreen/EditScreenContainer/EditTerms" method="refresh_topic_list"]
+[connection signal="item_selected" from="ReviewScreen/EditScreenContainer/EditTerms/OptionButtonSubject" to="ReviewScreen/EditScreenContainer/EditTerms" method="refresh_data"]
 [connection signal="item_selected" from="ReviewScreen/EditScreenContainer/EditTerms/OptionButtonTopic" to="ReviewScreen/EditScreenContainer/EditTerms" method="refresh_data"]
 [connection signal="item_selected" from="ReviewScreen/EditScreenContainer/EditTerms/TermsList" to="ReviewScreen/EditScreenContainer/EditTerms" method="term_selected"]
 [connection signal="pressed" from="ReviewScreen/EditScreenContainer/EditTerms/ButtonDelete" to="ReviewScreen/EditScreenContainer/EditTerms" method="delete_term"]
@@ -1618,7 +1857,11 @@ anims/RedCover = SubResource( 49 )
 [connection signal="item_selected" from="ReviewScreen/EditScreenContainer/EditSubjects/TopicSelector" to="ReviewScreen/EditScreenContainer/EditSubjects" method="topic_selected"]
 [connection signal="pressed" from="ReviewScreen/EditScreenContainer/EditSubjects/ButtonTopicDelete" to="ReviewScreen/EditScreenContainer/EditSubjects" method="delete_topic"]
 [connection signal="pressed" from="ReviewScreen/EditScreenContainer/EditSubjects/ButtonTopicEdit" to="ReviewScreen/EditScreenContainer/EditSubjects" method="edit_topic"]
-[connection signal="pressed" from="TestScreenCard/ButtonTrue" to="TestScreenCard" method="question_answered" binds= [ true ]]
-[connection signal="pressed" from="TestScreenCard/ButtonFalse" to="TestScreenCard" method="question_answered" binds= [ false ]]
+[connection signal="pressed" from="TestScreenTrueFalse/ButtonTrue" to="TestScreenTrueFalse" method="question_answered" binds= [ true ]]
+[connection signal="pressed" from="TestScreenTrueFalse/ButtonFalse" to="TestScreenTrueFalse" method="question_answered" binds= [ false ]]
 [connection signal="pressed" from="TestScreenType/ButtonLeave" to="." method="leave_request"]
 [connection signal="pressed" from="TestScreenType/ButtonNext" to="TestScreenType" method="validate_answer"]
+[connection signal="pressed" from="TestScreenType/PopupPanelCorrection/Panel/ButtonOk" to="TestScreenType" method="correction_popup_accepted" binds= [ 0 ]]
+[connection signal="pressed" from="TestScreenType/PopupPanelCorrection/Panel/ButtonCorrrection" to="TestScreenType" method="correction_popup_accepted" binds= [ 1 ]]
+[connection signal="pressed" from="TestScreenCard/ButtonLeave" to="." method="leave_request"]
+[connection signal="pressed" from="TestScreenCard/ButtonNext" to="TestScreenCard" method="validate_answer"]

@@ -126,4 +126,6 @@ func download_latest_version_completed(result: int, response_code: int, headers:
    var downloaded_file = File.new()
    if downloaded_file.file_exists(OS.get_system_dir(OS.SYSTEM_DIR_DOWNLOADS)+"/LearnForLife.apk"):
       GlobalFunctions.show_warning(self, "", "Download Successful, you might look up the downloaded file 'LearnForLife.apk' in the 'Downloads' folder and run it.")
+   #OS.shell_open(OS.get_system_dir(OS.SYSTEM_DIR_DOWNLOADS)+"/error.png")
+   #OS.shell_open(OS.get_system_dir(OS.SYSTEM_DIR_DOWNLOADS) + "/LearnForLife.apk")  
    pass

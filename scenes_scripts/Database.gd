@@ -282,3 +282,9 @@ func exists(mode: String, subject: String, topic: String, term: String):  ## che
       return false
       pass
    pass
+
+func get_term_by_id(id):
+   for i in terms.keys():
+      if i == id:
+         return terms[i]
+   pass

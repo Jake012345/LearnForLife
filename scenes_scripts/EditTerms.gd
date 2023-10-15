@@ -4,7 +4,7 @@ onready var sort_selector = get_node("OptionButtonSort")
 onready var select_subject = get_node("OptionButtonSubject")
 onready var select_topic = get_node("OptionButtonTopic")
 onready var list_terms = get_node("TermsList")
-onready var terms_sorted = []
+onready var terms_sorted = []  # containing the idexes of the terms in the preferred order
 onready var definition_display = get_node("DefinitonDisplay")
 onready var label_selected_subject = get_node("LabelSelectedSubject")
 onready var label_selected_topic = get_node("LabelSelectedTopic")
@@ -16,7 +16,7 @@ onready var edit_definition = get_node("TermEditor/Panel/EditDefinition")
 onready var check_reset_cycle = get_node("TermEditor/Panel/CheckResetCycle")
 onready var term_edit_select_subject = get_node("TermEditor/Panel/SubjectSelector")
 onready var term_edit_select_topic = get_node("TermEditor/Panel/TopicSelector")
-var selected_term: Term = null
+var selected_term_index:int = -1
 
 func _ready():
    GlobalFunctions.set_font(sort_selector, 32)
@@ -45,23 +45,22 @@ func refresh_data(_args = 0):
    pass
 
 func refresh_data_alphabetical():
+   terms_sorted.clear()
    var tmp_terms = []
-   var tmp_terms_sorted = []  
+   var tmp
    for i in GlobalDatabase.terms:
-     tmp_terms.append([i, GlobalDatabase.terms[i]])
+      tmp_terms.append(i)
    while tmp_terms.size() > 0:
-     var tmp_min = tmp_terms[0]
-     for i in tmp_terms:
-       if i[1].text < tmp_min[1].text:
-         tmp_min = i
-     tmp_terms_sorted.append(tmp_min)
-     tmp_terms.remove(tmp_terms.find(tmp_min))
-   #theorically we have the list ordered
-   list_terms.clear()
-   for i in tmp_terms_sorted:
-     list_terms.add_item(i[1].text)
-     # conditions if we need to see the subject/topic etc.
-   terms_sorted = tmp_terms_sorted
+      tmp = tmp_terms[0]
+      for j in tmp_terms:
+         if GlobalDatabase.terms[j].text < GlobalDatabase.terms[tmp].text:
+            tmp = j
+      terms_sorted.append(tmp)
+      tmp_terms.erase(tmp)
+   for i in terms_sorted:
+      list_terms.add_item(GlobalDatabase.terms[i].text)
+      
+
    pass
 
 func refresh_data_st_based():
@@ -72,27 +71,28 @@ func refresh_data_st_based():
      if GlobalDatabase.terms[i].subject == filter_subject:
        if GlobalDatabase.terms[i].topic == filter_topic:
          list_terms.add_item(GlobalDatabase.terms[i].text)
-         terms_sorted.append([i, GlobalDatabase.terms[i]])
+         terms_sorted.append(i)
    pass
 
 func delete_term():
-   if selected_term != null:
+   if selected_term_index != -1:
       GlobalFunctions.show_warning(self, "delete_term_accepted", "Are you sure you want to delete the selected Term?")
    else:
       GlobalFunctions.show_warning(self, "", "You need to select a Term first.")
    pass
 
 func delete_term_accepted():
-   list_terms.remove_item(terms_sorted.find(selected_term))
-   GlobalDatabase.remove_term(selected_term)
-   terms_sorted.remove(terms_sorted.find(selected_term))
+   list_terms.remove_item(terms_sorted.find(selected_term_index))
+   GlobalDatabase.remove_term_by_index(selected_term_index)
+   terms_sorted.remove(terms_sorted.find(selected_term_index))
    refresh_data()
-   selected_term = null
+   selected_term_index = -1
    pass
 
 
 func term_selected(index):
-   selected_term = terms_sorted[index][1]
+   selected_term_index = terms_sorted[index]
+   var selected_term = GlobalDatabase.terms[selected_term_index]
    definition_display.text = selected_term.definition
    label_selected_subject.text = "Subject:" + "\n" + selected_term.subject
    label_selected_topic.text = "Topic:" + "\n" + selected_term.topic
@@ -136,9 +136,10 @@ func refresh_topic_list(_index):
 
 
 func edit_selected_term():
+   var selected_term = GlobalDatabase.terms[selected_term_index]
    term_edit_select_subject.clear()
    if list_terms.get_selected_items().size() > 0:
-      selected_term = terms_sorted[list_terms.get_selected_items()[0]][1]
+      selected_term = GlobalDatabase.terms[terms_sorted[list_terms.get_selected_items()[0]]]
       term_editor.show()  #### somewhy any other kind of show does not work as well as .popup does not D:
       edit_term.text = selected_term.text
       edit_definition.text = selected_term.definition
@@ -151,8 +152,9 @@ func edit_selected_term():
    pass
 
 func refresh_term_edit_topic(index: int = -1):
+   var selected_term = GlobalDatabase.terms[selected_term_index]
    term_edit_select_topic.clear()
-   selected_term = terms_sorted[list_terms.get_selected_items()[0]][1]
+   selected_term =  GlobalDatabase.terms[terms_sorted[list_terms.get_selected_items()[0]]]
    var selected_subject: Subject = GlobalDatabase.get_subject_by_name(term_edit_select_subject.get_item_text(index))
    for i in selected_subject.topics:
       term_edit_select_topic.add_item(i)
@@ -174,6 +176,7 @@ func term_edit_accept():
    pass
 
 func term_edit_accepted():
+   var selected_term = GlobalDatabase.terms[selected_term_index]
    term_editor.hide()
    selected_term.text = edit_term.text
    selected_term.definition = edit_definition.text

@@ -16,11 +16,16 @@ var current_question_index = 0
 onready var animation_player = get_node("AnimationPlayer")
 onready var main = get_parent()
 signal answered_with_text  ## not empty answer
+signal wrong_answer_checked
+signal correction_finished
 var cycle_enabled = false
 var answered_right = {}
 var answered_wrong = {}
 onready var button_next = get_node("ButtonNext")
-
+onready var correction_popup = get_node("PopupPanelCorrection")
+onready var correction_popup_edit_question = get_node("PopupPanelCorrection/Panel/EditQuestion")
+onready var correction_popup_edit_answer = get_node("PopupPanelCorrection/Panel/EditAnswer")
+var corrected: bool = false
 
 func _ready():
    GlobalFunctions.set_font(edit_question, 50)
@@ -83,17 +88,10 @@ func validate_answer():
 func question_answered():
    if (question_mode == 0 and edit_answer.text.to_lower().strip_edges() == current_question.definition.to_lower()) or \
      (question_mode == 1 and edit_answer.text.to_lower().strip_edges() == current_question.text.to_lower()):
-       answered_right[current_question_index] = current_question
-       if cycle_enabled:
-         if current_question.actuality_day_count == GlobalDatabase.term_returning_cycles[-1]:
-            current_question.actuality_day_count = -1   #####ADDITIONAL THINGS IF IT IS DONE, REMOVE OR WHAT
-         elif current_question.actuality_day_count != -1:
-            current_question.actuality_day_count = GlobalDatabase.term_returning_cycles[GlobalDatabase.term_returning_cycles.find(current_question.actuality_day_count)+1]
-       animation_player.play("GreenCover")
+      question_answered_right()
    else:
-     animation_player.play("RedCover")
-     answered_wrong[current_question_index] = current_question
-   yield(animation_player, "animation_finished")
+      question_answered_wrong()
+      yield(self, "wrong_answer_checked")
    questions.erase(current_question_index)
    question_number += 1
    if question_number == question_number_all:
@@ -101,6 +99,41 @@ func question_answered():
    else:
      next_question()
    pass
+
+func question_answered_right():
+   answered_right[current_question_index] = current_question
+   if cycle_enabled:
+      if current_question.actuality_day_count == GlobalDatabase.term_returning_cycles[-1]:
+         current_question.actuality_day_count = -1   #####ADDITIONAL THINGS IF IT IS DONE, REMOVE OR WHAT
+      elif current_question.actuality_day_count != -1:
+         current_question.actuality_day_count = GlobalDatabase.term_returning_cycles[GlobalDatabase.term_returning_cycles.find(current_question.actuality_day_count)+1]
+      animation_player.play("GreenCover")
+      yield(animation_player, "animation_finished")
+   pass
+
+func question_answered_wrong():
+   animation_player.play("RedCover")
+   yield(animation_player, "animation_finished")
+   correction_popup.popup_centered()
+   correction_popup_edit_question.text = current_question.text
+   correction_popup_edit_answer.text = current_question.definition
+   yield(self, "correction_finished")
+   if not corrected:
+      answered_wrong[current_question_index] = current_question
+   corrected = false
+   emit_signal("wrong_answer_checked")
+   pass
+
+func correction_popup_accepted(mode):
+   correction_popup.hide()
+   if mode == 0: #Ok
+      pass
+   elif mode == 1: #corrected
+      question_answered_right()
+      corrected = true
+   emit_signal("correction_finished")
+   pass
+
 
 func summarize():
    main.change_screen(2)
