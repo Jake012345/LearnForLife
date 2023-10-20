@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=2]
+[gd_scene load_steps=48 format=2]
 
 [ext_resource path="res://lib/font/CourierPrime-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://scenes_scripts/Main.gd" type="Script" id=2]
@@ -266,25 +266,39 @@ tracks/0/keys = {
 "values": [ Vector2( 1300, 0 ), Vector2( -1300, 0 ) ]
 }
 
+[sub_resource type="Gradient" id=84]
+colors = PoolColorArray( 0.25098, 0.235294, 0.235294, 1, 0.317647, 0.309804, 0.435294, 1 )
+
+[sub_resource type="GradientTexture2D" id=85]
+gradient = SubResource( 84 )
+fill_from = Vector2( 0.1, 0.1 )
+fill_to = Vector2( 0.9, 0.9 )
+
+[sub_resource type="StyleBoxTexture" id=86]
+texture = SubResource( 85 )
+region_rect = Rect2( 0, 0, 64, 64 )
+
 [sub_resource type="Animation" id=81]
-resource_name = "GreenCover"
+resource_name = "Narrowing"
+length = 0.5
+step = 0.01
 tracks/0/type = "value"
-tracks/0/path = NodePath("CoverGreen:rect_position")
-tracks/0/interp = 1
+tracks/0/path = NodePath("DisplayText:rect_scale")
+tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 1 ),
+"times": PoolRealArray( 0, 0.5 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( 1300, 0 ), Vector2( -1300, 0 ) ]
+"values": [ Vector2( 1, 1 ), Vector2( 0.05, 1 ) ]
 }
 
 [sub_resource type="Animation" id=82]
 length = 0.001
 tracks/0/type = "value"
-tracks/0/path = NodePath("CoverGreen:rect_position")
+tracks/0/path = NodePath("DisplayText:rect_scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -293,10 +307,10 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 1300, 0 ) ]
+"values": [ Vector2( 1, 1 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("CoverRed:rect_position")
+tracks/1/path = NodePath("DisplayText:rect_position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -305,22 +319,35 @@ tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( -1300, 0 ) ]
+"values": [ Vector2( 40, 600 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("DisplayText:rect_size")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1000, 1000 ) ]
 }
 
 [sub_resource type="Animation" id=83]
-resource_name = "RedCover"
+resource_name = "Widening"
+length = 0.5
 tracks/0/type = "value"
-tracks/0/path = NodePath("CoverRed:rect_position")
+tracks/0/path = NodePath("DisplayText:rect_scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 1 ),
+"times": PoolRealArray( 0, 0.5 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( 1300, 0 ), Vector2( -1300, 0 ) ]
+"values": [ Vector2( 0.05, 1 ), Vector2( 1, 1 ) ]
 }
 
 [node name="Main" type="TabContainer"]
@@ -499,7 +526,8 @@ margin_left = 150.0
 margin_top = 2150.0
 margin_right = 450.0
 margin_bottom = 2250.0
-text = "Cancel"
+text = "Discard &
+Leave"
 
 [node name="LabelResetLibrary" type="Label" parent="SelectorScreen/Settings"]
 margin_left = 40.0
@@ -906,22 +934,22 @@ margin_right = 670.0
 margin_bottom = 858.0
 text = "Select the test mode:"
 
-[node name="CheckCards" type="CheckBox" parent="TestScreen"]
+[node name="CheckCards" type="CheckBox" parent="TestScreen" groups=["mode_selectors"]]
 margin_left = 40.0
 margin_top = 900.0
 margin_right = 140.0
 margin_bottom = 925.0
-disabled = true
+pressed = true
 text = "Cards"
 
-[node name="CheckType" type="CheckBox" parent="TestScreen"]
+[node name="CheckType" type="CheckBox" parent="TestScreen" groups=["mode_selectors"]]
 margin_left = 40.0
 margin_top = 1000.0
 margin_right = 140.0
 margin_bottom = 1025.0
 text = "Type"
 
-[node name="CheckTrueFalse" type="CheckBox" parent="TestScreen"]
+[node name="CheckTrueFalse" type="CheckBox" parent="TestScreen" groups=["mode_selectors"]]
 margin_left = 300.0
 margin_top = 900.0
 margin_right = 478.0
@@ -1710,7 +1738,7 @@ margin_left = -285.0
 margin_top = 40.0
 margin_right = 285.0
 margin_bottom = 72.0
-text = "Type the answer"
+text = "Were you right?"
 align = 1
 valign = 1
 
@@ -1735,43 +1763,32 @@ margin_right = 490.0
 margin_bottom = 358.0
 text = "Topic:"
 
-[node name="LabelQuestionType" type="Label" parent="TestScreenCard"]
+[node name="LabelMode" type="Label" parent="TestScreenCard"]
 margin_left = 40.0
 margin_top = 500.0
 margin_right = 310.0
 margin_bottom = 558.0
-text = "Question:"
+text = "Term:"
 
-[node name="EditQuestion" type="TextEdit" parent="TestScreenCard"]
+[node name="DisplayText" type="Button" parent="TestScreenCard"]
 margin_left = 40.0
 margin_top = 600.0
 margin_right = 1040.0
-margin_bottom = 1100.0
-readonly = true
-wrap_enabled = true
+margin_bottom = 1600.0
+rect_pivot_offset = Vector2( 500, 0 )
+custom_styles/normal = SubResource( 86 )
+custom_styles/pressed = SubResource( 86 )
+custom_styles/hover = SubResource( 86 )
+custom_styles/focus = SubResource( 86 )
 
-[node name="LabelAnswerType" type="Label" parent="TestScreenCard"]
-margin_left = 40.0
-margin_top = 1200.0
-margin_right = 280.0
-margin_bottom = 1258.0
-text = "Answer:"
-
-[node name="EditAnswer" type="TextEdit" parent="TestScreenCard"]
-margin_left = 40.0
-margin_top = 1300.0
-margin_right = 1040.0
-margin_bottom = 1800.0
-wrap_enabled = true
-
-[node name="ButtonLeave" type="Button" parent="TestScreenCard"]
+[node name="ButtonWrong" type="Button" parent="TestScreenCard"]
 margin_left = 80.0
 margin_top = 1950.0
 margin_right = 480.0
 margin_bottom = 2250.0
-text = "Leave"
+text = "Damn.."
 
-[node name="ButtonNext" type="Button" parent="TestScreenCard"]
+[node name="ButtonRight" type="Button" parent="TestScreenCard"]
 margin_left = 600.0
 margin_top = 1950.0
 margin_right = 1000.0
@@ -1779,24 +1796,12 @@ margin_bottom = 2250.0
 custom_styles/normal = SubResource( 75 )
 custom_styles/pressed = SubResource( 76 )
 custom_styles/hover = SubResource( 75 )
-text = "Next"
-
-[node name="CoverGreen" type="Panel" parent="TestScreenCard"]
-margin_left = 1300.0
-margin_right = 2380.0
-margin_bottom = 2300.0
-custom_styles/panel = SubResource( 45 )
-
-[node name="CoverRed" type="Panel" parent="TestScreenCard"]
-margin_left = -1300.0
-margin_right = -220.0
-margin_bottom = 2300.0
-custom_styles/panel = SubResource( 46 )
+text = "I knew it!"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="TestScreenCard"]
-anims/GreenCover = SubResource( 81 )
+anims/Narrowing = SubResource( 81 )
 anims/RESET = SubResource( 82 )
-anims/RedCover = SubResource( 83 )
+anims/Widening = SubResource( 83 )
 
 [connection signal="pressed" from="SelectorScreen/ButtonAdd" to="." method="change_screen" binds= [ 1 ]]
 [connection signal="pressed" from="SelectorScreen/ButtonTest" to="." method="change_screen" binds= [ 2 ]]
@@ -1863,5 +1868,6 @@ anims/RedCover = SubResource( 83 )
 [connection signal="pressed" from="TestScreenType/ButtonNext" to="TestScreenType" method="validate_answer"]
 [connection signal="pressed" from="TestScreenType/PopupPanelCorrection/Panel/ButtonOk" to="TestScreenType" method="correction_popup_accepted" binds= [ 0 ]]
 [connection signal="pressed" from="TestScreenType/PopupPanelCorrection/Panel/ButtonCorrrection" to="TestScreenType" method="correction_popup_accepted" binds= [ 1 ]]
-[connection signal="pressed" from="TestScreenCard/ButtonLeave" to="." method="leave_request"]
-[connection signal="pressed" from="TestScreenCard/ButtonNext" to="TestScreenCard" method="validate_answer"]
+[connection signal="pressed" from="TestScreenCard/DisplayText" to="TestScreenCard" method="turn"]
+[connection signal="pressed" from="TestScreenCard/ButtonWrong" to="TestScreenCard" method="question_answered" binds= [ false ]]
+[connection signal="pressed" from="TestScreenCard/ButtonRight" to="TestScreenCard" method="question_answered" binds= [ true ]]

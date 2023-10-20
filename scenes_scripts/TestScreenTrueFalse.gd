@@ -6,7 +6,7 @@ onready var label_question_number = get_node("LabelQuestionNumber")
 onready var label_question_type = get_node("LabelQuestionType")
 onready var label_anwer_type = get_node("LabelAnswerType")
 onready var label_subject = get_node("LabelSubject")
-onready var label_topc = get_node("LabelTopic")
+onready var label_topic = get_node("LabelTopic")
 var cycle_enabled: bool = false
 var questions = {}
 onready var main = get_parent()
@@ -62,6 +62,8 @@ func next_question():
       edit_question.text = current_question.text
    elif question_mode == 1:
       edit_question.text = current_question.definition
+   label_subject.text = "Subject: " + current_question.subject
+   label_topic.text = "Topic: " + current_question.topic
 
    var random_tf = randi() % 2    ### TRUE(0) OR FALSE(1) ANSWER
    if random_tf == 0:   #### TRUE ANSWER
@@ -94,6 +96,7 @@ func question_answered(answer:bool):
       question_answered_right()
    else:
       question_answered_wrong()
+   question_number += 1
    pass
 
 func question_answered_right():

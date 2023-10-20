@@ -23,16 +23,15 @@ func _ready():
    pass
 
 
-func mode_select(mode: int = -1):   # later maybe with group? :D
+func mode_select(mode: int = -1):
+   for i in get_tree().get_nodes_in_group("mode_selectors"):
+         i.pressed = false
    if mode == 0:  #card mode
-      check_type.pressed = false
-      check_true_false.pressed = false
-   if mode == 1:  #type mode
-      check_cards.pressed = false
-      check_true_false = false
-   if mode == 2: #true-false mode
-      check_cards.pressed = false
-      check_type.pressed = false
+      check_cards.pressed = true
+   elif mode == 1:  #type mode
+      check_type.pressed = true
+   elif mode == 2: #true-false mode
+      check_true_false.pressed = true
    pass
 
 
@@ -68,15 +67,15 @@ func start_test():
    if subject_selector.text == "" or topic_selector.text == "": #nothing's selected
       GlobalFunctions.show_warning(self, "", "Both Subject and topic needs to be specified to start the test.")
       return
-   if check_cards.pressed:
-      main.change_screen(4)  #cards screen
-      screen_cards.set_data(check_ignore_categories.pressed, subject_selector.text, topic_selector.text, question_type_selector.selected, check_cycle.pressed)
+   if check_true_false.pressed:
+      main.change_screen(4)  #true-false screen
+      screen_true_false.set_data(check_ignore_categories.pressed, subject_selector.text, topic_selector.text, question_type_selector.selected, check_cycle.pressed)
    elif check_type.pressed:
       main.change_screen(5) #type screen
       screen_type.set_data(check_ignore_categories.pressed, subject_selector.text, topic_selector.text, question_type_selector.selected, check_cycle.pressed)
-   elif check_true_false.pressed:
+   elif check_cards.pressed: #cards screen
       main.change_screen(6)
-      #screen_cards.set_data(check_ignore_categories.pressed, subject_selector.text, topic_selector.text, question_type_selector.selected, check_cycle.pressed)
+      screen_cards.set_data(check_ignore_categories.pressed, subject_selector.text, topic_selector.text, question_type_selector.selected, check_cycle.pressed)
    #elif ..... other screens
    else: # nothing selected
       GlobalFunctions.show_warning(self, "", "You have to choose a mode for testing.")
