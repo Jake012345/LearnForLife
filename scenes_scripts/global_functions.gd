@@ -61,3 +61,16 @@ func warning_answered(accepted: bool):
    warning_accepted = accepted
    emit_signal("accept_warning")
    pass
+
+func animate_text(node: Label, time_in_sec: float, visible: bool = true):
+   if visible:
+      node.visible_characters = 0
+      while node.visible_characters < node.get_total_character_count():
+         yield(get_tree().create_timer(time_in_sec / node.get_total_character_count()), "timeout")
+         node.visible_characters += 1
+   else:
+      node.visible_characters = node.get_total_character_count()
+      while node.visible_characters > 0:
+         yield(get_tree().create_timer(time_in_sec / node.get_total_character_count()), "timeout")
+         node.visible_characters -= 1
+   pass

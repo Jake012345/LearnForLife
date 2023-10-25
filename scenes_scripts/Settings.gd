@@ -118,8 +118,9 @@ func download_latest_version():
       #delete file 
       pass
    https_request.download_file = OS.get_system_dir(OS.SYSTEM_DIR_DOWNLOADS) + "/LearnForLife.apk"
-   if https_request.request("https://github.com/Jake012345/LearnForLife/releases/latest/download/LearnForLife.apk") != OK:
-      GlobalFunctions.show_warning(self, "", "Something went wrong, try again later!")
+   #if https_request.request("https://github.com/Jake012345/LearnForLife/releases/latest/download/LearnForLife.apk") != OK:
+      #GlobalFunctions.show_warning(self, "", "Something went wrong, try again later!")
+   OS.shell_open("https://github.com/Jake012345/LearnForLife/releases/latest/download/LearnForLife.apk")
    pass
 
 func download_latest_version_completed(result: int, response_code: int, headers: PoolStringArray, body: PoolByteArray): #what are the args?

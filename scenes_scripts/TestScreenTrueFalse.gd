@@ -7,7 +7,8 @@ onready var label_question_type = get_node("LabelQuestionType")
 onready var label_anwer_type = get_node("LabelAnswerType")
 onready var label_subject = get_node("LabelSubject")
 onready var label_topic = get_node("LabelTopic")
-var cycle_enabled: bool = false
+var cycle_filter_enabled: bool = false
+var cycle_apply_enabled: bool = false
 var questions = {}
 onready var main = get_parent()
 var question_number_all = 0
@@ -18,22 +19,25 @@ var current_question_index = 0
 var current_question: Term = null
 var question_mode = 0
 onready var animation_player = get_node("AnimationPlayer")
+onready var answer_button_true = get_node("ButtonTrue")
+onready var answer_button_false = get_node("ButtonFalse")
 
 func _ready():
 
    pass
 
 
-func set_data(ignore_categories: bool, subject: String, topic: String, question_type: int, cycle: bool):
+func set_data(ignore_categories: bool, subject: String, topic: String, question_type: int, cycle_filter: bool, cycle_apply: bool):
    if question_type == 0:
       label_question_type.text = "Term:"
       label_anwer_type.text = "Definition:"
    elif question_type == 1:
       label_question_type.text = "Definition:"
       label_anwer_type.text = "Term:"
-   cycle_enabled = cycle
+   cycle_filter_enabled = cycle_filter
+   cycle_apply_enabled = cycle_apply
    question_mode = question_type
-   questions = GlobalDatabase.filter(ignore_categories, subject, topic, cycle_enabled)
+   questions = GlobalDatabase.filter(ignore_categories, subject, topic, cycle_filter_enabled)
    if questions.size() == 0:
      GlobalFunctions.show_warning(self, "", "You dont have any cards matching the conditions.")
      main.change_screen(2)
@@ -91,18 +95,23 @@ func next_question():
 
 
 func question_answered(answer:bool):
+   answer_button_true.disabled = true
+   answer_button_false.disabled = true
    if (((current_question.text == edit_answer.text) and (current_question.definition == edit_question.text)) and (question_mode == 1) or \
    ((current_question.definition == edit_answer.text) and (current_question.text == edit_question.text)) and (question_mode == 0)) == answer:
       question_answered_right()
    else:
       question_answered_wrong()
    question_number += 1
+   yield(animation_player, "animation_finished")
+   answer_button_true.disabled = false
+   answer_button_false.disabled = false
    pass
 
 func question_answered_right():
    answered_right[current_question_index] = current_question
    questions.erase(current_question_index)
-   if cycle_enabled:
+   if cycle_apply_enabled and GlobalDatabase.calculate_actuality_of_term(current_question):
       if current_question.actuality_day_count == GlobalDatabase.term_returning_cycles[-1]:
          current_question.actuality_day_count = -1   #####ADDITIONAL THINGS IF IT IS DONE, REMOVE OR WHAT
       elif current_question.actuality_day_count != -1:

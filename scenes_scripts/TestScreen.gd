@@ -11,7 +11,8 @@ onready var screen_type = main.get_node("TestScreenType")
 onready var screen_cards = main.get_node("TestScreenCard")
 onready var question_type_selector = get_node("QuestionTypeSelector")
 onready var answer_type_selector = get_node("AnswerTypeSelector")
-onready var check_cycle = get_node("CheckEnableCycle")
+onready var check_filter_cycle = get_node("CheckFilterCycle")
+onready var check_apply_cycle = get_node("CheckApplyCycle")
 onready var check_ignore_categories = get_node("CheckIgnoreCategories")
 
 
@@ -69,13 +70,13 @@ func start_test():
       return
    if check_true_false.pressed:
       main.change_screen(4)  #true-false screen
-      screen_true_false.set_data(check_ignore_categories.pressed, subject_selector.text, topic_selector.text, question_type_selector.selected, check_cycle.pressed)
+      screen_true_false.set_data(check_ignore_categories.pressed, subject_selector.text, topic_selector.text, question_type_selector.selected, check_filter_cycle.pressed, check_apply_cycle.pressed)
    elif check_type.pressed:
       main.change_screen(5) #type screen
-      screen_type.set_data(check_ignore_categories.pressed, subject_selector.text, topic_selector.text, question_type_selector.selected, check_cycle.pressed)
+      screen_type.set_data(check_ignore_categories.pressed, subject_selector.text, topic_selector.text, question_type_selector.selected, check_filter_cycle.pressed, check_apply_cycle.pressed)
    elif check_cards.pressed: #cards screen
       main.change_screen(6)
-      screen_cards.set_data(check_ignore_categories.pressed, subject_selector.text, topic_selector.text, question_type_selector.selected, check_cycle.pressed)
+      screen_cards.set_data(check_ignore_categories.pressed, subject_selector.text, topic_selector.text, question_type_selector.selected, check_filter_cycle.pressed, check_apply_cycle.pressed)
    #elif ..... other screens
    else: # nothing selected
       GlobalFunctions.show_warning(self, "", "You have to choose a mode for testing.")

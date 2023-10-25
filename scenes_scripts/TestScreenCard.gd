@@ -4,7 +4,9 @@ onready var display_text = get_node("DisplayText")
 onready var label_question_number = get_node("LabelQuestionNumber")
 onready var label_subject = get_node("LabelSubject")
 onready var label_topic = get_node("LabelTopic")
-var cycle_enabled: bool = false
+onready var label_mode = get_node("LabelMode")
+var cycle_filter_enabled: bool = false
+var cycle_apply_enabled: bool = false
 var questions = {}
 onready var main = get_parent()
 var question_number_all = 0
@@ -22,11 +24,11 @@ func _ready():
    pass
 
 
-func set_data(ignore_categories: bool, subject: String, topic: String, question_type: int, cycle: bool):
-   cycle_enabled = cycle
+func set_data(ignore_categories: bool, subject: String, topic: String, question_type: int, cycle_filter: bool, cycle_apply: bool):
+   cycle_filter_enabled = cycle_filter
+   cycle_apply_enabled = cycle_apply
    question_mode = question_type
-   questions = GlobalDatabase.filter(ignore_categories, subject, topic, cycle_enabled)
-   print(questions.size())
+   questions = GlobalDatabase.filter(ignore_categories, subject, topic, cycle_filter)
    if questions.size() == 0:
      GlobalFunctions.show_warning(self, "", "You dont have any cards matching the conditions.")
      main.change_screen(2)
@@ -66,7 +68,7 @@ func question_answered(answer:bool):
    if answer:
       answered_right[current_question_index] = current_question
       questions.erase(current_question_index)
-      if cycle_enabled:
+      if cycle_apply_enabled and GlobalDatabase.calculate_actuality_of_term(current_question):
          if current_question.actuality_day_count == GlobalDatabase.term_returning_cycles[-1]:
             current_question.actuality_day_count = -1   #####ADDITIONAL THINGS IF IT IS DONE, REMOVE OR WHAT
          elif current_question.actuality_day_count != -1:
@@ -91,13 +93,18 @@ func summarize():
 
 
 func turn():
+   GlobalFunctions.animate_text(label_mode, float(0.3), false)
    animation_player.play("Narrowing")
    yield(animation_player, "animation_finished")
    if showing == 0: #terms is showed
       showing = 1
       display_text.text = current_question.definition
+      label_mode.text = "Definition:"
+      GlobalFunctions.animate_text(label_mode, float(0.5))
    else: #definition is showed
       showing = 0
       display_text.text = current_question.text
+      label_mode.text = "Term:"
+      GlobalFunctions.animate_text(label_mode, float(0.5))
    animation_player.play("Widening")
    pass
