@@ -1,3 +1,5 @@
+SUSPENDED
+
 # LearnForLife
 Learning app made for Android mostly
 
